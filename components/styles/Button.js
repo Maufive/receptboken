@@ -5,7 +5,7 @@ export const Button = styled.button`
 	width: 100%;
 	border-radius: 30px;
 	padding: 1rem 2rem;
-	margin: 0.5rem 0;
+	margin: 1.5rem 0;
 	background: ${props => (props.primary ? props.theme.green : "transparent")};
 	color: ${props => (props.primary ? props.theme.white : props.theme.green)};
 	border: 1px solid
@@ -22,8 +22,19 @@ export const Button = styled.button`
 		margin-right: 1rem;
 	}
 	&:hover {
-		background: ${props =>
-			props.primary ? props.theme.white : props.theme.green};
-		color: ${props => (props.primary ? props.theme.green : props.theme.white)};
+		/* background: ${props =>
+			props.primary ? props.theme.green : props.theme.green};
+		color: ${props => (props.primary ? props.theme.green : props.theme.white)}; */
+		color: ${props => props.theme.white};
+		background: ${props => props.theme.green};
+	}
+`;
+
+export const DisabledButton = styled(Button)`
+	color: ${props => props.theme.lightgrey};
+	margin: 1.5rem 0;
+	&:hover {
+		color: ${props => props.theme.lightgrey};
+		background: ${props => props.theme.offWhite};
 	}
 `;

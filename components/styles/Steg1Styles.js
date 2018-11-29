@@ -1,15 +1,15 @@
 import styled from "styled-components";
+import { slideIn, fadeIn } from "./keyframes";
 
 export const RecipeForm = styled.form`
 	margin: 0 auto;
 	width: 600px;
 	padding: 1rem;
-	div {
-		margin: 1.5rem 0;
-	}
+	animation: ${fadeIn} 500ms ease-out;
 	select {
 		font-size: 1.5rem;
 		padding: 1.5rem;
+		margin: 0;
 	}
 	select:focus {
 		outline-color: ${props => props.theme.green};
@@ -17,7 +17,6 @@ export const RecipeForm = styled.form`
 	input[type="text"] {
 		width: 100%;
 		height: 100%;
-		padding: 0;
 		outline: none;
 		font-size: 1.5rem;
 		padding: 1.5rem;
@@ -29,7 +28,7 @@ export const RecipeForm = styled.form`
 	}
 	input[type="number"] {
 		font-size: 1.5rem;
-		margin: 1rem;
+		margin: 0 1rem;
 	}
 	input[type="number"]:focus {
 		outline-color: ${props => props.theme.green};
@@ -40,32 +39,37 @@ export const RecipeForm = styled.form`
 	}
 `;
 
+export const IngrediensWrapper = styled.div`
+	> * {
+		margin: 1.5rem 0;
+	}
+`;
+
 export const List = styled.ul`
 	list-style: none;
+	margin-top: 1.5rem 0;
 `;
 
 export const ListItemDiv = styled.div`
-	
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin: 1.5rem 0;
 	padding: 1.5rem 0;
+	margin: 0;
+	animation: ${slideIn} 200ms ease-out;
 	p {
 		margin: 0;
 	}
-	
+
 	i {
-		color: ${props => props.theme.red};
-		transition: 0.2s ease-in all;
+		color: ${props => props.theme.grey};
+		transition: all 0.2s ease-in;
 		margin-left: 2rem;
+		box-shadow: ${props => props.theme.bs};
 		&:hover {
 			cursor: pointer;
-			transform: scale(1.1);
-			box-shadow: ${props => props.theme.bs};
 		}
 	}
-
 `;
 
 export const Divider = styled.div`
@@ -74,4 +78,114 @@ export const Divider = styled.div`
 	width: 80%;
 	background: ${props => props.theme.green};
 	margin: 2rem auto;
+`;
+
+export const DetailsContainer = styled.div`
+	label {
+		color: ${props => props.theme.mediumgrey};
+	}
+
+	input[type="range"] {
+		appearance: none; /* Hides the slider so that custom slider can be made */
+		width: 100px; /* Specific width is required for Firefox. */
+		background: transparent; /* Otherwise white in Chrome */
+		margin-right: 1.5rem;
+	}
+	input[type="range"]:focus {
+		outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+	}
+
+	input[type="range"]::-ms-track {
+		width: 100px;
+		cursor: pointer;
+
+		/* Hides the slider so custom styles can be added */
+		background: transparent;
+		border-color: transparent;
+		color: transparent;
+	}
+
+	input[type="range"]::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		height: 15px;
+		width: 15px;
+		border-radius: 50%;
+		background: ${props => props.theme.green};
+		cursor: pointer;
+		margin-top: -6px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+		box-shadow: ${props => props.theme.bs};
+	}
+
+	input[type="range"]::-webkit-slider-runnable-track {
+		width: 100px;
+		height: 3px;
+		cursor: pointer;
+		box-shadow: ${props => props.theme.bs};
+		background: ${props => props.theme.lightgrey};
+		border-radius: 1.3px;
+		border: 0.2px solid ${props => props.theme.lightgrey};
+	}
+
+	input[type="range"]:focus::-webkit-slider-runnable-track {
+		background: ${props => props.theme.offWhite};
+	}
+
+	input[type="range"]::-moz-range-track {
+		width: 100px;
+		height: 3px;
+		cursor: pointer;
+		border-radius: 1.3px;
+		border: 0.2px solid #010101;
+		background: ${props => props.theme.green};
+		box-shadow: ${props => props.theme.bs};
+	}
+
+	input[type="range"]::-ms-track {
+		width: 100px;
+		height: 3px;
+		cursor: pointer;
+		background: transparent;
+		border-color: transparent;
+		border-width: 16px 0;
+		color: transparent;
+	}
+	input[type="range"]::-ms-fill-lower {
+		background: ${props => props.theme.green};
+		box-shadow: ${props => props.theme.bs};
+		border-radius: 2.6px;
+	}
+	input[type="range"]:focus::-ms-fill-lower {
+		background: ${props => props.theme.lightgrey};
+	}
+	input[type="range"]::-ms-fill-upper {
+		background: ${props => props.theme.lightgrey};
+		border-radius: 2.6px;
+		box-shadow: ${props => props.theme.bs};
+	}
+	input[type="range"]:focus::-ms-fill-upper {
+		background: ${props => props.theme.lightgrey};
+	}
+
+	> div {
+		/* Div för slidern, vill ha label ovanför men slidern och P-tag inline*/
+		margin-bottom: 3rem;
+		> div {
+			display: flex;
+		}
+	}
+`;
+
+export const Header = styled.div`
+	width: 600px;
+	margin: 0 auto;
+	padding: 1rem;
+	input[type="text"] {
+		font-size: 3rem;
+		border: none;
+		border-bottom: 1px solid ${props => props.theme.lightgrey};
+		outline: none;
+	}
+	input[type="text"]:focus {
+		border-bottom: 1px solid ${props => props.theme.green};
+	}
 `;

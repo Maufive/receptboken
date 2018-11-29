@@ -1,18 +1,27 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button } from "./styles/Button";
-import { RecipeForm, ListItemDiv, List } from "./styles/Steg1Styles";
+import { Button, DisabledButton } from "./styles/Button";
+import { InfoMessage } from "./Message";
+import {
+	RecipeForm,
+	ListItemDiv,
+	List,
+	IngrediensWrapper
+} from "./styles/Steg1Styles";
 
-class Steg1 extends Component {
+class Steg1Test extends Component {
 	state = {
 		arr: [], // en array med ingredienser
-		item: "",
-		numberOfUnits: 1,
-		units: "st",
+		item: {
+			input: "",
+			numberOfUnits: 1,
+			units: "st"
+		},
 		servings: 2,
 		step: 1,
 		editing: false,
-		editIndex: null
+		editIndex: null,
+		message: null
 	};
 
 	componentDidMount() {
@@ -22,22 +31,35 @@ class Steg1 extends Component {
 		});
 	}
 
-	// Tar strängen som ligger i den tillfälliga propertyn "item", sen med ES6 Spread så tar jag en kopia
-	// av this.state.arr och lägger till värdet som är i "item". Måste göra en kopia av state innan jag modifierar
-	// då man inte ska modifiera state direkt.
-	addToArray = e => {
-		const { numberOfUnits, item, units } = this.state;
+	hideShowMessage = message => {
+		this.setState({ message });
+		setTimeout(() => {
+			this.setState({ message: null });
+		}, 3990);
+	};
+
+	addToArray = async e => {
+		// Stoppa knappen från att skicka en request
 		e.preventDefault();
-		if (item.length >= 2) {
-			const number = numberOfUnits.toString();
-			const string = number + " " + units.toLowerCase().concat(" ", item); // oldschool JS btw
-			this.setState(prevState => ({
-				arr: [...prevState.arr, string],
-				item: "",
-				numberOfUnits: 1
+		// Ta en kopia av objektet Item i state
+		const item = { ...this.state.item };
+		// Kolla så att det inte redan finns en likadan ingrediens sparad redan för att förhindra dubletter
+		const doubles = this.state.arr.filter(ingr => ingr.input === item.input);
+		if (doubles.length >= 1)
+			return this.hideShowMessage("Du har redan en sådan i listan 🤚");
+		if (item.input.length >= 2) {
+			// efter state blivit sparat, töm inputfältet
+			const emptyInputField = { ...this.state.item };
+			emptyInputField.input = "";
+			emptyInputField.numberOfUnits = 1;
+			// ta en kopia av arrayen i state, och lägg till item objektet i den nya arrayen innan den sparas
+			// samt tömmer inputen
+			await this.setState(prevState => ({
+				arr: [...prevState.arr, item],
+				item: emptyInputField
 			}));
 		} else {
-			console.log("Too short!");
+			this.hideShowMessage("Ingrediensen måste ha minst 2 tecken");
 		}
 	};
 
@@ -46,57 +68,70 @@ class Steg1 extends Component {
 		let arr = [...this.state.arr];
 		// 2. Hitta rätt item att ta bort
 		let index = arr.indexOf(e);
-		// 3.
+		// 3. Ta bort itemet från arrayen
 		if (index !== -1) {
 			arr.splice(index, 1);
 			this.setState({ arr });
 		}
 	};
 
+	// leta fram objektet som ska editas, och sätt det i state
 	editItem = currentItem => {
-		// 1. Gör en kopia av state
+		// 1. Gör en kopia av arrayen med ingredienser i state
 		let items = [...this.state.arr];
 		// 2. Gör en kopia av det item jag vill ändra
 		let itemIndex = items.indexOf(currentItem);
-		// 3. Ändra item
-		console.log(itemIndex);
+		// 3. Ta en kopia av objektet som är på den indexen
+		const item = items[itemIndex];
+		// 4. Sätt state med det itemet som ska editas
 		this.setState({
-			item: items[itemIndex],
+			item,
 			editing: true,
 			editIndex: itemIndex
 		});
 	};
 
 	saveEdit = e => {
+		const { item } = this.state;
+		const index = this.state.editIndex;
 		e.preventDefault();
-		const { numberOfUnits, item, units, editIndex } = this.state;
 		// kolla så det finns något i inputen
-		if (item.length >= 2) {
-			// gör om numret till en sträng för att sammansätta allt till en sträng
-			const number = numberOfUnits.toString();
-			const string = number + " " + units.toLowerCase().concat(" ", item);
+		if (item.input.length >= 2) {
 			// ta en kopia på arrayen i state för att modifiera
-			const newArr = [...this.state.arr];
-			// ta den redigerade strängen och tryck in den på det index i arrayen som jag hämtat från editItem funktionen
-			newArr[editIndex] = string;
+			const arr = [...this.state.arr];
+			// spara över objektet i arrayen med objektet i state. Behöver index.
+			arr[index] = item;
+			// cleara ut inputen
+			const emptyInputField = { ...item };
+			emptyInputField.input = "";
+			emptyInputField.numberOfUnits = 1;
 			// spara.
 			this.setState({
-				arr: newArr,
-				item: "",
-				numberOfUnits: 1,
+				arr,
+				item: emptyInputField,
 				editing: false
 			});
 		} else {
-			console.log("Too short!");
+			this.hideShowMessage("Ingrediensen måste ha minst 2 tecken!");
 		}
 	};
 
-	saveToState = e => {
-		this.setState({ [e.target.name]: e.target.value });
+	saveIngredient = e => {
+		const item = { ...this.state.item };
+		item.input = e.target.value;
+		this.setState({ item });
 	};
 
 	handleUnits = e => {
-		this.setState({ units: e.target.value });
+		let item = { ...this.state.item };
+		item.units = e.target.value;
+		this.setState({ item });
+	};
+
+	saveNumberOfUnits = e => {
+		const item = { ...this.state.item };
+		item.numberOfUnits = e.target.value;
+		this.setState({ item });
 	};
 
 	handleServings = e => {
@@ -110,41 +145,46 @@ class Steg1 extends Component {
 		this.props.saveIngredients(this.state.arr, this.state.servings);
 	};
 
+	saveToState = e => {
+		this.setState({ [e.target.name]: e.target.value });
+	};
+
 	render() {
+		const { message, step } = this.state;
 		return (
 			<RecipeForm>
-				<h3>{this.state.step}. Ingedienser</h3>
-				<div>
-					<label htmlFor="servings">Antal portioner: </label>
-					<select value={this.state.servings} onChange={this.handleServings}>
-						<option value="2">2</option>
-						<option value="4">4</option>
-						<option value="6">6</option>
-						<option value="8">8</option>
-					</select>
-				</div>
-				<div>
+				{message && <InfoMessage>{this.state.message}</InfoMessage>}
+				<IngrediensWrapper>
+					<h3>{step}. Ingedienser</h3>
+					<div>
+						<label htmlFor="servings">Antal portioner: </label>
+						<select value={this.state.servings} onChange={this.handleServings}>
+							<option value="2">2</option>
+							<option value="4">4</option>
+							<option value="6">6</option>
+							<option value="8">8</option>
+						</select>
+					</div>
 					<label htmlFor="item">Fyll i ingredienser:</label>
-					<br />
 					<input
 						type="text"
 						name="item"
-						value={this.state.item}
-						onChange={this.saveToState}
+						value={this.state.item.input}
+						onChange={this.saveIngredient}
 						placeholder="Spaghetti..."
 					/>
 					<label htmlFor="numberOfUnits">Antal: </label>
 					<input
 						type="number"
 						name="numberOfUnits"
-						value={this.state.numberOfUnits}
-						onChange={this.saveToState}
+						value={this.state.item.numberOfUnits}
+						onChange={this.saveNumberOfUnits}
 						style={{
 							width: 60
 						}}
 					/>
 					<label htmlFor="units">Enhet: </label>
-					<select value={this.state.units} onChange={this.handleUnits}>
+					<select value={this.state.item.units} onChange={this.handleUnits}>
 						<option defaultValue="st">Styck</option>
 						<option value="gram">Gram</option>
 						<option value="msk">Matsked</option>
@@ -165,12 +205,15 @@ class Steg1 extends Component {
 							</Button>
 						)}
 					</div>
-				</div>
+				</IngrediensWrapper>
 				<List>
 					{this.state.arr.map(item => (
-						<li key={item}>
+						<li key={item.input}>
 							<ListItemDiv>
-								<p>👉 {item}</p>
+								<p>
+									👉 <span>{item.numberOfUnits}</span> <span>{item.units}</span>{" "}
+									{item.input}
+								</p>
 								<div>
 									<i
 										onClick={() => this.deleteItem(item)}
@@ -186,11 +229,11 @@ class Steg1 extends Component {
 					))}
 				</List>
 				{this.state.arr.length <= 1 && (
-					<Button disabled>
+					<DisabledButton>
 						{/* Behöver en hover-effekt för att indikera att man går vidare till nästa steg */}
 						<i className="icofont-ui-next" />
 						Nästa steg
-					</Button>
+					</DisabledButton>
 				)}
 				{this.state.arr.length >= 2 && (
 					<Button primary onClick={this.nextStep}>
@@ -204,9 +247,9 @@ class Steg1 extends Component {
 	}
 }
 
-export default Steg1;
+export default Steg1Test;
 
-Steg1.propTypes = {
+Steg1Test.propTypes = {
 	saveToState: PropTypes.func,
 	toNextStep: PropTypes.func,
 	ingredients: PropTypes.array,

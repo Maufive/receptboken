@@ -1,24 +1,8 @@
 import React, { Component } from "react";
-import axios from "axios";
-import styled from "styled-components";
+import { Header, RecipeForm } from "./styles/Steg1Styles";
 import Steg1 from "./Steg1";
-import Steg1Test from "./Steg1Test";
 import Steg2 from "./Steg2";
-
-const Header = styled.div`
-	width: 600px;
-	margin: 0 auto;
-	padding: 1rem;
-	input[type="text"] {
-		font-size: 3rem;
-		border: none;
-		border-bottom: 1px solid ${props => props.theme.lightgrey};
-		outline: none;
-	}
-	input[type="text"]:focus {
-		border-bottom: 1px solid ${props => props.theme.green};
-	}
-`;
+import Steg3 from "./Steg3";
 
 class NewRecipeForm extends Component {
 	state = {
@@ -55,6 +39,15 @@ class NewRecipeForm extends Component {
 		});
 	};
 
+	saveDetails = (photo, time, tags) => {
+		this.setState({
+			photo,
+			timeRequired: time,
+			tags,
+			step: this.state.step + 1
+		});
+	};
+
 	render() {
 		const step = this.state.step;
 		let ActiveComponent;
@@ -63,7 +56,7 @@ class NewRecipeForm extends Component {
 		// lättare för användare.
 		if (step === 1) {
 			ActiveComponent = (
-				<Steg1Test
+				<Steg1
 					saveToState={this.saveToState}
 					saveIngredients={this.saveIngredients}
 					ingredients={this.state.ingredients}
@@ -74,13 +67,27 @@ class NewRecipeForm extends Component {
 			ActiveComponent = (
 				<Steg2
 					saveDescription={this.saveDescription}
-					steg={this.state.step}
+					steg={step}
 					previousStep={this.previousStep}
 					description={this.state.description}
 				/>
 			);
+		} else if (step === 3) {
+			ActiveComponent = (
+				<Steg3
+					steg={step}
+					previousStep={this.previousStep}
+					saveDetails={this.saveDetails}
+				/>
+			);
 		} else {
-			ActiveComponent = <p>Steg 3</p>;
+			ActiveComponent = <h2>Finished!</h2>;
+			// To-do: Skriv en funktion för en POST-method att passa ner till steg 3. Spara Allt som finns i state här
+			// till databasen.
+			// Gör en LOADING komponent som snurrar medans man väntar på att databasen ska spara receptet
+			// Gör en Page för ett recept där jag kan displaya informationen
+			// Redirecta användaren när man lyckats spara ett recept till databasen till det receptet
+
 		}
 
 		return (
@@ -96,7 +103,7 @@ class NewRecipeForm extends Component {
 					/>
 					<i onClick={this.editTitle} className="icofont-ui-edit" />
 				</Header>
-				{ActiveComponent}
+				<RecipeForm>{ActiveComponent}</RecipeForm>
 			</div>
 		);
 	}

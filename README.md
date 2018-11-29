@@ -1,1 +1,1 @@
-Hello
+Fullstack hobbyproject to practice NextJS and NodeJS. 
