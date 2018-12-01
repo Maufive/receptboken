@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Loading } from "./Loading";
 import { RecipeForm, DetailsContainer } from "./styles/Steg1Styles";
 import { Button, DisabledButton } from "./styles/Button";
-import { InfoMessage } from "./Message";
+import { Message } from "./Message";
 
 const TAGS = [
 	"Texmex",
@@ -22,8 +23,9 @@ class Steg3 extends Component {
 		largePhoto: "",
 		timeRequired: 0,
 		tags: [],
-		message: null
-  };
+		message: null,
+		loading: false
+	};
 
 	hideShowMessage = message => {
 		this.setState({ message });
@@ -51,6 +53,7 @@ class Steg3 extends Component {
 	};
 
 	uploadFile = async e => {
+		this.setState({ loading: true });
 		const files = e.target.files;
 		const data = new FormData();
 		data.append("file", files[0]);
@@ -66,19 +69,26 @@ class Steg3 extends Component {
 		const file = await res.json();
 		this.setState({
 			photo: file.secure_url,
-			largePhoto: file.eager[0].secure_url
+			largePhoto: file.eager[0].secure_url,
+			loading: false
 		});
 	};
 
-	saveState = () => {
-    this.props.saveDetails(this.state.photo, this.state.timeRequired, this.state.tags)
-  };
+	saveState = async e => {
+		e.preventDefault();
+		await this.props.saveDetails(
+			this.state.photo,
+			this.state.timeRequired,
+			this.state.tags
+		);
+		this.props.submitRecipe();
+	};
 
 	render() {
 		const { photo, timeRequired, message } = this.state;
 		return (
 			<RecipeForm>
-				{message && <InfoMessage>{message}</InfoMessage>}
+				{message && <Message type="success">{message}</Message>}
 				<h3>{this.props.steg}. Fyll i lite detaljer om ditt recept</h3>
 
 				<DetailsContainer>
@@ -105,10 +115,10 @@ class Steg3 extends Component {
 							id="file"
 							name="photo"
 							placeholder="Ladda upp en bild"
-							required
 							onChange={this.uploadFile}
-						/>{" "}
+						/>
 						<br />
+						{this.state.loading && <Loading />}
 						{photo && (
 							<img width="300" src={photo} alt="Bild förhandsvisning" />
 						)}
@@ -131,7 +141,7 @@ class Steg3 extends Component {
 				</DetailsContainer>
 
 				<div style={{ display: "flex" }}>
-					<Button onClick={this.prevStep}>
+					<Button onClick={this.props.previousStep}>
 						<i className="icofont-ui-previous" /> Föregående
 					</Button>
 					{this.state.timeRequired <= 4 && (
@@ -155,5 +165,5 @@ export default Steg3;
 Steg3.propTypes = {
 	steg: PropTypes.number,
 	previousStep: PropTypes.func,
-	saveDetails: PropTypes.array
+	saveDetails: PropTypes.func
 };

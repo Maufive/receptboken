@@ -4,7 +4,8 @@ import { slideIn, fadeIn } from "./keyframes";
 export const RecipeForm = styled.form`
 	margin: 0 auto;
 	width: 600px;
-	padding: 1rem;
+	padding: 2rem;
+	background: ${props => props.theme.white};
 	animation: ${fadeIn} 500ms ease-out;
 	select {
 		font-size: 1.5rem;
@@ -48,6 +49,12 @@ export const IngrediensWrapper = styled.div`
 export const List = styled.ul`
 	list-style: none;
 	margin-top: 1.5rem 0;
+	width: 100%;
+`;
+
+export const ListItem = styled.li`
+	border: 1px solid blue;
+	display: flex;
 `;
 
 export const ListItemDiv = styled.div`
@@ -176,16 +183,19 @@ export const DetailsContainer = styled.div`
 `;
 
 export const Header = styled.div`
-	width: 600px;
-	margin: 0 auto;
-	padding: 1rem;
+	width: 350px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	input[type="text"] {
 		font-size: 3rem;
 		border: none;
 		border-bottom: 1px solid ${props => props.theme.lightgrey};
+		border-radius: 0;
 		outline: none;
 	}
 	input[type="text"]:focus {
-		border-bottom: 1px solid ${props => props.theme.green};
+		border: none;
+		border-bottom: 1px solid ${props => props.theme.green} !important;
 	}
 `;

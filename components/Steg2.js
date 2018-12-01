@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { RecipeForm, List, ListItemDiv } from "./styles/Steg1Styles";
 import { Button, DisabledButton } from "./styles/Button";
-import { InfoMessage } from "./Message";
+import { Message } from "./Message";
 
 class Steg2 extends Component {
 	state = {
 		arr: [],
-		string: "Sätt på ugnen",
+		string: "",
 		step: 1,
 		editing: false,
 		editIndex: null,
@@ -68,7 +68,7 @@ class Steg2 extends Component {
 			editing: true,
 			editIndex: itemIndex
 		});
-		this.hideShowMessage('Du kan nu ändra!')
+		this.hideShowMessage("Du kan nu ändra!");
 	};
 
 	saveEdit = e => {
@@ -91,7 +91,7 @@ class Steg2 extends Component {
 				message: null
 			});
 		} else {
-			this.hideShowMessage('Du måste skriva in minst 5 bokstäver!');
+			this.hideShowMessage("Du måste skriva in minst 5 bokstäver!");
 		}
 	};
 
@@ -104,20 +104,23 @@ class Steg2 extends Component {
 		this.props.saveDescription(this.state.arr);
 	};
 
-	prevStep = e => {
-		e.preventDefault();
-		this.props.previousStep();
-	};
+	// prevStep = e => {
+	// 	e.preventDefault();
+	// 	this.props.previousStep();
+	// };
 
 	render() {
 		return (
 			<RecipeForm>
-				{this.state.message && <InfoMessage>{this.state.message}</InfoMessage>}
+				{this.state.message && (
+					<Message type="success">{this.state.message}</Message>
+				)}
 				<h3>{this.props.steg}. Gör såhär:</h3>
 				<label htmlFor="string">Fyll i Steg {this.state.step}</label>
 				<input
 					type="text"
 					name="string"
+					required
 					value={this.state.string}
 					onChange={this.saveToState}
 					placeholder="Sätt på ugnen..."
@@ -155,19 +158,16 @@ class Steg2 extends Component {
 					))}
 				</List>
 				<div style={{ display: "flex" }}>
-					<Button onClick={this.prevStep}>
-						{/* Behöver en hover-effekt för att indikera att man går vidare till nästa steg */}
+					<Button onClick={this.props.previousStep}>
 						<i className="icofont-ui-previous" /> Föregående
 					</Button>
 					{this.state.arr.length <= 1 && (
 						<DisabledButton>
-							{/* Behöver en hover-effekt för att indikera att man går vidare till nästa steg */}
 							<i className="icofont-ui-next" /> Nästa steg
 						</DisabledButton>
 					)}
 					{this.state.arr.length >= 2 && (
 						<Button primary onClick={this.nextStep}>
-							{/* Behöver en hover-effekt för att indikera att man går vidare till nästa steg */}
 							<i className="icofont-ui-next" /> Nästa steg
 						</Button>
 					)}

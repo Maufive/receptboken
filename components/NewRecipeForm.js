@@ -1,10 +1,17 @@
 import React, { Component } from "react";
-import { Header, RecipeForm } from "./styles/Steg1Styles";
+import Router from "next/router";
+import PropTypes from "prop-types";
+import axios from "axios";
+import LoadingDots from "./LoadingDots";
 import Steg1 from "./Steg1";
 import Steg2 from "./Steg2";
 import Steg3 from "./Steg3";
 
 class NewRecipeForm extends Component {
+	static propTypes = {
+		user: PropTypes.object.isRequired
+	};
+
 	state = {
 		title: "",
 		description: [],
@@ -13,14 +20,16 @@ class NewRecipeForm extends Component {
 		photo: "",
 		ingredients: [],
 		servings: 2,
-		step: 1
+		step: 1,
+		loading: false
 	};
 
 	saveToState = e => {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	previousStep = () => {
+	previousStep = e => {
+		e.preventDefault();
 		this.setState({ step: this.state.step - 1 });
 	};
 
@@ -48,6 +57,43 @@ class NewRecipeForm extends Component {
 		});
 	};
 
+	submitRecipe = e => {
+		const {
+			title,
+			description,
+			tags,
+			timeRequired,
+			photo,
+			ingredients,
+			servings
+		} = this.state;
+		this.setState({ loading: true });
+		// kolla så att användaren är inloggad innan jag skickar iväg requesten
+
+		axios
+			.post("http://localhost:7777/recipe/add", {
+				title,
+				description,
+				tags,
+				timeRequired,
+				photo,
+				ingredients,
+				servings
+			})
+			.then(result => {
+				console.log(result);
+				this.setState({
+					loading: false,
+					step: 1
+				});
+				Router.push({
+					pathname: "/recept",
+					query: { id: result.data.id }
+				});
+			})
+			.catch(error => console.log(error));
+	};
+
 	render() {
 		const step = this.state.step;
 		let ActiveComponent;
@@ -58,6 +104,7 @@ class NewRecipeForm extends Component {
 			ActiveComponent = (
 				<Steg1
 					saveToState={this.saveToState}
+					title={this.state.title}
 					saveIngredients={this.saveIngredients}
 					ingredients={this.state.ingredients}
 					servings={this.state.servings}
@@ -66,9 +113,9 @@ class NewRecipeForm extends Component {
 		} else if (step === 2) {
 			ActiveComponent = (
 				<Steg2
-					saveDescription={this.saveDescription}
 					steg={step}
 					previousStep={this.previousStep}
+					saveDescription={this.saveDescription}
 					description={this.state.description}
 				/>
 			);
@@ -78,6 +125,7 @@ class NewRecipeForm extends Component {
 					steg={step}
 					previousStep={this.previousStep}
 					saveDetails={this.saveDetails}
+					submitRecipe={this.submitRecipe}
 				/>
 			);
 		} else {
@@ -87,23 +135,11 @@ class NewRecipeForm extends Component {
 			// Gör en LOADING komponent som snurrar medans man väntar på att databasen ska spara receptet
 			// Gör en Page för ett recept där jag kan displaya informationen
 			// Redirecta användaren när man lyckats spara ett recept till databasen till det receptet
-
 		}
-
+		if (this.state.loading) return <LoadingDots />;
 		return (
 			<div>
-				<Header>
-					<input
-						type="text"
-						value={this.state.title}
-						onChange={this.saveToState}
-						name="title"
-						required
-						placeholder="Nytt recept..."
-					/>
-					<i onClick={this.editTitle} className="icofont-ui-edit" />
-				</Header>
-				<RecipeForm>{ActiveComponent}</RecipeForm>
+				<div>{ActiveComponent}</div>
 			</div>
 		);
 	}

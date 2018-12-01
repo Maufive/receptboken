@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import NewRecipeForm from '../components/NewRecipeForm';
+import NewRecipeForm from "../components/NewRecipeForm";
 
 class recipe extends Component {
 	render() {
-		return (
-      <div>
-        <NewRecipeForm></NewRecipeForm>
-      </div>
-    )
+		const { user } = this.props;
+		return <div>{user && <NewRecipeForm user={user} />}</div>;
 	}
 }
 

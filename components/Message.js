@@ -1,23 +1,15 @@
-import { MessageStyles, SuccessMessageStyles, InfoMessageStyles, DangerMessageStyles } from "./styles/Message";
+import { MessageStyles } from "./styles/Message";
 
-export const SuccessMessage = props => {
+export const Message = props => {
+	let background;
+	if (props.type === "success") background = "#15BD76";
+	if (props.type === "danger") background = "#bc1616";
+	if (props.type === "info") background = "#FFCF44";
 	return (
-		<SuccessMessageStyles>
+		<MessageStyles background={background}>
 			<div>
 				<i className="icofont-warning-alt" /> {props.children}
 			</div>
-		</SuccessMessageStyles>
+		</MessageStyles>
 	);
 };
-
-export const InfoMessage = props => {
-	return (
-		<InfoMessageStyles>
-			<div>
-				<i className="icofont-warning-alt" /> {props.children}
-			</div>
-		</InfoMessageStyles>
-	);
-};
-
-

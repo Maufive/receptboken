@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, DisabledButton } from "./styles/Button";
-import { InfoMessage } from "./Message";
+import { InfoMessage, Message } from "./Message";
 import {
 	RecipeForm,
 	ListItemDiv,
+	Header,
 	List,
 	IngrediensWrapper
 } from "./styles/Steg1Styles";
@@ -153,7 +154,18 @@ class Steg1Test extends Component {
 		const { message, step } = this.state;
 		return (
 			<RecipeForm>
-				{message && <InfoMessage>{this.state.message}</InfoMessage>}
+				{message && <Message type="success">{message}</Message>}
+				<Header>
+					<input
+						type="text"
+						value={this.props.title}
+						onChange={this.props.saveToState}
+						name="title"
+						required
+						placeholder="Nytt recept..."
+					/>
+					<i className="icofont-ui-edit" />
+				</Header>
 				<IngrediensWrapper>
 					<h3>{step}. Ingedienser</h3>
 					<div>

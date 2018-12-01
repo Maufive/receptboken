@@ -1,34 +1,40 @@
 import React, { Component } from "react";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import UserProvider, {
+	UserConsumer
+} from "../components/providers/UserProvider";
 import Header from "./Header";
 import Meta from "./Meta";
+import { fadeIn } from "./styles/keyframes";
 
 const theme = {
 	green: "#15BD76",
 	red: "#bc1616",
 	yellow: "#FFCF44",
 	black: "#393939",
-	grey: "#3A3A3A",
+	grey: "#5A5555",
 	mediumgrey: "#828282",
 	lightgrey: "#E1E1E1",
-	offWhite: "#EDEDED",
+	offWhite: "#F5F5F5",
 	white: "#fefefe",
 	maxWidth: "1200px",
 	mobileBreakpoint: "768px",
 	mobileAnimationTime: "200ms",
-	bs: "0 5px 24px 0 rgba(0, 0, 0, 0.06)"
-	// bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)"
+	bs: "0 5px 24px 0 rgba(0, 0, 0, 0.06)",
+	bsHard: "0 5px 12px 0 rgba(0, 0, 0, 0.10)"
 };
 
 const StyledPage = styled.div`
-	background: ${props => props.theme.white};
+	background: ${props => props.theme.offWhite};
 	color: ${props => props.theme.black};
 `;
 
 const Inner = styled.div`
 	max-width: ${props => props.theme.maxWidth};
+	min-height: 100vh;
 	margin: 0 auto;
 	padding: 2rem;
+	animation: ${fadeIn} 800ms ease-out;
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -60,6 +66,9 @@ const GlobalStyle = createGlobalStyle`
 		padding: 0;
 		margin: 0;
 	}
+	p {
+		margin: 0;
+	}
 `;
 
 class Page extends Component {
@@ -69,7 +78,7 @@ class Page extends Component {
 				<StyledPage>
 					<GlobalStyle />
 					<Meta />
-					<Header />
+					<UserConsumer>{({ user }) => <Header user={user} />}</UserConsumer>
 					<Inner>{this.props.children}</Inner>
 				</StyledPage>
 			</ThemeProvider>

@@ -1,6 +1,7 @@
 import App, { Container } from "next/app";
-import UserProvider from "../components/providers/UserProvider";
-import { UserConsumer } from "../components/providers/UserProvider";
+import UserProvider, {
+	UserConsumer
+} from "../components/providers/UserProvider";
 import Page from "../components/Page";
 
 class MyApp extends App {
@@ -9,7 +10,7 @@ class MyApp extends App {
 		if (Component.getInitialProps) {
 			pageProps = await Component.getInitialProps(ctx);
 		}
-
+		pageProps.query = ctx.query;
 		return { pageProps };
 	}
 
@@ -18,15 +19,15 @@ class MyApp extends App {
 
 		return (
 			<Container>
-				<Page>
-					<UserProvider>
-						<UserConsumer>
-							{({ setUser }) => (
-								<Component setUser={setUser} {...pageProps} />
-							)}
-						</UserConsumer>
-					</UserProvider>
-				</Page>
+				<UserProvider>
+					<UserConsumer>
+						{({ setUser, user }) => (
+							<Page>
+								<Component user={user} setUser={setUser} {...pageProps} />
+							</Page>
+						)}
+					</UserConsumer>
+				</UserProvider>
 			</Container>
 		);
 	}

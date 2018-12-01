@@ -22,11 +22,10 @@ export const Button = styled.button`
 		margin-right: 1rem;
 	}
 	&:hover {
-		/* background: ${props =>
-			props.primary ? props.theme.green : props.theme.green};
-		color: ${props => (props.primary ? props.theme.green : props.theme.white)}; */
 		color: ${props => props.theme.white};
-		background: ${props => props.theme.green};
+		box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+		transform: translateY(-1px);
+		background: #1ac97a;
 	}
 `;
 
