@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import Router from "next/router";
 import PropTypes from "prop-types";
 import axios from "axios";
-import LoadingDots from "./LoadingDots";
+import { Loading } from "./Loading";
 import Steg1 from "./Steg1";
 import Steg2 from "./Steg2";
 import Steg3 from "./Steg3";
 
 class NewRecipeForm extends Component {
 	static propTypes = {
-		user: PropTypes.object.isRequired
+		user: PropTypes.string.isRequired,
+		setMessage: PropTypes.function
 	};
 
 	state = {
@@ -81,17 +82,16 @@ class NewRecipeForm extends Component {
 				servings
 			})
 			.then(result => {
-				console.log(result);
 				this.setState({
-					loading: false,
-					step: 1
+					loading: false
 				});
 				Router.push({
 					pathname: "/recept",
 					query: { id: result.data.id }
 				});
+				this.props.setMessage("success", "Receptet är nu sparat! 🎉");
 			})
-			.catch(error => console.log(error));
+			.catch(error => this.props.setMessage("danger", error));
 	};
 
 	render() {
@@ -108,6 +108,7 @@ class NewRecipeForm extends Component {
 					saveIngredients={this.saveIngredients}
 					ingredients={this.state.ingredients}
 					servings={this.state.servings}
+					setMessage={this.props.setMessage}
 				/>
 			);
 		} else if (step === 2) {
@@ -117,6 +118,7 @@ class NewRecipeForm extends Component {
 					previousStep={this.previousStep}
 					saveDescription={this.saveDescription}
 					description={this.state.description}
+					setMessage={this.props.setMessage}
 				/>
 			);
 		} else if (step === 3) {
@@ -126,6 +128,7 @@ class NewRecipeForm extends Component {
 					previousStep={this.previousStep}
 					saveDetails={this.saveDetails}
 					submitRecipe={this.submitRecipe}
+					setMessage={this.props.setMessage}
 				/>
 			);
 		} else {
@@ -136,7 +139,7 @@ class NewRecipeForm extends Component {
 			// Gör en Page för ett recept där jag kan displaya informationen
 			// Redirecta användaren när man lyckats spara ett recept till databasen till det receptet
 		}
-		if (this.state.loading) return <LoadingDots />;
+		if (this.state.loading) return <Loading />;
 		return (
 			<div>
 				<div>{ActiveComponent}</div>

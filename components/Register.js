@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import Router from 'next/router';
+import React, { Component } from "react";
+import axios from "axios";
+import Router from "next/router";
 
 class Register extends Component {
 	constructor(props) {
@@ -28,15 +27,15 @@ class Register extends Component {
 			.post("http://localhost:7777/auth/register", { email, password, name })
 			.then(result => {
 				this.setState({
-					 message: result.data.message,
-					 email: "",
-					 password: "",
-					 name: "",
-					 msg: "Välkommen! 🥳 🎉"
-				})
-				Router.push("/")
-
-			}).catch(error => console.log(error));
+					message: result.data.message,
+					email: "",
+					password: "",
+					name: "",
+					msg: "Välkommen! 🥳 🎉"
+				});
+				Router.push("/");
+			})
+			.catch(error => console.log(error));
 	};
 
 	render() {
@@ -52,9 +51,9 @@ class Register extends Component {
 						onChange={this.saveToState}
 						required
 					/>
-					<br/>
+					<br />
 					<label htmlFor="email">Email: </label>
-					<input 
+					<input
 						type="email"
 						name="email"
 						value={this.state.email}
@@ -62,16 +61,16 @@ class Register extends Component {
 						placeholder="exempel@mail.com"
 						required
 					/>
-					<br/>
+					<br />
 					<label htmlFor="password">Lösenord: </label>
-					<input 
+					<input
 						type="password"
 						name="password"
 						value={this.state.password}
 						onChange={this.saveToState}
 						required
 					/>
-					<br/>
+					<br />
 					<button type="submit">{this.state.msg}</button>
 				</form>
 			</div>

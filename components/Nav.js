@@ -12,7 +12,8 @@ const NavigationBar = styled.ul`
 
 const NavItem = styled.li`
 	color: ${props => (props.active ? props.theme.black : "#636363")};
-	border-bottom: ${props => (props.active ? `2px solid ${props.theme.green}` : "")};
+	border-bottom: ${props =>
+		props.active ? `2px solid ${props.theme.green}` : ""};
 	list-style: none;
 	font-weight: 700;
 	p {
@@ -20,13 +21,19 @@ const NavItem = styled.li`
 	}
 `;
 
+/*
+	MATVECKAN: 
+	En funktion där jag hämtar ut 3 - 5 olika recept från databasen och sätter ihop en shoppinglista med alla ingredienser.
+	Som Matkassen ;)
+*/
+
 const Nav = () => (
 	<NavigationBar>
 		<NavItem active>
 			<p>RECEPT</p>
 		</NavItem>
 		<NavItem>
-			<p>TOPPLISTA</p>
+			<p>MATVECKAN</p>
 		</NavItem>
 		<NavItem>
 			<p>KATEGORIER</p>

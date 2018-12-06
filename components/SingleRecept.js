@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Router from "next/router";
+import Stars from "./Stars";
+import { Loading } from "../components/Loading";
 import {
 	Wrapper,
 	DetailsBar,
@@ -23,10 +25,11 @@ class SingleRecept extends Component {
 
 	getData = async () => {
 		await this.setState({ loading: true });
-		axios
+		await axios
 			.get(`http://localhost:7777/recipe/${this.props.id}`)
 			.then(response => {
-				this.setState({ recept: response.data });
+				console.log(response);
+				this.setState({ recept: response.data, loading: false });
 			})
 			.catch(error => {
 				console.log(error);
@@ -34,11 +37,13 @@ class SingleRecept extends Component {
 			});
 	};
 
-	deleteRecipe = e => {
+	deleteRecipe = async e => {
 		e.preventDefault();
-		axios
+		await this.setState({ loading: true });
+		await axios
 			.post(`http://localhost:7777/recipe/delete/${this.props.id}`)
 			.then(response => {
+				this.setState({ loading: false });
 				Router.push("/");
 				console.log(response);
 			})
@@ -49,35 +54,29 @@ class SingleRecept extends Component {
 
 	render() {
 		const { recept } = this.state;
-		if (!recept) return <p>loading...</p>;
+		if (!this.state.recept) return <Loading />;
 		return (
 			<Wrapper>
-				{console.log(recept[0])}
-				<h1>{recept[0].title}</h1>
+				{console.log(recept)}
+				<h1>{recept.title}</h1>
 				<DetailsBar>
-					<IconContainer>
-						<i className="icofont-star" />
-						<i className="icofont-star" />
-						<i className="icofont-star" />
-						<i className="icofont-star" />
-						(4 röster)
-					</IconContainer>
+					<Stars id={this.props.id} />
 					<IconContainer>
 						<i className="icofont-clock-time" />
-						{recept[0].timeRequired.toString()}
+						{recept.timeRequired.toString()}
 					</IconContainer>
 					<IconContainer>
 						<i className="icofont-fork-and-knife" />
-						{recept[0].servings}
+						{recept.servings}
 					</IconContainer>
 					<IconContainer>
 						<i className="icofont-heart" style={{ color: "#bc1616" }} />
 					</IconContainer>
 				</DetailsBar>
 				<ImageAndTags>
-					<img src={recept[0].photo} alt="Foto på maten" height="300" />
+					<img src={recept.photo} alt="Foto på maten" height="300" />
 					<div>
-						{recept[0].tags.map(tag => (
+						{recept.tags.map(tag => (
 							<Tag key={tag}>{tag}</Tag>
 						))}
 					</div>
@@ -85,7 +84,7 @@ class SingleRecept extends Component {
 				<ImageAndTags>
 					<div style={{ flex: "1" }}>
 						<h2>Du Behöver:</h2>
-						{recept[0].ingredients.map(ingredient => (
+						{recept.ingredients.map(ingredient => (
 							<ListItem key={ingredient.input}>
 								{ingredient.numberOfUnits} {ingredient.units} {ingredient.input}
 							</ListItem>
@@ -93,7 +92,7 @@ class SingleRecept extends Component {
 					</div>
 					<div style={{ flex: "2" }}>
 						<h2>Gör såhär:</h2>
-						{recept[0].description.map(step => (
+						{recept.description.map(step => (
 							<ListItem key={step}>{step}</ListItem>
 						))}
 					</div>

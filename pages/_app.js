@@ -3,6 +3,9 @@ import UserProvider, {
 	UserConsumer
 } from "../components/providers/UserProvider";
 import Page from "../components/Page";
+import MessageProvider, {
+	MessageConsumer
+} from "../components/providers/MessageProvider";
 
 class MyApp extends App {
 	static async getInitialProps({ Component, ctx }) {
@@ -22,9 +25,20 @@ class MyApp extends App {
 				<UserProvider>
 					<UserConsumer>
 						{({ setUser, user }) => (
-							<Page>
-								<Component user={user} setUser={setUser} {...pageProps} />
-							</Page>
+							<MessageProvider>
+								<MessageConsumer>
+									{({ setMessage }) => (
+										<Page>
+											<Component
+												user={user}
+												setUser={setUser}
+												setMessage={setMessage}
+												{...pageProps}
+											/>
+										</Page>
+									)}
+								</MessageConsumer>
+							</MessageProvider>
 						)}
 					</UserConsumer>
 				</UserProvider>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, DisabledButton } from "./styles/Button";
-import { InfoMessage, Message } from "./Message";
 import {
 	RecipeForm,
 	ListItemDiv,
@@ -21,8 +20,7 @@ class Steg1Test extends Component {
 		servings: 2,
 		step: 1,
 		editing: false,
-		editIndex: null,
-		message: null
+		editIndex: null
 	};
 
 	componentDidMount() {
@@ -32,13 +30,6 @@ class Steg1Test extends Component {
 		});
 	}
 
-	hideShowMessage = message => {
-		this.setState({ message });
-		setTimeout(() => {
-			this.setState({ message: null });
-		}, 3990);
-	};
-
 	addToArray = async e => {
 		// Stoppa knappen från att skicka en request
 		e.preventDefault();
@@ -47,7 +38,7 @@ class Steg1Test extends Component {
 		// Kolla så att det inte redan finns en likadan ingrediens sparad redan för att förhindra dubletter
 		const doubles = this.state.arr.filter(ingr => ingr.input === item.input);
 		if (doubles.length >= 1)
-			return this.hideShowMessage("Du har redan en sådan i listan 🤚");
+			return this.props.setMessage("info", "Du har redan en sådan i listan 🤚");
 		if (item.input.length >= 2) {
 			// efter state blivit sparat, töm inputfältet
 			const emptyInputField = { ...this.state.item };
@@ -60,7 +51,8 @@ class Steg1Test extends Component {
 				item: emptyInputField
 			}));
 		} else {
-			this.hideShowMessage("Ingrediensen måste ha minst 2 tecken");
+			this.props.setMessage("info", "Ingrediensen måste ha minst 2 tecken!");
+			return;
 		}
 	};
 
@@ -151,10 +143,9 @@ class Steg1Test extends Component {
 	};
 
 	render() {
-		const { message, step } = this.state;
+		const { step } = this.state;
 		return (
 			<RecipeForm>
-				{message && <Message type="success">{message}</Message>}
 				<Header>
 					<input
 						type="text"

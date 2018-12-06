@@ -27,13 +27,6 @@ class Steg3 extends Component {
 		loading: false
 	};
 
-	hideShowMessage = message => {
-		this.setState({ message });
-		setTimeout(() => {
-			this.setState({ message: null });
-		}, 3990);
-	};
-
 	saveToState = e => {
 		this.setState({ [e.target.name]: e.target.value });
 	};
@@ -65,7 +58,7 @@ class Steg3 extends Component {
 				method: "POST",
 				body: data
 			}
-		).catch(error => this.hideShowMessage(error));
+		).catch(error => this.props.setMessage("danger", error));
 		const file = await res.json();
 		this.setState({
 			photo: file.secure_url,
@@ -85,10 +78,9 @@ class Steg3 extends Component {
 	};
 
 	render() {
-		const { photo, timeRequired, message } = this.state;
+		const { photo, timeRequired } = this.state;
 		return (
 			<RecipeForm>
-				{message && <Message type="success">{message}</Message>}
 				<h3>{this.props.steg}. Fyll i lite detaljer om ditt recept</h3>
 
 				<DetailsContainer>
@@ -165,5 +157,6 @@ export default Steg3;
 Steg3.propTypes = {
 	steg: PropTypes.number,
 	previousStep: PropTypes.func,
-	saveDetails: PropTypes.func
+	saveDetails: PropTypes.func,
+	setMessage: PropTypes.func
 };

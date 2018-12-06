@@ -38,7 +38,7 @@ export const ListItem = styled.div`
 `;
 
 export const Tag = styled.span`
-	margin: 0 1rem;
+	margin: 0 0.5rem;
 	background: ${props => props.theme.green};
 	color: ${props => props.theme.white};
 	padding: 0.5rem 1rem;

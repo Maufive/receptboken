@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Router from "next/router";
+import { LoginForm } from "./styles/ModalStyles";
+import { Button } from "./styles/Button";
 
 class Login extends Component {
-	static async getInitialProps(props) {
-		console.log(props);
-	}
 	constructor() {
 		super();
 		this.state = {
-			email: "hej@gmail.com",
-			password: "asdf",
-			message: ""
+			email: "", // hej@gmail.com
+			password: "" //asdf
 		};
 	}
 
@@ -21,16 +19,16 @@ class Login extends Component {
 
 	onSubmit = e => {
 		e.preventDefault();
-
+		console.log("Submitted login");
 		const { email, password } = this.state;
-
+		const { setUser, setMessage } = this.props;
 		axios
 			.post("http://localhost:7777/auth/login", { email, password })
 			.then(result => {
 				localStorage.setItem("jwtToken", result.data.token);
-				console.log("Login Successsss!");
-				this.setState({ message: "" });
-				// this.props.url.push("/");
+				console.log("JWT Token Set");
+				setUser(result.data);
+				setMessage("success", `Välkommen Niklas!`);
 				Router.push("/");
 			})
 			.catch(error => {
@@ -40,30 +38,43 @@ class Login extends Component {
 
 	render() {
 		return (
-			<div className="container--login">
-				<form onSubmit={this.onSubmit} className="form__signin">
-					<h2 className="form__signin--heading">Vänligen logga in</h2>
-					<label htmlFor="email">Email: </label>
-					<input
-						type="email"
-						className="form__signin--input"
-						name="email"
-						value={this.state.email}
-						onChange={this.saveToState}
-						placeholder="hungrig@gemigmat.se"
-						required
-					/>
-					<label htmlFor="password">Lösenord: </label>
-					<input
-						type="password"
-						placeholder="Lösenord..."
-						name="password"
-						value={this.state.password}
-						onChange={this.saveToState}
-						required
-					/>
-					<button type="submit">Logga in →</button>
-				</form>
+			<div>
+				<LoginForm onSubmit={this.onSubmit}>
+					<h2>Vänligen logga in</h2>
+					<div>
+						<input
+							type="email"
+							name="email"
+							id="email"
+							value={this.state.email}
+							onChange={this.saveToState}
+							required
+						/>
+						<label htmlFor="email">
+							<i className="icofont-ui-email" /> Email
+						</label>
+					</div>
+					<div>
+						<input
+							type="password"
+							name="password"
+							id="password"
+							value={this.state.password}
+							onChange={this.saveToState}
+							required
+						/>
+						<label htmlFor="password">
+							<i className="icofont-ui-password" /> Lösenord
+						</label>
+					</div>
+					<Button fullWidth primary type="submit">
+						Logga in →
+					</Button>
+				</LoginForm>
+				<h3 style={{ color: "#5A5555" }}>Inget konto?</h3>
+				<Button fullWidth primary>
+					Registrera →
+				</Button>
 			</div>
 		);
 	}

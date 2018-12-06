@@ -16,4 +16,11 @@ const Spinner = styled.div`
 	-webkit-animation: ${Animation} 1s ease-in-out infinite;
 `;
 
+const SmallSpinner = styled(Spinner)`
+	width: 15px;
+	height: 15px;
+`;
+
 export const Loading = () => <Spinner />;
+
+export const SmallLoading = () => <SmallSpinner />;

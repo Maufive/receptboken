@@ -36,7 +36,7 @@ class Searchbar extends Component {
 					required
 				/>
 				<button type="submit">
-					<i class="icofont-search-1" />
+					<i className="icofont-search-1" />
 					Sök
 				</button>
 			</Wrapper>

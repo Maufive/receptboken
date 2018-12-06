@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
-import UserProvider, {
-	UserConsumer
-} from "../components/providers/UserProvider";
+import { UserConsumer } from "./providers/UserProvider";
+import { MessageConsumer } from "./providers/MessageProvider";
 import Header from "./Header";
 import Meta from "./Meta";
+import { Message } from "./Message";
 import { fadeIn } from "./styles/keyframes";
 
 const theme = {
@@ -34,7 +34,7 @@ const Inner = styled.div`
 	min-height: 100vh;
 	margin: 0 auto;
 	padding: 2rem;
-	animation: ${fadeIn} 800ms ease-out;
+	animation: ${fadeIn} 1000ms ease-out;
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -79,6 +79,9 @@ class Page extends Component {
 					<GlobalStyle />
 					<Meta />
 					<UserConsumer>{({ user }) => <Header user={user} />}</UserConsumer>
+					<MessageConsumer>
+						{({ message, type }) => <Message type={type} message={message} />}
+					</MessageConsumer>
 					<Inner>{this.props.children}</Inner>
 				</StyledPage>
 			</ThemeProvider>

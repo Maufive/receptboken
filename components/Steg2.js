@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { RecipeForm, List, ListItemDiv } from "./styles/Steg1Styles";
 import { Button, DisabledButton } from "./styles/Button";
-import { Message } from "./Message";
 
 class Steg2 extends Component {
 	state = {
@@ -10,8 +9,7 @@ class Steg2 extends Component {
 		string: "",
 		step: 1,
 		editing: false,
-		editIndex: null,
-		message: null
+		editIndex: null
 	};
 
 	componentDidMount() {
@@ -19,13 +17,6 @@ class Steg2 extends Component {
 			arr: this.props.description
 		});
 	}
-
-	hideShowMessage = message => {
-		this.setState({ message });
-		setTimeout(() => {
-			this.setState({ message: null });
-		}, 3990);
-	};
 
 	addToArray = e => {
 		const { string, step } = this.state;
@@ -41,7 +32,7 @@ class Steg2 extends Component {
 				string: ""
 			}));
 		} else {
-			this.hideShowMessage("Du måste skriva minst 5 bokstäver");
+			this.props.setMessage("info", "Du måste skriva minst 5 bokstäver");
 		}
 	};
 
@@ -68,7 +59,7 @@ class Steg2 extends Component {
 			editing: true,
 			editIndex: itemIndex
 		});
-		this.hideShowMessage("Du kan nu ändra!");
+		this.props.setMessage("success", "Du kan nu ändra!");
 	};
 
 	saveEdit = e => {
@@ -91,7 +82,7 @@ class Steg2 extends Component {
 				message: null
 			});
 		} else {
-			this.hideShowMessage("Du måste skriva in minst 5 bokstäver!");
+			this.props.setMessage("info", "Du måste skriva in minst 5 bokstäver!");
 		}
 	};
 
@@ -112,9 +103,6 @@ class Steg2 extends Component {
 	render() {
 		return (
 			<RecipeForm>
-				{this.state.message && (
-					<Message type="success">{this.state.message}</Message>
-				)}
 				<h3>{this.props.steg}. Gör såhär:</h3>
 				<label htmlFor="string">Fyll i Steg {this.state.step}</label>
 				<input

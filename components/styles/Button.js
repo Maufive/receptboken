@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Button = styled.button`
 	display: inline-block;
-	width: 100%;
-	border-radius: 30px;
-	padding: 1rem 2rem;
+	width: ${props => (props.fullWidth ? "100%" : "")};
+	border-radius: 5px;
+	padding: 1rem 4rem;
 	margin: 1.5rem 0;
 	background: ${props => (props.primary ? props.theme.green : "transparent")};
 	color: ${props => (props.primary ? props.theme.white : props.theme.green)};
@@ -26,6 +26,7 @@ export const Button = styled.button`
 		box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
 		transform: translateY(-1px);
 		background: #1ac97a;
+		border: 1px solid #1ac97a;
 	}
 `;
 

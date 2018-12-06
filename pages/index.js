@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import axios from "axios";
+import { UserConsumer } from "../components/providers/UserProvider";
 import Jumbotron from "../components/Jumbotron";
 import Searchbar from "../components/Searchbar";
-import Register from "../components/Register";
 import { Loading } from "../components/Loading";
-import { Card, CardMenu } from "../components/styles/Card";
+import { Card, CardContainer } from "../components/styles/Card";
 
 class index extends Component {
 	state = {
@@ -15,9 +15,7 @@ class index extends Component {
 
 	componentDidMount() {
 		if (localStorage.jwtToken) {
-			this.callApi();
-		} else {
-			console.log("Sorry, no user sadface");
+			this.getUser();
 		}
 		this.loadRecipes();
 	}
@@ -28,41 +26,68 @@ class index extends Component {
 		}
 	}
 
-	loadRecipes = async () => {
-		axios.get("http://localhost:7777/recipe").then(res => {
-			this.setState({ recept: res.data });
-		});
+	loadRecipes = () => {
+		axios
+			.get("http://localhost:7777/recipe")
+			.then(response => {
+				this.setState({ recept: response.data });
+			})
+			.catch(error => {
+				this.props.setMessage("danger", "Oops! Något blev knas på servern");
+				console.log(error);
+			});
 	};
 
-	callApi = async () => {
+	getUser = () => {
 		axios.defaults.headers.common["Authorization"] =
 			"Bearer " + localStorage.getItem("jwtToken");
-		axios.get("http://localhost:7777/user/profile").then(res => {
-			this.setState({ user: res.data });
+		if (localStorage.jwtToken) {
+			axios
+				.get("http://localhost:7777/user/profile")
+				.then(response => {
+					console.log(response.data);
+					this.setState({ user: response.data });
+				})
+				.catch(error => {
+					this.props.setMessage("danger", "Kunde inte hämta profil");
+					console.log(error);
+				});
+		} else {
+			return;
+		}
+	};
+
+	calcRating = recept => {
+		const reviews = recept.reviews;
+		let total = 0;
+		reviews.map(review => {
+			total += review.rating;
 		});
+		const average = total / reviews.length;
+		const rounded = Math.floor(Math.round(average));
+		const stars = "★".repeat(rounded);
+		const emptyStars = "☆".repeat(5 - rounded);
+		return stars.concat(emptyStars);
+	};
+
+	log = e => {
+		console.log(e.target);
 	};
 
 	render() {
 		if (!this.state.recept) return <Loading />;
 		return (
 			<div>
-				<Jumbotron />
+				<UserConsumer>
+					{({ user, setUser }) => <Jumbotron user={user} setUser={setUser} />}
+				</UserConsumer>
 				<br />
 				<Searchbar />
-				<div
-					style={{
-						display: "flex",
-						width: "1000px",
-						flexWrap: "wrap",
-						justifyContent: "space-evenly",
-						margin: "0 auto",
-						padding: "2rem"
-					}}
-				>
+				<CardContainer>
 					{this.state.recept.map(recept => (
 						<Link key={recept._id} href={`/recept?id=${recept._id}`}>
 							<a>
-								<Card>
+								<Card onClick={this.log}>
 									<img src={recept.photo} alt="Bild på recept" height="250px" />
 									<h3>{recept.title}</h3>
 									<div>
@@ -70,13 +95,13 @@ class index extends Component {
 											<i className="icofont-clock-time" /> {recept.timeRequired}
 											m
 										</span>
-										<span>
-											<i className="icofont-star" />
-											<i className="icofont-star" />
-											<i className="icofont-star" />
-											<i className="icofont-star" />
+										<span style={{ color: "#FFCF44" }}>
+											{this.calcRating(recept)}{" "}
+											<span style={{ color: "#393939" }}>
+												({recept.reviews.length})
+											</span>
 										</span>
-										<span>
+										<span style={{ color: "#fd7e69" }}>
 											<i className="icofont-heart" />
 										</span>
 									</div>
@@ -84,7 +109,7 @@ class index extends Component {
 							</a>
 						</Link>
 					))}
-				</div>
+				</CardContainer>
 			</div>
 		);
 	}

@@ -21,3 +21,12 @@ export const Card = styled.div`
 		transform: translateY(-2px);
 	}
 `;
+
+export const CardContainer = styled.div`
+	display: flex;
+	width: 1000px;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	margin: 0 auto;
+	padding: 2rem;
+`;
