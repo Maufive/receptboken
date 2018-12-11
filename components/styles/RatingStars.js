@@ -19,7 +19,7 @@ const StarAnimation = keyframes`
 `;
 
 export const StarsForm = styled.form`
-	margin-right: 5rem;
+	margin-right: 3rem;
 	display: flex;
 	align-items: center;
 	> div {
@@ -69,7 +69,6 @@ export const StarsForm = styled.form`
 	}
 	button {
 		font-size: 1rem;
-		border: none;
 		cursor: pointer;
 		border: 1px solid ${props => props.theme.green};
 		border-radius: 3px;

@@ -22,6 +22,24 @@ export const Card = styled.div`
 	}
 `;
 
+export const SmallCard = styled.div`
+	width: 200px;
+	background: ${props => props.theme.white};
+	box-shadow: ${props => props.theme.bsHard};
+	transition: all 150ms ease-in;
+
+	> div {
+		h4 {
+			margin: 0;
+		}
+		padding: 0 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}
+`;
+
 export const CardContainer = styled.div`
 	display: flex;
 	width: 1000px;

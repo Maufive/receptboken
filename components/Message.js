@@ -7,7 +7,6 @@ export const Message = props => {
 	if (props.type === "info") background = "#FFCF44";
 	// Om det inte finns något meddelande så dölj komponenten
 	if (!props.message) return null;
-	console.log(props);
 	return (
 		<MessageStyles background={background}>
 			<div>

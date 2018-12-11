@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { slideUp, slideIn } from "./keyframes";
 
 export const Button = styled.button`
 	display: inline-block;
@@ -14,6 +15,7 @@ export const Button = styled.button`
 	box-shadow: ${props => props.theme.bs};
 	font-weight: 700;
 	transition: 0.1s ease-in all;
+	animation: ${slideUp} 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
 	cursor: pointer;
 	a {
 		color: ${props => (props.primary ? props.theme.white : props.theme.green)};
@@ -33,8 +35,12 @@ export const Button = styled.button`
 export const DisabledButton = styled(Button)`
 	color: ${props => props.theme.lightgrey};
 	margin: 1.5rem 0;
+	width: ${props => (props.fullWidth ? "100%" : "")};
+	box-shadow: none !important;
 	&:hover {
 		color: ${props => props.theme.lightgrey};
-		background: ${props => props.theme.offWhite};
+		background: transparent;
+		border: 1px solid ${props => props.theme.lightgrey};
+		transform: none;
 	}
 `;

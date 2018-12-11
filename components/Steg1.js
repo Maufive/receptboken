@@ -197,12 +197,15 @@ class Steg1Test extends Component {
 					{/* Om användaren redigerar ett item, ändra knappen till Ändra istället för Lägg till */}
 					<div>
 						{this.state.editing ? (
-							<Button onClick={e => this.saveEdit(e, this.state.editIndex)}>
+							<Button
+								fullWidth
+								onClick={e => this.saveEdit(e, this.state.editIndex)}
+							>
 								<i className="icofont-ui-edit" />
 								Ändra
 							</Button>
 						) : (
-							<Button onClick={this.addToArray}>
+							<Button fullWidth onClick={this.addToArray}>
 								<i className="icofont-plus" />
 								Lägg till
 							</Button>
@@ -232,14 +235,14 @@ class Steg1Test extends Component {
 					))}
 				</List>
 				{this.state.arr.length <= 1 && (
-					<DisabledButton>
+					<DisabledButton fullWidth disabled>
 						{/* Behöver en hover-effekt för att indikera att man går vidare till nästa steg */}
 						<i className="icofont-ui-next" />
 						Nästa steg
 					</DisabledButton>
 				)}
 				{this.state.arr.length >= 2 && (
-					<Button primary onClick={this.nextStep}>
+					<Button fullWidth primary onClick={this.nextStep}>
 						{/* Behöver en hover-effekt för att indikera att man går vidare till nästa steg */}
 						<i className="icofont-ui-next" />
 						Nästa steg

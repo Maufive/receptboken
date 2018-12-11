@@ -1,5 +1,5 @@
+import React, { Component } from "react";
 import Link from "next/link";
-import Router from "next/router";
 import styled from "styled-components";
 import Nav from "./Nav";
 
@@ -27,18 +27,38 @@ const UserItem = styled.h3`
 	margin: 0;
 `;
 
-const Header = () => (
-	<StyledHeader>
-		<div className="bar">
-			<Logo>
-				<Link href="/">
-					<a>Receptboken</a>
-				</Link>
-			</Logo>
-			<Nav />
-			<UserItem>Niklas Albinsson</UserItem>
-		</div>
-	</StyledHeader>
-);
+class Header extends Component {
+	render() {
+		const { user } = this.props;
+		return (
+			<StyledHeader>
+				<div className="bar">
+					<Link href="/">
+						<a>
+							<Logo>Receptboken</Logo>
+						</a>
+					</Link>
+					<Nav />
+					{user ? (
+						<Link
+							href={{
+								pathname: "/profile",
+								query: {
+									id: user._id
+								}
+							}}
+						>
+							<a>
+								<UserItem>{user.fname + " " + user.lname}</UserItem>
+							</a>
+						</Link>
+					) : (
+						<p>Logga in</p>
+					)}
+				</div>
+			</StyledHeader>
+		);
+	}
+}
 
 export default Header;

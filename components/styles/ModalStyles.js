@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import { fadeIn } from "./keyframes";
+import { fadeIn, slideUp } from "./keyframes";
 
 export const LoginForm = styled.form`
-	width: 300px;
+	width: 400px;
 	animation: ${fadeIn} 500ms ease-out;
+	margin: 0 auto;
 	h2,
 	h3 {
 		color: ${props => props.theme.grey};
+		margin-bottom: 3rem;
 	}
 	> div {
 		width: 100%;
@@ -33,7 +35,7 @@ export const LoginForm = styled.form`
 	label {
 		position: absolute;
 		margin-left: 1rem;
-		top: 25%;
+		top: 21%;
 		left: 0;
 		transition: all 200ms ease-out;
 	}

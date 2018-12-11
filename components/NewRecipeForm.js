@@ -133,11 +133,6 @@ class NewRecipeForm extends Component {
 			);
 		} else {
 			ActiveComponent = <h2>Finished!</h2>;
-			// To-do: Skriv en funktion för en POST-method att passa ner till steg 3. Spara Allt som finns i state här
-			// till databasen.
-			// Gör en LOADING komponent som snurrar medans man väntar på att databasen ska spara receptet
-			// Gör en Page för ett recept där jag kan displaya informationen
-			// Redirecta användaren när man lyckats spara ett recept till databasen till det receptet
 		}
 		if (this.state.loading) return <Loading />;
 		return (

@@ -15,13 +15,13 @@ export const slideIn = keyframes`
 
 export const slideUp = keyframes`
   0% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-80);
+    -webkit-transform: translateY(40px);
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0px)
     }
   }
 `;

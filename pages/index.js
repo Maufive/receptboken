@@ -5,6 +5,7 @@ import { UserConsumer } from "../components/providers/UserProvider";
 import Jumbotron from "../components/Jumbotron";
 import Searchbar from "../components/Searchbar";
 import { Loading } from "../components/Loading";
+import Heart from "../components/Heart";
 import { Card, CardContainer } from "../components/styles/Card";
 
 class index extends Component {
@@ -21,7 +22,7 @@ class index extends Component {
 	}
 
 	componentDidUpdate(prevState) {
-		if (this.state.user !== null) {
+		if (this.state.user !== prevState.user) {
 			this.props.setUser(this.state.user);
 		}
 	}
@@ -45,8 +46,8 @@ class index extends Component {
 			axios
 				.get("http://localhost:7777/user/profile")
 				.then(response => {
-					console.log(response.data);
-					this.setState({ user: response.data });
+					// console.log(response.data.user);
+					this.setState({ user: response.data.user });
 				})
 				.catch(error => {
 					this.props.setMessage("danger", "Kunde inte hämta profil");
@@ -70,10 +71,6 @@ class index extends Component {
 		return stars.concat(emptyStars);
 	};
 
-	log = e => {
-		console.log(e.target);
-	};
-
 	render() {
 		if (!this.state.recept) return <Loading />;
 		return (
@@ -85,9 +82,17 @@ class index extends Component {
 				<Searchbar />
 				<CardContainer>
 					{this.state.recept.map(recept => (
-						<Link key={recept._id} href={`/recept?id=${recept._id}`}>
+						<Link
+							key={recept._id}
+							href={{
+								pathname: "/recept",
+								query: {
+									id: recept._id
+								}
+							}}
+						>
 							<a>
-								<Card onClick={this.log}>
+								<Card>
 									<img src={recept.photo} alt="Bild på recept" height="250px" />
 									<h3>{recept.title}</h3>
 									<div>
@@ -100,9 +105,6 @@ class index extends Component {
 											<span style={{ color: "#393939" }}>
 												({recept.reviews.length})
 											</span>
-										</span>
-										<span style={{ color: "#fd7e69" }}>
-											<i className="icofont-heart" />
 										</span>
 									</div>
 								</Card>

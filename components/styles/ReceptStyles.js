@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 	box-shadow: ${props => props.theme.bsHard};
 	animation: ${fadeIn} 500ms ease-out;
 	h2 {
-		color: ${props => props.theme.green};
+		color: ${props => props.theme.mediumgrey};
 	}
 `;
 

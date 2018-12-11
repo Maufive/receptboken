@@ -17,11 +17,10 @@ class UserProvider extends Component {
 	// state här. Nu kan jag använda user-objektet över hela min applikation. Yay.
 
 	setUser = obj => {
-		if (!this.state.user) {
-			this.setState({
-				user: obj
-			});
-		}
+		console.log("hello?");
+		this.setState({
+			user: obj
+		});
 	};
 
 	render() {

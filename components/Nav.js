@@ -5,7 +5,7 @@ const NavigationBar = styled.ul`
 	display: flex;
 	padding: 0;
 	margin: 0;
-	width: 400px;
+	width: 500px;
 	justify-content: space-between;
 	align-items: center;
 `;
@@ -37,6 +37,9 @@ const Nav = () => (
 		</NavItem>
 		<NavItem>
 			<p>KATEGORIER</p>
+		</NavItem>
+		<NavItem>
+			<p>SPARADE RECEPT</p>
 		</NavItem>
 	</NavigationBar>
 );

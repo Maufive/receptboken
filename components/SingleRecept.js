@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Router from "next/router";
+import { MessageConsumer } from "./providers/MessageProvider";
 import Stars from "./Stars";
 import { Loading } from "../components/Loading";
+import Heart from "./Heart";
 import {
 	Wrapper,
 	DetailsBar,
@@ -28,7 +30,6 @@ class SingleRecept extends Component {
 		await axios
 			.get(`http://localhost:7777/recipe/${this.props.id}`)
 			.then(response => {
-				console.log(response);
 				this.setState({ recept: response.data, loading: false });
 			})
 			.catch(error => {
@@ -57,10 +58,19 @@ class SingleRecept extends Component {
 		if (!this.state.recept) return <Loading />;
 		return (
 			<Wrapper>
-				{console.log(recept)}
 				<h1>{recept.title}</h1>
 				<DetailsBar>
 					<Stars id={this.props.id} />
+					<MessageConsumer>
+						{({ setMessage }) => (
+							<Heart
+								id={recept._id}
+								setMessage={setMessage}
+								user={this.props.user}
+								setUser={this.props.setUser}
+							/>
+						)}
+					</MessageConsumer>
 					<IconContainer>
 						<i className="icofont-clock-time" />
 						{recept.timeRequired.toString()}
@@ -68,9 +78,6 @@ class SingleRecept extends Component {
 					<IconContainer>
 						<i className="icofont-fork-and-knife" />
 						{recept.servings}
-					</IconContainer>
-					<IconContainer>
-						<i className="icofont-heart" style={{ color: "#bc1616" }} />
 					</IconContainer>
 				</DetailsBar>
 				<ImageAndTags>

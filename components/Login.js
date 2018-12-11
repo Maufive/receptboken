@@ -27,9 +27,10 @@ class Login extends Component {
 			.then(result => {
 				localStorage.setItem("jwtToken", result.data.token);
 				console.log("JWT Token Set");
-				setUser(result.data);
-				setMessage("success", `Välkommen Niklas!`);
-				Router.push("/");
+				console.log(result.data);
+				setUser(result.data.user);
+				setMessage("success", `Välkommen ${result.data.user.fname}!`);
+				// Router.push("/");
 			})
 			.catch(error => {
 				console.log(error);
@@ -38,7 +39,7 @@ class Login extends Component {
 
 	render() {
 		return (
-			<div>
+			<div style={{ margin: "0 auto" }}>
 				<LoginForm onSubmit={this.onSubmit}>
 					<h2>Vänligen logga in</h2>
 					<div>
@@ -67,7 +68,7 @@ class Login extends Component {
 							<i className="icofont-ui-password" /> Lösenord
 						</label>
 					</div>
-					<Button fullWidth primary type="submit">
+					<Button fullWidth type="submit">
 						Logga in →
 					</Button>
 				</LoginForm>
