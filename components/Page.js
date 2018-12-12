@@ -21,7 +21,8 @@ const theme = {
 	mobileBreakpoint: "768px",
 	mobileAnimationTime: "200ms",
 	bs: "0 5px 24px 0 rgba(0, 0, 0, 0.06)",
-	bsHard: "0 5px 12px 0 rgba(0, 0, 0, 0.10)"
+	bsHard: "0 5px 12px 0 rgba(0, 0, 0, 0.10)",
+	bRadius: "5px"
 };
 
 const StyledPage = styled.div`

@@ -1,33 +1,42 @@
 import React, { Component } from "react";
 import Link from "next/link";
-import styled from "styled-components";
 import Logout from "./Logout";
-
-const DropDownContainer = styled.div``;
-
-const UserItem = styled.p`
-	margin: 0;
-	font-size: 1.5rem;
-`;
+import UserIcon from "../svg/user.svg";
+import { DropDownContainer, Square, UserItem } from "./styles/DropdownStyles";
 
 class UserDropdown extends Component {
+	state = {
+		open: false
+	};
+
+	openDropdown = () => {
+		this.setState({ open: true });
+	};
+
+	closeDropdown = () => {
+		this.setState({ open: false });
+	};
+
 	render() {
 		const { user } = this.props;
 		return (
-			<DropDownContainer>
-				<Link
-					href={{
-						pathname: "/profile",
-						query: {
-							id: user._id
-						}
-					}}
-				>
-					<a>
-						<UserItem>{user.fname + " " + user.lname}</UserItem>
-					</a>
-				</Link>
-			</DropDownContainer>
+			<div style={{ width: "fit-content", position: "relative" }}>
+				<UserItem onClick={this.openDropdown}>
+					<UserIcon />
+					Svennis Jättelångtnamn
+					{/* {user.fname + " " + user.lname} */}
+				</UserItem>
+				{this.state.open && (
+					<div style={{ position: "relative" }}>
+						<Square />
+						<DropDownContainer>
+							<p>Min profil</p>
+							<p>Sparade recept</p>
+							<p>Logga ut</p>
+						</DropDownContainer>
+					</div>
+				)}
+			</div>
 		);
 	}
 }
