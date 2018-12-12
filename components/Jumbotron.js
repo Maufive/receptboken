@@ -9,7 +9,9 @@ class Jumbotron extends Component {
 		return (
 			<StyledJumbotron>
 				<h1>Snabba enkla recept för att göra dig vardag smidigare</h1>
-				{!this.props.user && <LoginModal setUser={this.props.setUser} />}
+				{/* {!this.props.user && (
+					<LoginModal primaryButton setUser={this.props.setUser} />
+				)} */}
 				<div style={{ width: "400px", margin: "0 auto" }}>
 					<Link href="/recipe">
 						<a>

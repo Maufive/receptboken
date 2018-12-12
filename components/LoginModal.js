@@ -27,9 +27,15 @@ class LoginModal extends Component {
 	render() {
 		return (
 			<LoginContainer>
-				<Button fullWidth primary onClick={this.openModal}>
-					Logga in
-				</Button>
+				{this.props.primaryButton ? (
+					<Button fullWidth primary onClick={this.openModal}>
+						Logga in
+					</Button>
+				) : (
+					<Button fullWidth onClick={this.openModal}>
+						Logga in
+					</Button>
+				)}
 				<Modal
 					isOpen={this.state.isModalOpen}
 					onAfterOpen={this.afterOpenModal}

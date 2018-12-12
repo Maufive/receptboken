@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 const UserContext = React.createContext();
 
@@ -16,11 +17,33 @@ class UserProvider extends Component {
 	// och när data från api't kommer tillbaka så ropar jag på setUser, som sätter ett globalt
 	// state här. Nu kan jag använda user-objektet över hela min applikation. Yay.
 
+	componentDidMount() {
+		this.getUser();
+	}
+
 	setUser = obj => {
-		console.log("hello?");
 		this.setState({
 			user: obj
 		});
+	};
+
+	getUser = () => {
+		axios.defaults.headers.common["Authorization"] =
+			"Bearer " + localStorage.getItem("jwtToken");
+		if (localStorage.jwtToken) {
+			axios
+				.get("http://localhost:7777/user/profile")
+				.then(response => {
+					// console.log(response.data.user);
+					this.setState({ user: response.data.user });
+				})
+				.catch(error => {
+					this.props.setMessage("danger", "Kunde inte hämta profil");
+					console.log(error);
+				});
+		} else {
+			return;
+		}
 	};
 
 	render() {

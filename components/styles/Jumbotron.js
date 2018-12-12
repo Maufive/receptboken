@@ -21,5 +21,4 @@ export const StyledJumbotron = styled.div`
 export const LoginContainer = styled.div`
 	display: flex;
 	justify-content: space-around;
-	margin: 0 auto;
 `;

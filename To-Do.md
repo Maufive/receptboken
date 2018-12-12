@@ -1,7 +1,9 @@
 To-Do:
 
-- Visa att användaren har sparat ett visst recept när man kommer tillbaka till det
-- Om man är inloggad (Username i Header), och går in på ett recept, sen refreshar, så försvinner username
+👍 - Visa att användaren har sparat ett visst recept när man kommer tillbaka till det
+
+👍 - Om man är inloggad (Username i Header), och går in på ett recept, sen refreshar, så försvinner username
+
 - Receptets betyg visas inte när man går in på ett specifikt recept
 - Uppdatera designen på NewRecipeForm så den matchar stylingen i loginformen
 - Lägg till ett menyval för "Sparade recept" / Lägg till i profilen

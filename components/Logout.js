@@ -1,22 +1,12 @@
-import Link from "next/link";
+import Router from "next/router";
 
 const logout = () => {
 	localStorage.removeItem("jwtToken");
-	window.location.reload();
+	Router.push("/");
 };
 
 const Logout = props => {
-	return (
-		<div>
-			{localStorage.getItem("jwtToken") && (
-				<button onClick={logout}>
-					<Link href="/">
-						<a>Logout</a>
-					</Link>
-				</button>
-			)}
-		</div>
-	);
+	return <div>{props.user && <button onClick={logout}>Logout</button>}</div>;
 };
 
 export default Logout;

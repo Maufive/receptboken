@@ -16,6 +16,7 @@ const NavItem = styled.li`
 		props.active ? `2px solid ${props.theme.green}` : ""};
 	list-style: none;
 	font-weight: 700;
+	letter-spacing: 1px;
 	p {
 		margin: 0;
 	}

@@ -78,7 +78,9 @@ class Page extends Component {
 				<StyledPage>
 					<GlobalStyle />
 					<Meta />
-					<UserConsumer>{({ user }) => <Header user={user} />}</UserConsumer>
+					<UserConsumer>
+						{({ user, setUser }) => <Header user={user} setUser={setUser} />}
+					</UserConsumer>
 					<MessageConsumer>
 						{({ message, type }) => <Message type={type} message={message} />}
 					</MessageConsumer>

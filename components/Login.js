@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Router from "next/router";
 import { LoginForm } from "./styles/ModalStyles";
 import { Button } from "./styles/Button";
 
@@ -8,8 +7,8 @@ class Login extends Component {
 	constructor() {
 		super();
 		this.state = {
-			email: "", // hej@gmail.com
-			password: "" //asdf
+			email: "test6@gmail.com", // hej@gmail.com
+			password: "asdf" //asdf
 		};
 	}
 

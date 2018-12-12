@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import Nav from "./Nav";
+import LoginModal from "./LoginModal";
+import UserDropdown from "./UserDropdown";
 
 const Logo = styled.h1`
 	font-family: "Playfair Display";
@@ -23,10 +25,6 @@ const StyledHeader = styled.header`
 	}
 `;
 
-const UserItem = styled.h3`
-	margin: 0;
-`;
-
 class Header extends Component {
 	render() {
 		const { user } = this.props;
@@ -40,20 +38,9 @@ class Header extends Component {
 					</Link>
 					<Nav />
 					{user ? (
-						<Link
-							href={{
-								pathname: "/profile",
-								query: {
-									id: user._id
-								}
-							}}
-						>
-							<a>
-								<UserItem>{user.fname + " " + user.lname}</UserItem>
-							</a>
-						</Link>
+						<UserDropdown user={user} />
 					) : (
-						<p>Logga in</p>
+						<LoginModal setUser={this.props.setUser} />
 					)}
 				</div>
 			</StyledHeader>
