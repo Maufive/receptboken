@@ -1,8 +1,18 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import Logout from "./Logout";
-import UserIcon from "../svg/user.svg";
-import { DropDownContainer, Square, UserItem } from "./styles/DropdownStyles";
+import ChefIcon from "../svg/chef.svg";
+import UsersIcon from "../svg/users.svg";
+import HeartIcon from "../svg/like-1.svg";
+import LogoutIcon from "../svg/logout.svg";
+import {
+	UserDropdownStyles,
+	DropDownContainer,
+	Square,
+	UserItem,
+	Option,
+	DropdownBackground
+} from "./styles/DropdownStyles";
 
 class UserDropdown extends Component {
 	state = {
@@ -10,33 +20,61 @@ class UserDropdown extends Component {
 	};
 
 	openDropdown = () => {
-		this.setState({ open: true });
+		this.setState({ open: true }, () => {
+			document.addEventListener("click", this.closeDropdown);
+		});
 	};
 
-	closeDropdown = () => {
-		this.setState({ open: false });
+	closeDropdown = e => {
+		this.setState({ open: false }, () => {
+			document.removeEventListener("click", this.closeDropdown);
+		});
 	};
 
 	render() {
 		const { user } = this.props;
 		return (
-			<div style={{ width: "fit-content", position: "relative" }}>
-				<UserItem onClick={this.openDropdown}>
-					<UserIcon />
-					Svennis Jättelångtnamn
-					{/* {user.fname + " " + user.lname} */}
+			<UserDropdownStyles>
+				<UserItem onClick={() => this.openDropdown()}>
+					<ChefIcon />
+					{user.fname + " " + user.lname}
 				</UserItem>
 				{this.state.open && (
-					<div style={{ position: "relative" }}>
+					<DropdownBackground
+						ref={element => {
+							this.dropdown = element;
+						}}
+					>
 						<Square />
 						<DropDownContainer>
-							<p>Min profil</p>
-							<p>Sparade recept</p>
-							<p>Logga ut</p>
+							<div>
+								<Link
+									href={{
+										pathname: `/profile`
+										// query: {
+										// 	id: user._id
+										// }
+									}}
+									onClick={() => this.closeDropdown()}
+								>
+									<a>
+										<UsersIcon />
+										<Option>Min profil</Option>
+									</a>
+								</Link>
+							</div>
+							<div>
+								<HeartIcon />
+								<p>Sparade recept</p>
+							</div>
+							<div>
+								<LogoutIcon />
+								<p>Logga ut</p>
+							</div>
 						</DropDownContainer>
-					</div>
+					</DropdownBackground>
 				)}
-			</div>
+			</UserDropdownStyles>
 		);
 	}
 }

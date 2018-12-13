@@ -21,7 +21,7 @@ class NewRecipeForm extends Component {
 		photo: "",
 		ingredients: [],
 		servings: 2,
-		step: 1,
+		step: 2,
 		loading: false
 	};
 

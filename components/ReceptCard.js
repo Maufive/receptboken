@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Link from "next/link";
-import { Card } from "./styles/Card";
+import { Card, SmallCard } from "./styles/Card";
 
 class ReceptCard extends Component {
 	calcRating = recipeReviews => {
@@ -30,19 +30,35 @@ class ReceptCard extends Component {
 					}}
 				>
 					<a>
-						<Card>
-							<img src={photo} alt="Bild på recept" height="250px" />
-							<h3>{title}</h3>
-							<div>
-								<span>
-									<i className="icofont-clock-time" /> {timeRequired}m
-								</span>
-								<span style={{ color: "#FFCF44" }}>
-									{this.calcRating(reviews)}{" "}
-									<span style={{ color: "#393939" }}>({reviews.length})</span>
-								</span>
-							</div>
-						</Card>
+						{!this.props.small ? (
+							<Card>
+								<img src={photo} alt="Bild på recept" height="250px" />
+								<h3>{title}</h3>
+								<div>
+									<span>
+										<i className="icofont-clock-time" /> {timeRequired}m
+									</span>
+									<span style={{ color: "#FFCF44" }}>
+										{this.calcRating(reviews)}{" "}
+										<span style={{ color: "#393939" }}>({reviews.length})</span>
+									</span>
+								</div>
+							</Card>
+						) : (
+							<SmallCard>
+								img src={photo} alt="Bild på recept" height="250px" />
+								<h3>{title}</h3>
+								<div>
+									<span>
+										<i className="icofont-clock-time" /> {timeRequired}m
+									</span>
+									<span style={{ color: "#FFCF44" }}>
+										{this.calcRating(reviews)}{" "}
+										<span style={{ color: "#393939" }}>({reviews.length})</span>
+									</span>
+								</div>
+							</SmallCard>
+						)}
 					</a>
 				</Link>
 			</div>

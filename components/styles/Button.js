@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { slideUp, slideIn } from "./keyframes";
 
 export const Button = styled.button`
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: ${props => (props.fullWidth ? "100%" : "")};
 	border-radius: 5px;
 	padding: 1rem 4rem;
@@ -28,6 +30,16 @@ export const Button = styled.button`
 		transform: translateY(-1px);
 		background: #1ac97a;
 		border: 1px solid #1ac97a;
+		svg {
+			fill: ${props => props.theme.white};
+		}
+	}
+
+	svg {
+		margin-right: 1rem;
+		height: 15px;
+		width: 15px;
+		fill: ${props => props.theme.white};
 	}
 `;
 
@@ -41,5 +53,12 @@ export const DisabledButton = styled(Button)`
 		background: transparent;
 		border: 1px solid ${props => props.theme.lightgrey};
 		transform: none;
+	}
+
+	svg {
+		margin-right: 1rem;
+		height: 12px;
+		width: 12px;
+		fill: ${props => props.theme.lightgrey};
 	}
 `;

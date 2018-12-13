@@ -15,7 +15,7 @@ class Jumbotron extends Component {
 				<div style={{ width: "400px", margin: "0 auto" }}>
 					<Link href="/recipe">
 						<a>
-							<Button primary>
+							<Button primary fullWidth>
 								<i className="icofont-chef" /> Lägg till recept
 							</Button>
 						</a>

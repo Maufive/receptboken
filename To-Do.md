@@ -12,5 +12,5 @@ To-Do:
 - Lägg till funktion för att redigera ett uppladdat recept (om man själv skapat det)
 - Lägg till funktion för att visa vilka recept en användare sparat
 - Lägg till funktion för bortglömt lösenord, så man får ett nytt via email
-- Kolla upp API för Google Keep (Behöver ett sätt att göra en inköpslista)
+- Fundera på en lösning för att göra en inköpslista
 - Fixa en sökfunktion för att söka efter recept

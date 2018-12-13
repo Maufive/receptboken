@@ -68,13 +68,16 @@ export const ListItemDiv = styled.div`
 		margin: 0;
 	}
 
-	i {
-		color: ${props => props.theme.grey};
-		transition: all 0.2s ease-in;
-		margin-left: 2rem;
-		box-shadow: ${props => props.theme.bs};
+	> div > svg {
+		height: 20px;
+		width: 20px;
+		fill: ${props => props.theme.grey};
+		cursor: pointer;
+		margin-left: 1rem;
+		transition: all 200ms ease-in;
 		&:hover {
-			cursor: pointer;
+			fill: ${props => props.theme.green};
+			transform: translateY(-2px);
 		}
 	}
 `;

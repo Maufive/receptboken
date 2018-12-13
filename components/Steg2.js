@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { StyledForm } from "./styles/FormStyles";
+import EditIcon from "../svg/edit.svg";
+import AddIcon from "../svg/add.svg";
+import IngredientIcon from "../svg/groceries.svg";
+import TrashIcon from "../svg/trash.svg";
 import { RecipeForm, List, ListItemDiv } from "./styles/Steg1Styles";
 import { Button, DisabledButton } from "./styles/Button";
 
@@ -102,26 +107,27 @@ class Steg2 extends Component {
 
 	render() {
 		return (
-			<RecipeForm>
+			<StyledForm>
 				<h3>{this.props.steg}. Gör såhär:</h3>
-				<label htmlFor="string">Fyll i Steg {this.state.step}</label>
-				<input
-					type="text"
-					name="string"
-					required
-					value={this.state.string}
-					onChange={this.saveToState}
-					placeholder="Sätt på ugnen..."
-				/>
+				<div>
+					<input
+						type="text"
+						name="string"
+						required
+						value={this.state.string}
+						onChange={this.saveToState}
+					/>
+					<label htmlFor="string">Fyll i Steg {this.state.step}</label>
+				</div>
 				<div>
 					{this.state.editing ? (
 						<Button onClick={e => this.saveEdit(e, this.state.editIndex)}>
-							<i className="icofont-ui-edit" />
+							<EditIcon />
 							Ändra
 						</Button>
 					) : (
-						<Button onClick={this.addToArray}>
-							<i className="icofont-plus" />
+						<Button fullWidth onClick={this.addToArray}>
+							<AddIcon />
 							Lägg till
 						</Button>
 					)}
@@ -132,35 +138,27 @@ class Steg2 extends Component {
 							<ListItemDiv>
 								<p>{item}</p>
 								<div>
-									<i
-										onClick={() => this.deleteItem(item)}
-										className="icofont-trash"
-									/>
-									<i
-										onClick={() => this.editItem(item)}
-										className="icofont-edit"
-									/>
+									<TrashIcon onClick={() => this.deleteItem(item)} />
+									<EditIcon onClick={() => this.editItem(item)} />
 								</div>
 							</ListItemDiv>
 						</li>
 					))}
 				</List>
 				<div style={{ display: "flex" }}>
-					<Button onClick={this.props.previousStep}>
-						<i className="icofont-ui-previous" /> Föregående
+					<Button fullWidth onClick={this.props.previousStep}>
+						← Föregående
 					</Button>
 					{this.state.arr.length <= 1 && (
-						<DisabledButton>
-							<i className="icofont-ui-next" /> Nästa steg
-						</DisabledButton>
+						<DisabledButton fullWidth>Nästa steg →</DisabledButton>
 					)}
 					{this.state.arr.length >= 2 && (
-						<Button primary onClick={this.nextStep}>
-							<i className="icofont-ui-next" /> Nästa steg
+						<Button primary fullWidth onClick={this.nextStep}>
+							Nästa steg →
 						</Button>
 					)}
 				</div>
-			</RecipeForm>
+			</StyledForm>
 		);
 	}
 }

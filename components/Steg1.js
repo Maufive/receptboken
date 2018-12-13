@@ -9,11 +9,17 @@ import {
 	IngrediensWrapper
 } from "./styles/Steg1Styles";
 
+import { StyledForm } from "./styles/FormStyles";
+import EditIcon from "../svg/edit.svg";
+import AddIcon from "../svg/add.svg";
+import IngredientIcon from "../svg/groceries.svg";
+import TrashIcon from "../svg/trash.svg";
+
 class Steg1Test extends Component {
 	state = {
 		arr: [], // en array med ingredienser
 		item: {
-			input: "",
+			input: null,
 			numberOfUnits: 1,
 			units: "st"
 		},
@@ -144,49 +150,55 @@ class Steg1Test extends Component {
 
 	render() {
 		const { step } = this.state;
+		const { title, saveToState } = this.props;
 		return (
-			<RecipeForm>
-				<Header>
+			<StyledForm>
+				<h3>{step}. Ingedienser</h3>
+				<div>
 					<input
 						type="text"
-						value={this.props.title}
-						onChange={this.props.saveToState}
+						value={title}
+						onChange={saveToState}
 						name="title"
 						required
-						placeholder="Nytt recept..."
 					/>
-					<i className="icofont-ui-edit" />
-				</Header>
-				<IngrediensWrapper>
-					<h3>{step}. Ingedienser</h3>
-					<div>
-						<label htmlFor="servings">Antal portioner: </label>
-						<select value={this.state.servings} onChange={this.handleServings}>
-							<option value="2">2</option>
-							<option value="4">4</option>
-							<option value="6">6</option>
-							<option value="8">8</option>
-						</select>
-					</div>
-					<label htmlFor="item">Fyll i ingredienser:</label>
+					<label htmlFor="title">
+						<EditIcon /> Titel
+					</label>
+				</div>
+				<div>
+					<p>Portioner:</p>
+					<select value={this.state.servings} onChange={this.handleServings}>
+						<option value="2">2</option>
+						<option value="4">4</option>
+						<option value="6">6</option>
+						<option value="8">8</option>
+					</select>
+				</div>
+				<div>
 					<input
 						type="text"
-						name="item"
 						value={this.state.item.input}
 						onChange={this.saveIngredient}
-						placeholder="Spaghetti..."
+						name="item"
+						required
 					/>
-					<label htmlFor="numberOfUnits">Antal: </label>
+					<label htmlFor="item">
+						<IngredientIcon /> Fyll i ingredienser:
+					</label>
+				</div>
+				<div style={{ marginBottom: "1rem" }}>
+					<p>Antal: </p>
 					<input
 						type="number"
 						name="numberOfUnits"
+						min={0}
 						value={this.state.item.numberOfUnits}
 						onChange={this.saveNumberOfUnits}
-						style={{
-							width: 60
-						}}
 					/>
-					<label htmlFor="units">Enhet: </label>
+				</div>
+				<div style={{ marginBottom: "1rem" }}>
+					<p>Enhet: </p>
 					<select value={this.state.item.units} onChange={this.handleUnits}>
 						<option defaultValue="st">Styck</option>
 						<option value="gram">Gram</option>
@@ -194,61 +206,54 @@ class Steg1Test extends Component {
 						<option value="tsk">Tesked</option>
 						<option value="dl">Deciliter</option>
 					</select>
-					{/* Om användaren redigerar ett item, ändra knappen till Ändra istället för Lägg till */}
-					<div>
-						{this.state.editing ? (
-							<Button
-								fullWidth
-								onClick={e => this.saveEdit(e, this.state.editIndex)}
-							>
-								<i className="icofont-ui-edit" />
-								Ändra
-							</Button>
-						) : (
-							<Button fullWidth onClick={this.addToArray}>
-								<i className="icofont-plus" />
-								Lägg till
-							</Button>
-						)}
-					</div>
-				</IngrediensWrapper>
+				</div>
+				{/* Om användaren redigerar ett item, ändra knappen till Ändra istället för Lägg till */}
+
+				{this.state.editing ? (
+					<Button
+						fullWidth
+						onClick={e => this.saveEdit(e, this.state.editIndex)}
+					>
+						<EditIcon />
+						Ändra
+					</Button>
+				) : (
+					<Button fullWidth onClick={this.addToArray}>
+						<AddIcon />
+						Lägg till
+					</Button>
+				)}
+
 				<List>
 					{this.state.arr.map(item => (
 						<li key={item.input}>
 							<ListItemDiv>
 								<p>
-									👉 <span>{item.numberOfUnits}</span> <span>{item.units}</span>{" "}
+									<span>{item.numberOfUnits}</span> <span>{item.units}</span>{" "}
 									{item.input}
 								</p>
 								<div>
-									<i
-										onClick={() => this.deleteItem(item)}
-										className="icofont-trash"
-									/>
-									<i
-										onClick={() => this.editItem(item)}
-										className="icofont-edit"
-									/>
+									<TrashIcon onClick={() => this.deleteItem(item)} />
+									<EditIcon onClick={() => this.editItem(item)} />
 								</div>
 							</ListItemDiv>
 						</li>
 					))}
 				</List>
-				{this.state.arr.length <= 1 && (
-					<DisabledButton fullWidth disabled>
-						{/* Behöver en hover-effekt för att indikera att man går vidare till nästa steg */}
-						<i className="icofont-ui-next" />
-						Nästa steg
-					</DisabledButton>
-				)}
-				{this.state.arr.length >= 2 && (
+				{this.state.arr.length <= 1 ||
+					(!title && (
+						<DisabledButton fullWidth disabled>
+							{/* Behöver en hover-effekt för att indikera att man går vidare till nästa steg */}
+							Nästa steg →
+						</DisabledButton>
+					))}
+				{this.state.arr.length >= 2 && title && (
 					<Button fullWidth primary onClick={this.nextStep}>
 						{/* Behöver en hover-effekt för att indikera att man går vidare till nästa steg */}
-						<i className="icofont-ui-next" />
-						Nästa steg
+						Nästa steg →
 					</Button>
 				)}
-			</RecipeForm>
+			</StyledForm>
 		);
 	}
 }

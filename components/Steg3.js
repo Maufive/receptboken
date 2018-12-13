@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Loading } from "./Loading";
 import { RecipeForm, DetailsContainer } from "./styles/Steg1Styles";
 import { Button, DisabledButton } from "./styles/Button";
-import { Message } from "./Message";
+import SuccessIcon from "../svg/success.svg";
 
 const TAGS = [
 	"Texmex",
@@ -133,17 +133,17 @@ class Steg3 extends Component {
 				</DetailsContainer>
 
 				<div style={{ display: "flex" }}>
-					<Button onClick={this.props.previousStep}>
-						<i className="icofont-ui-previous" /> Föregående
+					<Button fullWidth onClick={this.props.previousStep}>
+						← Föregående
 					</Button>
 					{this.state.timeRequired <= 4 && (
-						<DisabledButton>
-							<i className="icofont-check-circled" /> Ladda upp!
+						<DisabledButton fullWidth>
+							<SuccessIcon /> Ladda upp!
 						</DisabledButton>
 					)}
 					{this.state.timeRequired >= 5 && (
-						<Button primary onClick={this.saveState}>
-							<i className="icofont-check-circled" /> Ladda upp!
+						<Button primary fullWidth onClick={this.saveState}>
+							<SuccessIcon /> Ladda upp!
 						</Button>
 					)}
 				</div>

@@ -39,9 +39,6 @@ const Nav = () => (
 		<NavItem>
 			<p>KATEGORIER</p>
 		</NavItem>
-		<NavItem>
-			<p>SPARADE RECEPT</p>
-		</NavItem>
 	</NavigationBar>
 );
 

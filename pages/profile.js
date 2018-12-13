@@ -4,10 +4,12 @@ import Router from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
 import { Loading } from "../components/Loading";
+import { Button } from "../components/styles/Button";
+import ReceptCard from "../components/ReceptCard";
 import { fadeIn } from "../components/styles/keyframes";
-import { SmallCard, CardContainer } from "../components/styles/Card";
+import ChefIcon from "../svg/chef.svg";
 
-const DisplayProfile = styled.div`
+const ProfileContainer = styled.div`
 	margin: 0 auto;
 	width: 1000px;
 	background: ${props => props.theme.white};
@@ -17,6 +19,28 @@ const DisplayProfile = styled.div`
 		height: 100px;
 		width: 100px;
 		border-radius: 50%;
+	}
+`;
+
+const ProfileDescription = styled.div`
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+`;
+
+const AvatarContainer = styled.div`
+	border-radius: 50%;
+	border: 3px solid ${props => props.theme.grey};
+	height: 125px;
+	width: 125px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	svg {
+		fill: ${props => props.theme.grey};
+		height: 100px;
+		width: 100px;
 	}
 `;
 
@@ -45,35 +69,16 @@ class profile extends Component {
 			});
 	};
 
-	calcRating = recept => {
-		const reviews = recept.reviews;
-		let total = 0;
-		reviews.map(review => {
-			total += review.rating;
-		});
-		const average = total / reviews.length;
-		const rounded = Math.floor(Math.round(average));
-		const stars = "★".repeat(rounded);
-		const emptyStars = "☆".repeat(5 - rounded);
-		return stars.concat(emptyStars);
-	};
-
 	render() {
 		const user = this.props.user;
+		const { recept } = this.state;
 		if (!user) return <Loading />;
 		return (
-			<DisplayProfile>
-				<div
-					style={{
-						display: "flex",
-						justifyContent: "space-around",
-						alignItems: "center"
-					}}
-				>
-					<img
-						src="https://img.icons8.com/metro/100/000000/gender-neutral-user.png"
-						alt="User profile"
-					/>
+			<ProfileContainer>
+				<ProfileDescription>
+					<AvatarContainer>
+						<ChefIcon />
+					</AvatarContainer>
 					<div style={{ width: "50%" }}>
 						<h1>{user.fname + " " + user.lname}</h1>
 						<p>
@@ -82,43 +87,32 @@ class profile extends Component {
 							varför. Eller något annat, ganska frivilligt faktiskt.
 						</p>
 					</div>
-				</div>
-				<h2>Niklas recept</h2>
-				{this.state.recept && (
-					<CardContainer>
-						{this.state.recept.map(recept => (
-							<Link
-								key={recept._id}
-								href={{
-									pathname: "/recept",
-									query: {
-										id: recept._id
-									}
-								}}
-							>
+				</ProfileDescription>
+				<div style={{ textAlign: "center" }}>
+					<h2>Dina recept:</h2>
+					{recept && recept.length >= 1 && (
+						<ReceptCard
+							id={recept._id}
+							photo={recept.photo}
+							timeRequired={recept.timeRequired}
+							title={recept.title}
+							reviews={recept.reviews}
+							key={recept._id}
+							small
+						/>
+					)}
+					{recept && recept.length < 1 && (
+						<div>
+							<h3>Du har inte laddat upp några recept ännu... 😞</h3>
+							<Link href="/recipe">
 								<a>
-									<SmallCard>
-										<img
-											src={recept.photo}
-											alt="Bild på recept"
-											width="200px"
-										/>
-										<div>
-											<h4>{recept.title}</h4>
-											<span style={{ color: "#FFCF44" }}>
-												{this.calcRating(recept)}{" "}
-												<span style={{ color: "#393939" }}>
-													({recept.reviews.length})
-												</span>
-											</span>
-										</div>
-									</SmallCard>
+									<Button>Klicka här för att ladda upp ett recept →</Button>
 								</a>
 							</Link>
-						))}
-					</CardContainer>
-				)}
-			</DisplayProfile>
+						</div>
+					)}
+				</div>
+			</ProfileContainer>
 		);
 	}
 }
