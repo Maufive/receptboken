@@ -106,9 +106,13 @@ class Steg2 extends Component {
 	// };
 
 	render() {
+		const { steg, previousStep } = this.props;
 		return (
 			<StyledForm>
-				<h3>{this.props.steg}. Gör såhär:</h3>
+				<h3 style={{ display: "flex", justifyContent: "space-between" }}>
+					<span>Ingedienser</span>
+					<span>Steg {steg} av 3</span>
+				</h3>
 				<div>
 					<input
 						type="text"
@@ -146,7 +150,7 @@ class Steg2 extends Component {
 					))}
 				</List>
 				<div style={{ display: "flex" }}>
-					<Button fullWidth onClick={this.props.previousStep}>
+					<Button fullWidth onClick={previousStep}>
 						← Föregående
 					</Button>
 					{this.state.arr.length <= 1 && (
@@ -167,7 +171,8 @@ export default Steg2;
 
 Steg2.propTypes = {
 	toNextStep: PropTypes.func,
-	steg: PropTypes.number,
 	previousStep: PropTypes.func,
-	description: PropTypes.array
+	steg: PropTypes.number,
+	description: PropTypes.array,
+	saveDescription: PropTypes.func
 };

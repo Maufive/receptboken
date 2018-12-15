@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Link from "next/link";
 import { LoginForm } from "./styles/ModalStyles";
 import { Button } from "./styles/Button";
+import LockIcon from "../svg/lock.svg";
+import MailIcon from "../svg/mail.svg";
 
 class Login extends Component {
 	constructor() {
 		super();
 		this.state = {
-			email: "test6@gmail.com", // hej@gmail.com
-			password: "asdf" //asdf
+			email: "Frida123@gmail.com", // hej@gmail.com .. test6@gmail.com ..
+			password: "asdf", //asdf
+			error: null
 		};
 	}
 
@@ -32,7 +36,8 @@ class Login extends Component {
 				// Router.push("/");
 			})
 			.catch(error => {
-				console.log(error);
+				console.log(error.response.data.message);
+				this.setState({ error: error.response.data.message });
 			});
 	};
 
@@ -40,7 +45,13 @@ class Login extends Component {
 		return (
 			<div style={{ margin: "0 auto" }}>
 				<LoginForm onSubmit={this.onSubmit}>
-					<h2>Vänligen logga in</h2>
+					{this.state.error ? (
+						<h4 style={{ color: "#bc1616", marginBottom: "2.5rem" }}>
+							{this.state.error}
+						</h4>
+					) : (
+						<h2>Vänligen logga in</h2>
+					)}
 					<div>
 						<input
 							type="email"
@@ -51,7 +62,7 @@ class Login extends Component {
 							required
 						/>
 						<label htmlFor="email">
-							<i className="icofont-ui-email" /> Email
+							<MailIcon /> Email
 						</label>
 					</div>
 					<div>
@@ -64,7 +75,7 @@ class Login extends Component {
 							required
 						/>
 						<label htmlFor="password">
-							<i className="icofont-ui-password" /> Lösenord
+							<LockIcon /> Lösenord
 						</label>
 					</div>
 					<Button fullWidth type="submit">
@@ -72,9 +83,13 @@ class Login extends Component {
 					</Button>
 				</LoginForm>
 				<h3 style={{ color: "#5A5555" }}>Inget konto?</h3>
-				<Button fullWidth primary>
-					Registrera →
-				</Button>
+				<Link href="/register">
+					<a>
+						<Button fullWidth primary onClick={this.props.closeModal}>
+							Registrera →
+						</Button>
+					</a>
+				</Link>
 			</div>
 		);
 	}

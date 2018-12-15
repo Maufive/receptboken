@@ -9,6 +9,7 @@ const Logo = styled.h1`
 	font-family: "Playfair Display";
 	font-weight: 400;
 	margin: 0;
+	color: ${props => props.theme.black};
 `;
 const StyledHeader = styled.header`
 	.bar {

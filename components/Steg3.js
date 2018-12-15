@@ -79,9 +79,13 @@ class Steg3 extends Component {
 
 	render() {
 		const { photo, timeRequired } = this.state;
+		const { steg } = this.props;
 		return (
 			<RecipeForm>
-				<h3>{this.props.steg}. Fyll i lite detaljer om ditt recept</h3>
+				<h3 style={{ display: "flex", justifyContent: "space-between" }}>
+					<span>Ingedienser</span>
+					<span>Steg {steg} av 3</span>
+				</h3>
 
 				<DetailsContainer>
 					<div>
@@ -158,5 +162,6 @@ Steg3.propTypes = {
 	steg: PropTypes.number,
 	previousStep: PropTypes.func,
 	saveDetails: PropTypes.func,
+	submitRecipe: PropTypes.func,
 	setMessage: PropTypes.func
 };

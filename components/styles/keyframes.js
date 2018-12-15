@@ -15,8 +15,8 @@ export const slideIn = keyframes`
 
 export const slideUp = keyframes`
   0% {
-    -webkit-transform: translateY(40px);
-    transform: translateY(40px);
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
     opacity: 0;
   }
   100% {

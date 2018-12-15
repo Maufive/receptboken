@@ -9,8 +9,8 @@ import Steg3 from "./Steg3";
 
 class NewRecipeForm extends Component {
 	static propTypes = {
-		user: PropTypes.string.isRequired,
-		setMessage: PropTypes.function
+		user: PropTypes.object.isRequired,
+		setMessage: PropTypes.func
 	};
 
 	state = {
@@ -21,7 +21,7 @@ class NewRecipeForm extends Component {
 		photo: "",
 		ingredients: [],
 		servings: 2,
-		step: 2,
+		step: 1,
 		loading: false
 	};
 

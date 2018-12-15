@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import { Card, SmallCard } from "./styles/Card";
+import ClockIcon from "../svg/clock.svg";
 
 class ReceptCard extends Component {
 	calcRating = recipeReviews => {
@@ -36,7 +37,7 @@ class ReceptCard extends Component {
 								<h3>{title}</h3>
 								<div>
 									<span>
-										<i className="icofont-clock-time" /> {timeRequired}m
+										<ClockIcon /> {timeRequired}m
 									</span>
 									<span style={{ color: "#FFCF44" }}>
 										{this.calcRating(reviews)}{" "}
@@ -50,7 +51,7 @@ class ReceptCard extends Component {
 								<h3>{title}</h3>
 								<div>
 									<span>
-										<i className="icofont-clock-time" /> {timeRequired}m
+										<ClockIcon /> {timeRequired}m
 									</span>
 									<span style={{ color: "#FFCF44" }}>
 										{this.calcRating(reviews)}{" "}

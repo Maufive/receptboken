@@ -57,7 +57,10 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: ${theme.black};
+		color: ${theme.white};
+		&:visited {
+			color: ${theme.white};
+		}
   }
   button {
 		font-family: 'Open Sans';

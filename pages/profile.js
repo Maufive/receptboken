@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { Loading } from "../components/Loading";
 import { Button } from "../components/styles/Button";
 import ReceptCard from "../components/ReceptCard";
+import { CardContainer } from "../components/styles/Card";
 import { fadeIn } from "../components/styles/keyframes";
 import ChefIcon from "../svg/chef.svg";
 
@@ -88,8 +89,8 @@ class profile extends Component {
 						</p>
 					</div>
 				</ProfileDescription>
-				<div style={{ textAlign: "center" }}>
-					<h2>Dina recept:</h2>
+				<CardContainer>
+					<h2 style={{ margin: "0" }}>Dina recept:</h2>
 					{recept && recept.length >= 1 && (
 						<ReceptCard
 							id={recept._id}
@@ -111,7 +112,7 @@ class profile extends Component {
 							</Link>
 						</div>
 					)}
-				</div>
+				</CardContainer>
 			</ProfileContainer>
 		);
 	}

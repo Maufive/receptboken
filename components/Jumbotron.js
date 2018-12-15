@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Link from "next/link";
-import LoginModal from "./LoginModal";
 import { StyledJumbotron } from "./styles/Jumbotron";
 import { Button } from "./styles/Button";
 

@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, DisabledButton } from "./styles/Button";
-import {
-	RecipeForm,
-	ListItemDiv,
-	Header,
-	List,
-	IngrediensWrapper
-} from "./styles/Steg1Styles";
-
+import { ListItemDiv, List } from "./styles/Steg1Styles";
 import { StyledForm } from "./styles/FormStyles";
 import EditIcon from "../svg/edit.svg";
 import AddIcon from "../svg/add.svg";
@@ -19,7 +12,7 @@ class Steg1Test extends Component {
 	state = {
 		arr: [], // en array med ingredienser
 		item: {
-			input: null,
+			input: "",
 			numberOfUnits: 1,
 			units: "st"
 		},
@@ -153,7 +146,10 @@ class Steg1Test extends Component {
 		const { title, saveToState } = this.props;
 		return (
 			<StyledForm>
-				<h3>{step}. Ingedienser</h3>
+				<h3 style={{ display: "flex", justifyContent: "space-between" }}>
+					<span>Ingedienser</span>
+					<span>Steg {step} av 3</span>
+				</h3>
 				<div>
 					<input
 						type="text"
@@ -264,5 +260,6 @@ Steg1Test.propTypes = {
 	saveToState: PropTypes.func,
 	toNextStep: PropTypes.func,
 	ingredients: PropTypes.array,
-	servings: PropTypes.number
+	servings: PropTypes.number,
+	setMessage: PropTypes.func
 };

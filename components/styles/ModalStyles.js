@@ -14,6 +14,8 @@ export const LoginForm = styled.form`
 		width: 100%;
 		position: relative;
 		margin-bottom: 3rem;
+		display: flex;
+		align-items: center;
 	}
 	input,
 	label {
@@ -38,6 +40,11 @@ export const LoginForm = styled.form`
 		top: 21%;
 		left: 0;
 		transition: all 200ms ease-out;
+		display: flex;
+		align-items: center;
+		> svg {
+			margin-right: 0.5rem;
+		}
 	}
 	input:focus + label {
 		border: none;
@@ -57,5 +64,11 @@ export const LoginForm = styled.form`
 		font-size: 1rem;
 		transform: translateY(-3.5rem);
 		color: ${props => props.theme.mediumgrey};
+	}
+
+	svg {
+		height: 12px;
+		width: 12px;
+		fill: ${props => props.theme.grey};
 	}
 `;

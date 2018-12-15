@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { fadeIn } from "./keyframes";
+import { fadeIn, slideIn, slideUp } from "./keyframes";
 
 export const UserDropdownStyles = styled.div`
 	width: fit-content;
@@ -7,7 +7,7 @@ export const UserDropdownStyles = styled.div`
 `;
 
 export const DropdownBackground = styled.div`
-	animation: ${fadeIn} 200ms ease-in-out;
+	animation: ${slideUp} 200ms ease-in-out;
 	position: relative;
 `;
 
@@ -60,7 +60,8 @@ export const Option = styled.span`
 	color: ${props => props.theme.white};
 	transition: all 200ms ease-in;
 	&:hover {
-		transform: translateX(10px);
+		transform: translateX(3px);
 		color: ${props => props.theme.offWhite};
+		cursor: pointer;
 	}
 `;

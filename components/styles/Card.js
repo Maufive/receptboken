@@ -20,6 +20,18 @@ export const Card = styled.div`
 		box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
 		transform: translateY(-2px);
 	}
+	span {
+		color: ${props => props.theme.grey};
+		display: flex;
+		align-items: center;
+	}
+
+	svg {
+		height: 20px;
+		width: 20px;
+		fill: ${props => props.theme.grey};
+		margin-right: 0.5rem;
+	}
 `;
 
 export const SmallCard = styled.div`
@@ -47,4 +59,14 @@ export const CardContainer = styled.div`
 	justify-content: space-evenly;
 	margin: 0 auto;
 	padding: 2rem;
+	h2,
+	h3 {
+		margin: 0;
+		text-align: center;
+	}
+	> div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 `;

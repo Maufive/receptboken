@@ -3,17 +3,20 @@ import axios from "axios";
 import Router from "next/router";
 import { LoginForm } from "./styles/ModalStyles";
 import { Button, DisabledButton } from "./styles/Button";
+import MailIcon from "../svg/mail.svg";
+import LockIcon from "../svg/lock.svg";
+import ProfileIcon from "../svg/profile.svg";
 
 class RegisterComponent extends Component {
 	constructor(props) {
 		super();
 		this.state = {
-			fname: "Niklas",
-			lname: "Albin",
-			email: "test3@gmail.com",
-			password: "asdf",
-			confirmPassword: "asdf",
-			passwordMatch: true,
+			fname: "",
+			lname: "",
+			email: "",
+			password: "",
+			confirmPassword: "",
+			passwordMatch: false,
 			msg: "Registrera →"
 		};
 	}
@@ -87,7 +90,7 @@ class RegisterComponent extends Component {
 							required
 						/>
 						<label htmlFor="email">
-							<i className="icofont-ui-email" /> Email:
+							<MailIcon /> Email:
 						</label>
 					</div>
 					<div>
@@ -99,7 +102,7 @@ class RegisterComponent extends Component {
 							required
 						/>
 						<label htmlFor="name">
-							<i className="icofont-id" /> Förnamn:
+							<ProfileIcon /> Förnamn:
 						</label>
 					</div>
 					<div>
@@ -111,7 +114,7 @@ class RegisterComponent extends Component {
 							required
 						/>
 						<label htmlFor="name">
-							<i className="icofont-id" /> Efternamn:
+							<ProfileIcon /> Efternamn:
 						</label>
 					</div>
 					<div>
@@ -124,9 +127,9 @@ class RegisterComponent extends Component {
 						/>
 						<label htmlFor="password">
 							{this.state.passwordMatch ? (
-								<i style={{ color: "#15BD76" }} className="icofont-ui-check" />
+								<LockIcon style={{ fill: "#15BD76" }} />
 							) : (
-								<i className="icofont-ui-password" />
+								<LockIcon />
 							)}{" "}
 							Lösenord:
 						</label>
@@ -141,9 +144,9 @@ class RegisterComponent extends Component {
 						/>
 						<label htmlFor="password">
 							{this.state.passwordMatch ? (
-								<i style={{ color: "#15BD76" }} className="icofont-ui-check" />
+								<LockIcon style={{ fill: "#15BD76" }} />
 							) : (
-								<i className="icofont-ui-password" />
+								<LockIcon />
 							)}{" "}
 							Bekräfta Lösenord:
 						</label>

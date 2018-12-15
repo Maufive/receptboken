@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Link from "next/link";
-import Logout from "./Logout";
+import Router from "next/router";
 import ChefIcon from "../svg/chef.svg";
 import UsersIcon from "../svg/users.svg";
 import HeartIcon from "../svg/like-1.svg";
@@ -31,6 +32,12 @@ class UserDropdown extends Component {
 		});
 	};
 
+	logout = e => {
+		localStorage.removeItem("jwtToken");
+		Router.push("/");
+		location.reload();
+	};
+
 	render() {
 		const { user } = this.props;
 		return (
@@ -48,28 +55,38 @@ class UserDropdown extends Component {
 						<Square />
 						<DropDownContainer>
 							<div>
-								<Link
-									href={{
-										pathname: `/profile`
-										// query: {
-										// 	id: user._id
-										// }
-									}}
-									onClick={() => this.closeDropdown()}
-								>
-									<a>
-										<UsersIcon />
-										<Option>Min profil</Option>
-									</a>
-								</Link>
+								<Option>
+									<Link
+										href={{
+											pathname: `/profile`
+											// query: {
+											// 	id: user._id
+											// }
+										}}
+										onClick={() => this.closeDropdown()}
+									>
+										<a>
+											<UsersIcon />
+											Min profil
+										</a>
+									</Link>
+								</Option>
 							</div>
 							<div>
-								<HeartIcon />
-								<p>Sparade recept</p>
+								<Option>
+									<Link href="/saved">
+										<a>
+											<HeartIcon />
+											Sparade Recept
+										</a>
+									</Link>
+								</Option>
 							</div>
 							<div>
-								<LogoutIcon />
-								<p>Logga ut</p>
+								<Option onClick={this.logout}>
+									<LogoutIcon />
+									Logga ut
+								</Option>
 							</div>
 						</DropDownContainer>
 					</DropdownBackground>
@@ -80,3 +97,7 @@ class UserDropdown extends Component {
 }
 
 export default UserDropdown;
+
+UserDropdown.propTypes = {
+	user: PropTypes.object.isRequired
+};

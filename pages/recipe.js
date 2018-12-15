@@ -15,7 +15,7 @@ class recipe extends Component {
 						{({ setUser }) => <LoginModal setUser={setUser} open={true} />}
 					</UserConsumer>
 					<Link href="/">
-						<a>← Tillbaka till startsidan</a>
+						<a style={{ color: "#5A5555" }}>← Tillbaka till startsidan</a>
 					</Link>
 				</div>
 			);

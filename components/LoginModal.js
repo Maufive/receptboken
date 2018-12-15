@@ -45,7 +45,11 @@ class LoginModal extends Component {
 				>
 					<MessageConsumer>
 						{({ setMessage }) => (
-							<Login setUser={this.props.setUser} setMessage={setMessage} />
+							<Login
+								setUser={this.props.setUser}
+								setMessage={setMessage}
+								closeModal={this.closeModal}
+							/>
 						)}
 					</MessageConsumer>
 				</Modal>
