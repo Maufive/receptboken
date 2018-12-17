@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { scaleUp, fadeIn } from "./keyframes";
+import { fadeIn } from "./keyframes";
 
 export const Card = styled.div`
 	width: 250px;
@@ -7,7 +7,7 @@ export const Card = styled.div`
 	background: ${props => props.theme.white};
 	box-shadow: ${props => props.theme.bsHard};
 	transition: all 150ms ease-in;
-	animation: ${scaleUp} 500ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
+	animation: ${fadeIn} 500ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
 	animation-delay: 600ms;
 	h3 {
 		text-align: center;

@@ -7,7 +7,6 @@ import { Loading } from "../components/Loading";
 import Author from "../components/Author";
 import Heart from "./Heart";
 import ClockIcon from "../svg/clock.svg";
-import NotesIcon from "../svg/notes.svg";
 import DishIcon from "../svg/dishes.svg";
 import {
 	Wrapper,
@@ -17,7 +16,7 @@ import {
 	ListItem,
 	IconContainer
 } from "./styles/ReceptStyles";
-import { Button } from "./styles/Button";
+import AddToShoppinglist from "./AddToShoppinglist";
 
 class SingleRecept extends Component {
 	state = {
@@ -58,13 +57,6 @@ class SingleRecept extends Component {
 			});
 	};
 
-	addToShoppingList = async e => {
-		e.preventDefault();
-		axios
-			.post(`http://localhost:7777/lists/add/${this.props.id}`)
-			.then(response => {});
-	};
-
 	render() {
 		const { recept } = this.state;
 		if (!this.state.recept) return <Loading />;
@@ -101,9 +93,10 @@ class SingleRecept extends Component {
 							))}
 						</div>
 						<IconContainer>
-							<Button onClick={this.addToShoppingList}>
-								<NotesIcon /> Lägg till i inköpslista
-							</Button>
+							<AddToShoppinglist
+								userid={this.props.user._id}
+								receptid={recept._id}
+							/>
 						</IconContainer>
 						<Author id={recept.author} />
 					</div>
