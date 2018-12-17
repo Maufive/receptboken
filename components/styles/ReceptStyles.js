@@ -9,8 +9,9 @@ export const Wrapper = styled.div`
 	color: ${props => props.theme.grey};
 	box-shadow: ${props => props.theme.bsHard};
 	animation: ${fadeIn} 500ms ease-out;
-	h2 {
-		color: ${props => props.theme.mediumgrey};
+	h1 {
+		color: ${props => props.theme.grey};
+		margin-top: 0;
 	}
 `;
 
@@ -50,4 +51,12 @@ export const Tag = styled.span`
 
 export const IconContainer = styled.div`
 	margin-right: 2rem;
+	display: flex;
+	align-items: center;
+	svg {
+		fill: ${props => props.theme.grey};
+		height: 20px;
+		width: 20px;
+		margin-right: 0.5rem;
+	}
 `;

@@ -19,3 +19,4 @@ To-Do:
 - Lägg till ett steg i verifkationskedjan genom att skicka en token via email som användaren ska bekräfta
 - Fundera på en lösning för att göra en inköpslista
 - Fixa en sökfunktion för att söka efter recept
+- Visa "Skapat"-datum på varje recept (och eller card)

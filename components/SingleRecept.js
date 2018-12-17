@@ -4,7 +4,11 @@ import Router from "next/router";
 import { MessageConsumer } from "./providers/MessageProvider";
 import Stars from "./Stars";
 import { Loading } from "../components/Loading";
+import Author from "../components/Author";
 import Heart from "./Heart";
+import ClockIcon from "../svg/clock.svg";
+import NotesIcon from "../svg/notes.svg";
+import DishIcon from "../svg/dishes.svg";
 import {
 	Wrapper,
 	DetailsBar,
@@ -13,6 +17,7 @@ import {
 	ListItem,
 	IconContainer
 } from "./styles/ReceptStyles";
+import { Button } from "./styles/Button";
 
 class SingleRecept extends Component {
 	state = {
@@ -53,6 +58,13 @@ class SingleRecept extends Component {
 			});
 	};
 
+	addToShoppingList = async e => {
+		e.preventDefault();
+		axios
+			.post(`http://localhost:7777/lists/add/${this.props.id}`)
+			.then(response => {});
+	};
+
 	render() {
 		const { recept } = this.state;
 		if (!this.state.recept) return <Loading />;
@@ -72,20 +84,28 @@ class SingleRecept extends Component {
 						)}
 					</MessageConsumer>
 					<IconContainer>
-						<i className="icofont-clock-time" />
+						<ClockIcon />
 						{recept.timeRequired.toString()}
 					</IconContainer>
 					<IconContainer>
-						<i className="icofont-fork-and-knife" />
+						<DishIcon />
 						{recept.servings}
 					</IconContainer>
 				</DetailsBar>
 				<ImageAndTags>
 					<img src={recept.photo} alt="Foto på maten" height="300" />
 					<div>
-						{recept.tags.map(tag => (
-							<Tag key={tag}>{tag}</Tag>
-						))}
+						<div>
+							{recept.tags.map(tag => (
+								<Tag key={tag}>{tag}</Tag>
+							))}
+						</div>
+						<IconContainer>
+							<Button onClick={this.addToShoppingList}>
+								<NotesIcon /> Lägg till i inköpslista
+							</Button>
+						</IconContainer>
+						<Author id={recept.author} />
 					</div>
 				</ImageAndTags>
 				<ImageAndTags>

@@ -2,21 +2,9 @@ import React, { Component } from "react";
 import Link from "next/link";
 import { Card, SmallCard } from "./styles/Card";
 import ClockIcon from "../svg/clock.svg";
+import { calcRating } from "../helpers";
 
 class ReceptCard extends Component {
-	calcRating = recipeReviews => {
-		const reviews = recipeReviews;
-		let total = 0;
-		reviews.map(review => {
-			total += review.rating;
-		});
-		const average = total / reviews.length;
-		const rounded = Math.floor(Math.round(average));
-		const stars = "★".repeat(rounded);
-		const emptyStars = "☆".repeat(5 - rounded);
-		return stars.concat(emptyStars);
-	};
-
 	render() {
 		const { id, photo, title, timeRequired, reviews } = this.props;
 		return (
@@ -40,22 +28,30 @@ class ReceptCard extends Component {
 										<ClockIcon /> {timeRequired}m
 									</span>
 									<span style={{ color: "#FFCF44" }}>
-										{this.calcRating(reviews)}{" "}
-										<span style={{ color: "#393939" }}>({reviews.length})</span>
+										{reviews && calcRating(reviews)}{" "}
+										<span style={{ color: "#393939" }}>
+											({reviews && reviews.length})
+										</span>
 									</span>
 								</div>
 							</Card>
 						) : (
 							<SmallCard>
-								img src={photo} alt="Bild på recept" height="250px" />
+								<img
+									src={this.props.photo}
+									alt="Bild på recept"
+									height="200px"
+								/>
 								<h3>{title}</h3>
 								<div>
 									<span>
 										<ClockIcon /> {timeRequired}m
 									</span>
 									<span style={{ color: "#FFCF44" }}>
-										{this.calcRating(reviews)}{" "}
-										<span style={{ color: "#393939" }}>({reviews.length})</span>
+										{reviews && calcRating(reviews)}{" "}
+										<span style={{ color: "#393939" }}>
+											({reviews && reviews.length})
+										</span>
 									</span>
 								</div>
 							</SmallCard>

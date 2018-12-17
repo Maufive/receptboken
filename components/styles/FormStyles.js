@@ -2,9 +2,15 @@ import styled from "styled-components";
 import { fadeIn, slideUp } from "./keyframes";
 
 export const StyledForm = styled.form`
-	width: 400px;
+	width: 500px;
 	animation: ${fadeIn} 500ms ease-out;
 	margin: 0 auto;
+	padding: 3rem 5rem;
+	border-radius: 5px;
+	border: 2px solid ${props => props.theme.lightgrey};
+	background: ${props => props.theme.white};
+	box-shadow: ${props => props.theme.bsHard};
+
 	h2,
 	h3 {
 		color: ${props => props.theme.grey};

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Link from "next/link";
 import axios from "axios";
 import { UserConsumer } from "../components/providers/UserProvider";
 import Jumbotron from "../components/Jumbotron";

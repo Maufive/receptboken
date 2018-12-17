@@ -2,48 +2,16 @@ import React, { Component } from "react";
 import axios from "axios";
 import Router from "next/router";
 import Link from "next/link";
-import styled from "styled-components";
 import { Loading } from "../components/Loading";
 import { Button } from "../components/styles/Button";
 import ReceptCard from "../components/ReceptCard";
 import { CardContainer } from "../components/styles/Card";
-import { fadeIn } from "../components/styles/keyframes";
+import {
+	ProfileContainer,
+	ProfileDescription,
+	AvatarContainer
+} from "../components/styles/ProfileStyles";
 import ChefIcon from "../svg/chef.svg";
-
-const ProfileContainer = styled.div`
-	margin: 0 auto;
-	width: 1000px;
-	background: ${props => props.theme.white};
-	color: ${props => props.theme.grey};
-	animation: ${fadeIn} 500ms ease-out;
-	> div > img {
-		height: 100px;
-		width: 100px;
-		border-radius: 50%;
-	}
-`;
-
-const ProfileDescription = styled.div`
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-`;
-
-const AvatarContainer = styled.div`
-	border-radius: 50%;
-	border: 3px solid ${props => props.theme.grey};
-	height: 125px;
-	width: 125px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-	svg {
-		fill: ${props => props.theme.grey};
-		height: 100px;
-		width: 100px;
-	}
-`;
 
 class profile extends Component {
 	state = {
@@ -89,19 +57,23 @@ class profile extends Component {
 						</p>
 					</div>
 				</ProfileDescription>
-				<CardContainer>
-					<h2 style={{ margin: "0" }}>Dina recept:</h2>
-					{recept && recept.length >= 1 && (
-						<ReceptCard
-							id={recept._id}
-							photo={recept.photo}
-							timeRequired={recept.timeRequired}
-							title={recept.title}
-							reviews={recept.reviews}
-							key={recept._id}
-							small
-						/>
-					)}
+				<div>
+					<h2 style={{ textAlign: "center" }}>Uppladdade recept:</h2>
+					<CardContainer style={{ marginTop: "0", paddingTop: "0" }}>
+						{recept &&
+							recept.length >= 1 &&
+							recept.map(recept => (
+								<ReceptCard
+									id={recept._id}
+									photo={recept.photo}
+									timeRequired={recept.timeRequired}
+									title={recept.title}
+									reviews={recept.reviews}
+									key={recept._id}
+									small
+								/>
+							))}
+					</CardContainer>
 					{recept && recept.length < 1 && (
 						<div>
 							<h3>Du har inte laddat upp några recept ännu... 😞</h3>
@@ -112,7 +84,7 @@ class profile extends Component {
 							</Link>
 						</div>
 					)}
-				</CardContainer>
+				</div>
 			</ProfileContainer>
 		);
 	}

@@ -18,8 +18,10 @@ const StyledHeader = styled.header`
 		align-items: center;
 		padding: 0 2rem;
 		height: 75px;
-		width: ${props => props.theme.maxWidth};
+		background: ${props => props.theme.offWhite};
+		width: 100%;
 		margin: 0 auto;
+		margin-bottom: 3rem;
 		@media (max-width: ${props => props.theme.mobileBreakpoint}) {
 			height: 40px;
 		}

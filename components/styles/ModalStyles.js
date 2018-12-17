@@ -2,13 +2,17 @@ import styled from "styled-components";
 import { fadeIn, slideUp } from "./keyframes";
 
 export const LoginForm = styled.form`
-	width: 400px;
+	width: 500px;
 	animation: ${fadeIn} 500ms ease-out;
 	margin: 0 auto;
+	background: ${props => props.theme.white};
+	padding: 2rem 4rem;
+	border-radius: 5px;
 	h2,
 	h3 {
 		color: ${props => props.theme.grey};
 		margin-bottom: 3rem;
+		margin-top: 0;
 	}
 	> div {
 		width: 100%;

@@ -78,3 +78,30 @@ export const bounce = keyframes`
     transform: translateY(-5px);
   }
 `;
+
+export const slideRight = keyframes`
+  0% {
+    -webkit-transform: translateX(-80px);
+            transform: translateX(-80px);
+            opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+            opacity: 1;
+  }
+`;
+
+export const scaleUp = keyframes`
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+            opacity: 0;
+  }
+  
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+  }
+`;

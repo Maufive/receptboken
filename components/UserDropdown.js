@@ -6,6 +6,7 @@ import ChefIcon from "../svg/chef.svg";
 import UsersIcon from "../svg/users.svg";
 import HeartIcon from "../svg/like-1.svg";
 import LogoutIcon from "../svg/logout.svg";
+import NotesIcon from "../svg/notes.svg";
 import {
 	UserDropdownStyles,
 	DropDownContainer,
@@ -56,15 +57,7 @@ class UserDropdown extends Component {
 						<DropDownContainer>
 							<div>
 								<Option>
-									<Link
-										href={{
-											pathname: `/profile`
-											// query: {
-											// 	id: user._id
-											// }
-										}}
-										onClick={() => this.closeDropdown()}
-									>
+									<Link href="/profile" onClick={() => this.closeDropdown()}>
 										<a>
 											<UsersIcon />
 											Min profil
@@ -80,6 +73,12 @@ class UserDropdown extends Component {
 											Sparade Recept
 										</a>
 									</Link>
+								</Option>
+							</div>
+							<div>
+								<Option>
+									<NotesIcon />
+									Inköpslistor
 								</Option>
 							</div>
 							<div>
