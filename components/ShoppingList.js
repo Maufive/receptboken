@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Loading } from "./Loading";
 
 class ShoppingList extends Component {
 	state = {
-		listor: null
+		shoppinglists: null
 	};
 
 	componentDidMount() {
-		// this.getShoppingLists();
+		if (this.props.user) {
+			this.getShoppingLists();
+		}
 	}
 
 	getShoppingLists = () => {
@@ -15,12 +18,22 @@ class ShoppingList extends Component {
 			"Bearer " + localStorage.getItem("jwtToken");
 		axios
 			.get(`http://localhost:7777/lists/user/${this.props.user._id}`)
-			.then(response => console.log(response))
+			.then(response => this.setState({ shoppinglists: response.data }))
 			.catch(error => console.log(error));
 	};
 
 	render() {
-		return <div>I AM THE SHOPPPINGS YES</div>;
+		const { shoppinglists } = this.state;
+		if (!shoppinglists || shoppinglists.length < 1) return <Loading />;
+		return (
+			<ul>
+				{shoppinglists.map(list => (
+					<li key={list._id}>
+						<p>{list.title}</p>
+					</li>
+				))}
+			</ul>
+		);
 	}
 }
 

@@ -3,8 +3,8 @@ import axios from "axios";
 import Router from "next/router";
 import { MessageConsumer } from "./providers/MessageProvider";
 import Stars from "./Stars";
-import { Loading } from "../components/Loading";
-import Author from "../components/Author";
+import { Loading } from "./Loading";
+import Author from "./Author";
 import Heart from "./Heart";
 import ClockIcon from "../svg/clock.svg";
 import DishIcon from "../svg/dishes.svg";
@@ -92,12 +92,20 @@ class SingleRecept extends Component {
 								<Tag key={tag}>{tag}</Tag>
 							))}
 						</div>
-						<IconContainer>
-							<AddToShoppinglist
-								userid={this.props.user._id}
-								receptid={recept._id}
-							/>
-						</IconContainer>
+						{this.props.user && (
+							<IconContainer>
+								<MessageConsumer>
+									{({ setMessage }) => (
+										<AddToShoppinglist
+											userid={this.props.user._id}
+											receptid={recept._id}
+											ingredients={recept.ingredients}
+											setMessage={setMessage}
+										/>
+									)}
+								</MessageConsumer>
+							</IconContainer>
+						)}
 						<Author id={recept.author} />
 					</div>
 				</ImageAndTags>

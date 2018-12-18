@@ -11,7 +11,8 @@ const NavigationBar = styled.ul`
 `;
 
 const NavItem = styled.li`
-	color: ${props => (props.active ? props.theme.black : "#636363")};
+	/* color: ${props => (props.active ? props.theme.black : "#636363")}; */
+	color: ${props => props.theme.offWhite};
 	border-bottom: ${props =>
 		props.active ? `2px solid ${props.theme.green}` : ""};
 	list-style: none;
@@ -37,7 +38,7 @@ const Nav = () => (
 			<p>MATVECKAN</p>
 		</NavItem>
 		<NavItem>
-			<p>KATEGORIER</p>
+			<p>TOPPLISTA</p>
 		</NavItem>
 	</NavigationBar>
 );

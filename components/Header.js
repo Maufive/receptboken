@@ -9,16 +9,17 @@ const Logo = styled.h1`
 	font-family: "Playfair Display";
 	font-weight: 400;
 	margin: 0;
-	color: ${props => props.theme.black};
+	color: ${props => props.theme.offWhite};
 `;
 const StyledHeader = styled.header`
 	.bar {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0 2rem;
-		height: 75px;
-		background: ${props => props.theme.offWhite};
+		padding: 1rem 2rem;
+		border-bottom: 5px solid ${props => props.theme.green};
+		height: 70px;
+		background: ${props => props.theme.black};
 		width: 100%;
 		margin: 0 auto;
 		margin-bottom: 3rem;

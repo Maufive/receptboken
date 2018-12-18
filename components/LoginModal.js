@@ -4,6 +4,7 @@ import { MessageConsumer } from "./providers/MessageProvider";
 import Login from "./Login";
 import { Button } from "./styles/Button";
 import { LoginContainer, customStyles } from "./styles/Jumbotron";
+import LockIcon from "../svg/las.svg";
 
 Modal.setAppElement("#__next");
 
@@ -32,7 +33,8 @@ class LoginModal extends Component {
 						Logga in
 					</Button>
 				) : (
-					<Button fullWidth onClick={this.openModal}>
+					<Button fullWidth primary onClick={this.openModal}>
+						<LockIcon />
 						Logga in
 					</Button>
 				)}

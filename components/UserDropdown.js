@@ -57,7 +57,15 @@ class UserDropdown extends Component {
 						<DropDownContainer>
 							<div>
 								<Option>
-									<Link href="/profile" onClick={() => this.closeDropdown()}>
+									<Link
+										href={{
+											pathname: "/profile",
+											query: {
+												id: user._id
+											}
+										}}
+										onClick={() => this.closeDropdown()}
+									>
 										<a>
 											<UsersIcon />
 											Min profil
@@ -77,8 +85,19 @@ class UserDropdown extends Component {
 							</div>
 							<div>
 								<Option>
-									<NotesIcon />
-									Inköpslistor
+									<Link
+										href={{
+											pathname: "/inkopslistor",
+											query: {
+												id: user._id
+											}
+										}}
+									>
+										<a>
+											<NotesIcon />
+											Inköpslistor
+										</a>
+									</Link>
 								</Option>
 							</div>
 							<div>

@@ -10,8 +10,8 @@ class Login extends Component {
 	constructor() {
 		super();
 		this.state = {
-			email: "Frida123@gmail.com", // hej@gmail.com .. test6@gmail.com ..
-			password: "asdf", //asdf
+			email: "", // hej@gmail.com .. test6@gmail.com ..
+			password: "", //asdf
 			error: null
 		};
 	}
@@ -81,15 +81,15 @@ class Login extends Component {
 					<Button fullWidth type="submit">
 						Logga in →
 					</Button>
+					<h3 style={{ color: "#5A5555" }}>Inget konto?</h3>
+					<Link href="/register">
+						<a>
+							<Button fullWidth primary onClick={this.props.closeModal}>
+								Registrera →
+							</Button>
+						</a>
+					</Link>
 				</LoginForm>
-				<h3 style={{ color: "#5A5555" }}>Inget konto?</h3>
-				<Link href="/register">
-					<a>
-						<Button fullWidth primary onClick={this.props.closeModal}>
-							Registrera →
-						</Button>
-					</a>
-				</Link>
 			</div>
 		);
 	}

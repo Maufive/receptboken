@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Modal from "react-modal";
+import Link from "next/link";
 import axios from "axios";
 import NotesIcon from "../svg/notes.svg";
 import AddIcon from "../svg/add.svg";
 import { Button } from "./styles/Button";
 import { customStyles } from "./styles/Jumbotron";
 import { LoginForm } from "./styles/ModalStyles";
+import { List } from "./styles/ShoppinglistStyles";
 
 Modal.setAppElement("#__next");
 
@@ -36,19 +38,34 @@ class AddToShoppinglist extends Component {
 	onSubmit = async e => {
 		e.preventDefault();
 		const { title } = this.state;
-		axios
+		await axios
 			.post(`http://localhost:7777/lists/add/${this.props.receptid}`, { title })
 			.then(response => {
 				this.getShoppinglists();
+				this.setState({ title: "", isModalOpen: false });
+				this.props.setMessage("success", response.data.message);
 			})
 			.catch(error => console.log(error));
 	};
 
 	getShoppinglists = async () => {
-		axios
+		await axios
 			.get(`http://localhost:7777/lists/user/${this.props.userid}`)
 			.then(response => this.setState({ shoppinglists: response.data }))
 			.catch(error => console.log(error));
+	};
+
+	updateShoppinglist = async shoppinglist => {
+		// Plocka ut ID och arrayen med ingredienserna från props
+		const id = shoppinglist._id;
+		const newItems = this.props.ingredients;
+		const oldItems = shoppinglist.list;
+		// Skicka ingredienserna
+		await axios
+			.post(`http://localhost:7777/lists/update/${id}`, { newItems, oldItems })
+			.then(response => this.props.setMessage("success", response.data.message))
+			.catch(error => console.log(error));
+		this.setState({ isModalOpen: false, title: "" });
 	};
 
 	render() {
@@ -83,10 +100,21 @@ class AddToShoppinglist extends Component {
 						<Button fullWidth type="submit">
 							Skapa ny inköpslista
 						</Button>
+						<List>
+							{shoppinglists &&
+								shoppinglists.length >= 1 &&
+								shoppinglists.map(list => (
+									<div key={list._id}>
+										<Link href={`/inkopslistor/${list._id}`}>
+											<a>
+												<li>{list.title}</li>
+											</a>
+										</Link>
+										<AddIcon onClick={() => this.updateShoppinglist(list)} />
+									</div>
+								))}
+						</List>
 					</LoginForm>
-					{shoppinglists &&
-						shoppinglists.length >= 1 &&
-						shoppinglists.map(list => <p>{list.title}</p>)}
 				</Modal>
 			</div>
 		);

@@ -1,4 +1,7 @@
 import { MessageStyles } from "./styles/Message";
+// import HoldIcon from "../svg/hold.svg";
+// import LikeIcon from "../svg/like-bold.svg";
+// import InfoIcon from "../svg/info.svg";
 
 export const Message = props => {
 	let background;

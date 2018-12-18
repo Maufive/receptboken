@@ -37,7 +37,7 @@ export const UserItem = styled.p`
 	display: flex;
 	align-items: center;
 	outline: none;
-	color: ${props => props.theme.grey};
+	color: ${props => props.theme.offWhite};
 	font-weight: 700;
 	svg {
 		width: 20px;

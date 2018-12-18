@@ -6,10 +6,11 @@ import styled from "styled-components";
 const AuthorStyles = styled.div`
 	a {
 		margin-left: 0.5rem;
-		color: ${props => props.theme.grey};
+		color: ${props => props.theme.green};
 		transition: all 200ms ease-out;
+		border: 1px solid transparent;
 		&:hover {
-			color: ${props => props.theme.green};
+			border-bottom: 2px solid ${props => props.theme.green};
 		}
 	}
 `;
@@ -24,10 +25,11 @@ class Author extends Component {
 	}
 
 	getAuthor = () => {
+		const userid = this.props.id;
 		axios.defaults.headers.common["Authorization"] =
 			"Bearer " + localStorage.getItem("jwtToken");
 		axios
-			.get(`http://localhost:7777/user/profile/${this.props.id}`)
+			.get(`http://localhost:7777/user/profile/author/${userid}`)
 			.then(response => this.setState({ author: response.data }))
 			.catch(error => console.log(error));
 	};

@@ -15,21 +15,31 @@ import ChefIcon from "../svg/chef.svg";
 
 class profile extends Component {
 	state = {
-		recept: null
+		recept: null,
+		user: null
 	};
 
-	componentDidMount() {
+	async componentDidMount() {
 		if (!this.props.user) {
 			this.props.setMessage("danger", "Vänligen logga in för visa profil");
 			Router.push("/");
 		}
-		this.getRecipes();
+		await this.getUser();
 	}
+
+	getUser = async () => {
+		const id = this.props.query.id;
+		await axios
+			.get(`http://localhost:7777/user/profile/author/${id}`)
+			.then(response => this.setState({ user: response.data }))
+			.catch(error => console.log(error));
+		this.getRecipes();
+	};
 
 	getRecipes = () => {
 		// Hämta alla recept som användaren har skapat
 		axios
-			.get(`http://localhost:7777/user/created/${this.props.user._id}`)
+			.get(`http://localhost:7777/user/created/${this.state.user._id}`)
 			.then(response => {
 				this.setState({ recept: response.data });
 			})
@@ -39,8 +49,7 @@ class profile extends Component {
 	};
 
 	render() {
-		const user = this.props.user;
-		const { recept } = this.state;
+		const { recept, user } = this.state;
 		if (!user) return <Loading />;
 		return (
 			<ProfileContainer>

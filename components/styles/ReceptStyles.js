@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { fadeIn } from "./keyframes";
+import { fadeIn, growRight } from "./keyframes";
 
 export const Wrapper = styled.div`
 	width: 800px;
@@ -41,9 +41,11 @@ export const ListItem = styled.div`
 export const Tag = styled.span`
 	margin: 0 0.5rem;
 	background: ${props => props.theme.green};
-	color: ${props => props.theme.white};
+	color: ${props => props.theme.offWhite};
+	border: 1px solid ${props => props.theme.green};
 	padding: 0.5rem 1rem;
 	border-radius: 3px;
+	transition: all 200ms ease-out;
 	i {
 		color: ${props => props.theme.green};
 	}
