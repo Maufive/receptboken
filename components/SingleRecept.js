@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Router from "next/router";
+import Moment from "react-moment";
 import { MessageConsumer } from "./providers/MessageProvider";
 import Stars from "./Stars";
 import { Loading } from "./Loading";
 import Author from "./Author";
 import Heart from "./Heart";
 import ClockIcon from "../svg/clock.svg";
+import CalenderIcon from "../svg/calendar.svg";
 import DishIcon from "../svg/dishes.svg";
 import {
 	Wrapper,
@@ -107,6 +109,10 @@ class SingleRecept extends Component {
 							</IconContainer>
 						)}
 						<Author id={recept.author} />
+						<IconContainer>
+							<CalenderIcon />
+							<Moment format="YYYY/MM/DD">{recept.created}</Moment>
+						</IconContainer>
 					</div>
 				</ImageAndTags>
 				<ImageAndTags>

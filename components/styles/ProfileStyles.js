@@ -18,6 +18,12 @@ export const ProfileDescription = styled.div`
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	> div {
+		width: 50%;
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+	}
 `;
 
 export const AvatarContainer = styled.div`

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Link from "next/link";
 import { Loading } from "./Loading";
 import { CardContainer } from "./styles/Card";
 import ReceptCard from "../components/ReceptCard";
@@ -33,16 +34,29 @@ class SavedRecipes extends Component {
 			<div>
 				<h1 style={{ textAlign: "center" }}>Dina sparade recept</h1>
 				<CardContainer>
-					{recept.map(recept => (
-						<ReceptCard
-							id={recept._id}
-							photo={recept.photo}
-							timeRequired={recept.timeRequired}
-							title={recept.title}
-							reviews={recept.reviews}
-							key={recept._id}
-						/>
-					))}
+					{recept.length >= 1 &&
+						recept.map(recept => (
+							<ReceptCard
+								id={recept._id}
+								photo={recept.photo}
+								timeRequired={recept.timeRequired}
+								title={recept.title}
+								reviews={recept.reviews}
+								key={recept._id}
+							/>
+						))}
+					{recept.length === 0 && (
+						<div>
+							<h2>Du har inga sparade recept ☹️</h2>
+							<p>
+								Gå till{" "}
+								<Link href="/">
+									<a style={{ textDecoration: "underline" }}>Recept</a>
+								</Link>{" "}
+								för att hitta nya spännande recept!
+							</p>
+						</div>
+					)}
 				</CardContainer>
 			</div>
 		);

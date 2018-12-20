@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { flash } from "./keyframes";
 
 export const List = styled.ul`
 	list-style: none;
+	font-size: 2rem;
+	line-height: 2;
 	a {
 		color: ${props => props.theme.grey};
 	}
@@ -28,4 +29,13 @@ export const List = styled.ul`
 			border: 1px solid ${props => props.theme.white};
 		}
 	}
+`;
+
+export const ListContainer = styled.div`
+	background: ${props => props.theme.white};
+	padding: 2rem 4rem;
+	border-radius: 5px;
+	min-width: fit-content;
+	width: 500px;
+	margin: 0 auto;
 `;

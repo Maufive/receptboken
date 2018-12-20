@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Link from "next/link";
 import { Loading } from "./Loading";
+import { List, ListContainer } from "./styles/ShoppinglistStyles";
 
 class ShoppingList extends Component {
 	state = {
@@ -26,13 +28,25 @@ class ShoppingList extends Component {
 		const { shoppinglists } = this.state;
 		if (!shoppinglists || shoppinglists.length < 1) return <Loading />;
 		return (
-			<ul>
-				{shoppinglists.map(list => (
-					<li key={list._id}>
-						<p>{list.title}</p>
-					</li>
-				))}
-			</ul>
+			<ListContainer>
+				<h1>Sparade inköpslistor:</h1>
+				<List>
+					{shoppinglists.map(list => (
+						<Link
+							href={{
+								pathname: "/inkopslista",
+								query: {
+									id: list._id
+								}
+							}}
+						>
+							<a>
+								<li key={list._id}>{list.title}</li>
+							</a>
+						</Link>
+					))}
+				</List>
+			</ListContainer>
 		);
 	}
 }

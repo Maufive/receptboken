@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import HeartIcon from "../svg/like-1.svg";
 
 const HeartStyles = styled.span`
 	color: ${props => (props.hearted ? props.theme.red : props.theme.grey)};
 	transition: 300ms all ease-out;
 	margin-right: 3rem;
+	display: flex;
 	align-items: center;
+	justify-content: center;
 	font-weight: 700;
 	cursor: pointer;
 	font-size: 1.5rem;
@@ -14,10 +17,13 @@ const HeartStyles = styled.span`
 	border-radius: 3px;
 	/* border: 1px solid
 		${props => (props.hearted ? props.theme.red : props.theme.grey)}; */
-	i {
+	svg {
 		margin-right: 1rem;
+		height: 15px;
+		width: 15px;
 	}
 	&:hover {
+		fill: ${props => (props.hearted ? props.theme.grey : props.theme.red)};
 		color: ${props => (props.hearted ? props.theme.grey : props.theme.red)};
 		/* border: 1px solid
 			${props => (props.hearted ? props.theme.grey : props.theme.red)}; */
@@ -85,13 +91,13 @@ class Heart extends Component {
 		if (hearted)
 			return (
 				<HeartStyles hearted onClick={this.heartRecept}>
-					<i className="icofont-heart-alt" />
+					<HeartIcon />
 					Sparad
 				</HeartStyles>
 			);
 		return (
 			<HeartStyles onClick={this.heartRecept}>
-				<i className="icofont-heart-alt" />
+				<HeartIcon />
 				Spara
 			</HeartStyles>
 		);

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Router from "next/router";
 import styled from "styled-components";
 
 const NavigationBar = styled.ul`
@@ -31,7 +31,7 @@ const NavItem = styled.li`
 
 const Nav = () => (
 	<NavigationBar>
-		<NavItem active>
+		<NavItem active onClick={() => Router.push("/")}>
 			<p>RECEPT</p>
 		</NavItem>
 		<NavItem>

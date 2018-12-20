@@ -89,4 +89,7 @@ export const CardContainer = styled.div`
 		flex-direction: column;
 		align-items: center;
 	}
+	a {
+		color: ${props => props.theme.grey};
+	}
 `;

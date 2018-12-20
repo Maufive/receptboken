@@ -20,10 +20,10 @@ class profile extends Component {
 	};
 
 	async componentDidMount() {
-		if (!this.props.user) {
-			this.props.setMessage("danger", "Vänligen logga in för visa profil");
-			Router.push("/");
-		}
+		// if (!this.props.user) {
+		// 	this.props.setMessage("danger", "Vänligen logga in för visa profil");
+		// 	Router.push("/");
+		// }
 		await this.getUser();
 	}
 
@@ -54,10 +54,12 @@ class profile extends Component {
 		return (
 			<ProfileContainer>
 				<ProfileDescription>
-					<AvatarContainer>
-						<ChefIcon />
-					</AvatarContainer>
-					<div style={{ width: "50%" }}>
+					<div>
+						<AvatarContainer>
+							<ChefIcon />
+						</AvatarContainer>
+					</div>
+					<div>
 						<h1>{user.fname + " " + user.lname}</h1>
 						<p>
 							Kanske en kort beskrivning här som man kan fylla i om man vill.
@@ -82,17 +84,17 @@ class profile extends Component {
 									small
 								/>
 							))}
+						{recept && recept.length < 1 && (
+							<div>
+								<h3>Du har inte laddat upp några recept ännu... 😞</h3>
+								<Link href="/recipe">
+									<a>
+										<Button>Klicka här för att ladda upp ett recept →</Button>
+									</a>
+								</Link>
+							</div>
+						)}
 					</CardContainer>
-					{recept && recept.length < 1 && (
-						<div>
-							<h3>Du har inte laddat upp några recept ännu... 😞</h3>
-							<Link href="/recipe">
-								<a>
-									<Button>Klicka här för att ladda upp ett recept →</Button>
-								</a>
-							</Link>
-						</div>
-					)}
 				</div>
 			</ProfileContainer>
 		);

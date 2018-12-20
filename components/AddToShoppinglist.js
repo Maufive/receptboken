@@ -63,7 +63,10 @@ class AddToShoppinglist extends Component {
 		// Skicka ingredienserna
 		await axios
 			.post(`http://localhost:7777/lists/update/${id}`, { newItems, oldItems })
-			.then(response => this.props.setMessage("success", response.data.message))
+			.then(response => {
+				this.props.setMessage("success", response.data.message);
+				console.log(response.data);
+			})
 			.catch(error => console.log(error));
 		this.setState({ isModalOpen: false, title: "" });
 	};
