@@ -20,10 +20,6 @@ class profile extends Component {
 	};
 
 	async componentDidMount() {
-		// if (!this.props.user) {
-		// 	this.props.setMessage("danger", "Vänligen logga in för visa profil");
-		// 	Router.push("/");
-		// }
 		await this.getUser();
 	}
 
@@ -56,16 +52,61 @@ class profile extends Component {
 				<ProfileDescription>
 					<div>
 						<AvatarContainer>
-							<ChefIcon />
+							{user.photo ? (
+								<img src={user.photo} alt="user image" />
+							) : (
+								<ChefIcon />
+							)}
 						</AvatarContainer>
 					</div>
 					<div>
 						<h1>{user.fname + " " + user.lname}</h1>
-						<p>
-							Kanske en kort beskrivning här som man kan fylla i om man vill.
-							Här kan man skriva något om vilken typ av mat man gillar och
-							varför. Eller något annat, ganska frivilligt faktiskt.
-						</p>
+						<h2>Om mig:</h2>
+						{user.description ? (
+							<p>{user.description}</p>
+						) : (
+							<div>
+								{this.props.user ? (
+									this.props.user._id !== user._id ? (
+										<div>
+											<p>
+												{user.fname} har inte lagt till någon beskrivning
+												ännu...
+											</p>
+										</div>
+									) : (
+										<div>
+											<p>Du har inte lagt till någon beskrivning ännu...</p>
+										</div>
+									)
+								) : null}
+							</div>
+						)}
+					</div>
+					<div
+						style={{
+							marginTop: "5rem"
+						}}
+					>
+						{this.props.user && this.props.user._id === user._id ? (
+							<Link
+								href={{
+									pathname: "/edit-profile",
+									query: {
+										id: user._id
+									}
+								}}
+							>
+								<a
+									style={{
+										color: "black",
+										textDecoration: "underline"
+									}}
+								>
+									Klicka här för att ändra din profil →
+								</a>
+							</Link>
+						) : null}
 					</div>
 				</ProfileDescription>
 				<div>
@@ -86,12 +127,17 @@ class profile extends Component {
 							))}
 						{recept && recept.length < 1 && (
 							<div>
-								<h3>Du har inte laddat upp några recept ännu... 😞</h3>
-								<Link href="/recipe">
-									<a>
-										<Button>Klicka här för att ladda upp ett recept →</Button>
-									</a>
-								</Link>
+								<h3>
+									{this.props.user ? "Du" : user.fname} har inte laddat upp
+									några recept ännu... 😞
+								</h3>
+								{this.props.user._id === user._id ? (
+									<Link href="/recipe">
+										<a>
+											<Button>Klicka här för att ladda upp ett recept →</Button>
+										</a>
+									</Link>
+								) : null}
 							</div>
 						)}
 					</CardContainer>

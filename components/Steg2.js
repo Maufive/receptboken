@@ -5,7 +5,7 @@ import EditIcon from "../svg/edit.svg";
 import AddIcon from "../svg/add.svg";
 import IngredientIcon from "../svg/groceries.svg";
 import TrashIcon from "../svg/trash.svg";
-import { RecipeForm, List, ListItemDiv } from "./styles/Steg1Styles";
+import { List, ListItemDiv } from "./styles/Steg1Styles";
 import { Button, DisabledButton } from "./styles/Button";
 
 class Steg2 extends Component {
@@ -114,8 +114,7 @@ class Steg2 extends Component {
 					<span>Steg {steg} av 3</span>
 				</h3>
 				<div>
-					<input
-						type="text"
+					<textarea
 						name="string"
 						required
 						value={this.state.string}

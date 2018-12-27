@@ -8,7 +8,7 @@ export const Card = styled.div`
 	box-shadow: ${props => props.theme.bsHard};
 	transition: all 150ms ease-in;
 	animation: ${fadeIn} 500ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
-	animation-delay: 600ms;
+	animation-delay: 400ms;
 	h3 {
 		text-align: center;
 		color: ${props => props.theme.grey};
@@ -77,7 +77,8 @@ export const CardContainer = styled.div`
 	background: ${props => props.theme.white};
 	border-radius: 5px;
 	padding: 4rem 0;
-	animation: ${fadeIn} 1000ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
+	animation: ${fadeIn} 400ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
+	animation-delay: 300ms;
 	margin-top: 5rem;
 	h2,
 	h3 {

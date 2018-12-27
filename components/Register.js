@@ -16,10 +16,31 @@ class RegisterComponent extends Component {
 			email: "",
 			password: "",
 			confirmPassword: "",
-			passwordMatch: false,
-			msg: "Registrera →"
+			passwordMatch: false
 		};
 	}
+
+	login = (email, password) => {
+		axios
+			.post("http://localhost:7777/auth/login", { email, password })
+			.then(result => {
+				localStorage.setItem("jwtToken", result.data.token);
+				console.log("JWT Token Set");
+				console.log(result.data);
+				console.log(this.props.setUser);
+				this.props.setUser(result.data.user);
+				this.props.setMessage(
+					"success",
+					`👋 Välkommen ${result.data.user.fname}!`
+				);
+				Router.push("/");
+			})
+			.catch(error => {
+				console.log(error);
+				console.log(error.response.data.message);
+				this.setState({ error: error.response.data.message });
+			});
+	};
 
 	saveToState = e => {
 		this.setState({ [e.target.name]: e.target.value });
@@ -44,12 +65,12 @@ class RegisterComponent extends Component {
 		}
 	};
 
-	onSubmit = e => {
+	onSubmit = async e => {
 		e.preventDefault();
 
 		const { email, password, passwordMatch, fname, lname } = this.state;
 		if (passwordMatch === true) {
-			axios
+			await axios
 				.post("http://localhost:7777/auth/register", {
 					email,
 					password,
@@ -57,14 +78,13 @@ class RegisterComponent extends Component {
 					lname
 				})
 				.then(result => {
+					this.login(email, password);
 					this.setState({
 						email: "",
 						password: "",
 						fname: "",
-						lname: "",
-						msg: "Välkommen! 🥳 🎉"
+						lname: ""
 					});
-					Router.push("/");
 				})
 				.catch(error => {
 					console.log(error.response);
@@ -153,11 +173,11 @@ class RegisterComponent extends Component {
 					</div>
 					{this.state.passwordMatch ? (
 						<Button fullWidth primary type="submit">
-							{this.state.msg}
+							Registrera →
 						</Button>
 					) : (
 						<DisabledButton disabled fullWidth>
-							{this.state.msg}
+							Registrera →
 						</DisabledButton>
 					)}
 				</LoginForm>

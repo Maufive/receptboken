@@ -17,8 +17,8 @@ const StyledHeader = styled.header`
 		justify-content: space-between;
 		align-items: center;
 		padding: 1rem 2rem;
-		border-bottom: 5px solid ${props => props.theme.green};
-		height: 70px;
+		/* border-bottom: 5px solid ${props => props.theme.yellow}; */
+		height: 60px;
 		background: ${props => props.theme.black};
 		width: 100%;
 		margin: 0 auto;

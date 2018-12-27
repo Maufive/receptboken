@@ -13,7 +13,7 @@ const theme = {
 	yellow: "#FFCF44",
 	black: "#393939",
 	grey: "#5A5555",
-	mediumgrey: "#828282",
+	mediumgrey: "#727272",
 	lightgrey: "#E1E1E1",
 	offWhite: "#F5F5F5",
 	white: "#fefefe",
@@ -40,7 +40,8 @@ const Inner = styled.div`
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-	@import url("https://fonts.googleapis.com/css?family=Playfair+Display");
+	@import url('https://fonts.googleapis.com/css?family=Proza+Libre:400,700');
+	@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
   html {
     box-sizing: border-box;
     font-size: 10px;
@@ -72,6 +73,10 @@ const GlobalStyle = createGlobalStyle`
 	}
 	p {
 		margin: 0;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "Montserrat";
+		font-weight: 700;
 	}
 `;
 

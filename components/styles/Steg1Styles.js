@@ -15,6 +15,7 @@ export const RecipeForm = styled.form`
 	select:focus {
 		outline-color: ${props => props.theme.green};
 	}
+
 	input[type="text"] {
 		width: 100%;
 		height: 100%;

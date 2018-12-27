@@ -10,13 +10,23 @@ class Jumbotron extends Component {
 			<StyledJumbotron>
 				<h1>Snabba enkla recept för att göra dig vardag smidigare</h1>
 				<div style={{ width: "400px", margin: "0 auto" }}>
-					<Link href="/recipe">
-						<a>
-							<Button primary fullWidth style={{ animationDelay: "300ms" }}>
-								<NotesIcon /> Lägg till recept
-							</Button>
-						</a>
-					</Link>
+					{this.props.user ? (
+						<Link href="/recipe">
+							<a>
+								<Button primary fullWidth style={{ animationDelay: "250ms" }}>
+									<NotesIcon /> Lägg till recept
+								</Button>
+							</a>
+						</Link>
+					) : (
+						<Link href="/register">
+							<a>
+								<Button primary fullWidth style={{ animationDelay: "250ms" }}>
+									👋 Registrera dig här
+								</Button>
+							</a>
+						</Link>
+					)}
 				</div>
 			</StyledJumbotron>
 		);

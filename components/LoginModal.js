@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Modal from "react-modal";
 import { MessageConsumer } from "./providers/MessageProvider";
 import Login from "./Login";
-import { Button } from "./styles/Button";
+import { MinButton } from "./styles/Button";
 import { LoginContainer, customStyles } from "./styles/Jumbotron";
 import LockIcon from "../svg/las.svg";
 
@@ -28,16 +28,10 @@ class LoginModal extends Component {
 	render() {
 		return (
 			<LoginContainer>
-				{this.props.primaryButton ? (
-					<Button fullWidth primary onClick={this.openModal}>
-						Logga in
-					</Button>
-				) : (
-					<Button fullWidth primary onClick={this.openModal}>
-						<LockIcon />
-						Logga in
-					</Button>
-				)}
+				<MinButton onClick={this.openModal}>
+					<LockIcon />
+					Logga in
+				</MinButton>
 				<Modal
 					isOpen={this.state.isModalOpen}
 					onAfterOpen={this.afterOpenModal}

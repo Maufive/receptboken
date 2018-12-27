@@ -180,7 +180,7 @@ class Steg1Test extends Component {
 						required
 					/>
 					<label htmlFor="item">
-						<IngredientIcon /> Fyll i ingredienser:
+						<IngredientIcon style={{ fill: "#15BD76" }} /> Fyll i ingredienser:
 					</label>
 				</div>
 				<div style={{ marginBottom: "1rem" }}>

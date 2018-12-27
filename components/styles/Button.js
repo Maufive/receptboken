@@ -62,3 +62,29 @@ export const DisabledButton = styled(Button)`
 		fill: ${props => props.theme.lightgrey};
 	}
 `;
+
+export const MinButton = styled.button`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: ${props => (props.fullWidth ? "100%" : "")};
+	border-radius: 5px;
+	padding: 1rem 2rem;
+	background: transparent;
+	border: 1px solid ${props => props.theme.green};
+	color: ${props => props.theme.offWhite};
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 200ms ease-out;
+	svg {
+		fill: ${props => props.theme.offWhite};
+		height: 1.5rem;
+		width: 1.5rem;
+		margin-right: 1rem;
+	}
+
+	&:hover {
+		background: ${props => props.theme.green};
+		color: ${props => props.theme.offWhite};
+	}
+`;

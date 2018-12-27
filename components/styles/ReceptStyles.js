@@ -36,6 +36,7 @@ export const ImageAndTags = styled.div`
 
 export const ListItem = styled.div`
 	padding: 1rem 0;
+	color: ${props => props.theme.mediumgrey};
 `;
 
 export const Tag = styled.span`

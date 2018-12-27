@@ -32,7 +32,7 @@ export const StyledForm = styled.form`
 	input[type="password"],
 	input[type="email"] {
 		font-size: 2rem;
-		padding: 1.5rem;
+		padding: 1rem 1.5rem;
 		width: 100%;
 		border: 1px solid ${props => props.theme.lightgrey};
 		border-radius: 5px;
@@ -94,6 +94,38 @@ export const StyledForm = styled.form`
 		color: ${props => props.theme.mediumgrey};
 	}
 	input:valid + label {
+		font-size: 1rem;
+		transform: translateY(-3.5rem);
+		color: ${props => props.theme.mediumgrey};
+	}
+
+	textarea {
+		width: 100%;
+		height: 10rem;
+		outline: none;
+		font-size: 1rem;
+		padding: 1rem;
+		border: 1px solid ${props => props.theme.offWhite};
+		border-radius: 5px;
+		font-size: 1.5rem;
+	}
+
+	textarea:focus + label {
+		border: none;
+		font-size: 1rem;
+		transform: translateY(-3.5rem);
+		color: ${props => props.theme.mediumgrey};
+	}
+
+	textarea:valid {
+		border: 2px solid ${props => props.theme.green};
+	}
+
+	textarea:invalid {
+		border: 2px solid ${props => props.theme.lightgrey};
+	}
+
+	textarea:valid + label {
 		font-size: 1rem;
 		transform: translateY(-3.5rem);
 		color: ${props => props.theme.mediumgrey};
