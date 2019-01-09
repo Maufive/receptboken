@@ -34,9 +34,18 @@ export const ImageAndTags = styled.div`
 	}
 `;
 
+export const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
 export const ListItem = styled.div`
 	padding: 1rem 0;
-	color: ${props => props.theme.mediumgrey};
+	color: ${props => props.theme.black};
+	font-family: "Proza Libre";
+	font-weight: 400;
+	border-bottom: 1px solid ${props => props.theme.lightgrey};
+	font-size: 2rem;
 `;
 
 export const Tag = styled.span`

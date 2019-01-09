@@ -2,13 +2,18 @@ import styled from "styled-components";
 import { fadeIn, slideIn, slideUp } from "./keyframes";
 
 export const UserDropdownStyles = styled.div`
-	width: fit-content;
-	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	width: 200px;
 `;
 
 export const DropdownBackground = styled.div`
 	animation: ${slideUp} 200ms ease-in-out;
 	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	width: 200px;
 `;
 
 export const DropDownContainer = styled.div`
@@ -16,9 +21,9 @@ export const DropDownContainer = styled.div`
 	color: ${props => props.theme.white};
 	padding: 0.5rem 2rem;
 	position: absolute;
-	width: max-content;
 	border-radius: ${props => props.theme.bRadius};
 	font-weight: 700;
+	width: 100%;
 	> div {
 		display: flex;
 		align-items: center;
@@ -54,8 +59,7 @@ export const Square = styled.div`
 	transform: rotate(45deg);
 	margin: 0 auto;
 	position: absolute;
-	left: 40%;
-	top: 50%;
+	left: 60%;
 `;
 
 export const Option = styled.span`

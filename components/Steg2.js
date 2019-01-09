@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { StyledForm } from "./styles/FormStyles";
 import EditIcon from "../svg/edit.svg";
 import AddIcon from "../svg/add.svg";
-import IngredientIcon from "../svg/groceries.svg";
 import TrashIcon from "../svg/trash.svg";
 import { List, ListItemDiv } from "./styles/Steg1Styles";
 import { Button, DisabledButton } from "./styles/Button";
@@ -12,7 +11,6 @@ class Steg2 extends Component {
 	state = {
 		arr: [],
 		string: "",
-		step: 1,
 		editing: false,
 		editIndex: null
 	};
@@ -24,16 +22,12 @@ class Steg2 extends Component {
 	}
 
 	addToArray = e => {
-		const { string, step } = this.state;
+		const { string } = this.state;
 		e.preventDefault();
 
 		if (string.length >= 5) {
-			const steg = `Steg ${step}: `;
-			const completeString = steg.concat(" ", string);
-
 			this.setState(prevState => ({
-				arr: [...prevState.arr, completeString],
-				step: step + 1,
+				arr: [...prevState.arr, string],
 				string: ""
 			}));
 		} else {
@@ -71,14 +65,13 @@ class Steg2 extends Component {
 		e.preventDefault();
 		const { string } = this.state;
 		const index = this.state.editIndex;
-		const steg = `Steg ${index + 1}: `;
-		const completeString = steg.concat(" ", string);
+
 		// kolla så det finns något i inputen
 		if (string.length >= 2) {
 			// ta en kopia på arrayen i state för att modifiera
 			const newArr = [...this.state.arr];
 			// ta den redigerade strängen och tryck in den på det index i arrayen som jag hämtat från editItem funktionen
-			newArr[index] = completeString;
+			newArr[index] = string;
 			// spara.
 			this.setState({
 				arr: newArr,
@@ -110,7 +103,7 @@ class Steg2 extends Component {
 		return (
 			<StyledForm>
 				<h3 style={{ display: "flex", justifyContent: "space-between" }}>
-					<span>Ingedienser</span>
+					<span>Gör såhär:</span>
 					<span>Steg {steg} av 3</span>
 				</h3>
 				<div>
@@ -120,11 +113,14 @@ class Steg2 extends Component {
 						value={this.state.string}
 						onChange={this.saveToState}
 					/>
-					<label htmlFor="string">Fyll i Steg {this.state.step}</label>
+					<label htmlFor="string">Fyll i beskrivning</label>
 				</div>
 				<div>
 					{this.state.editing ? (
-						<Button onClick={e => this.saveEdit(e, this.state.editIndex)}>
+						<Button
+							fullWidth
+							onClick={e => this.saveEdit(e, this.state.editIndex)}
+						>
 							<EditIcon />
 							Ändra
 						</Button>

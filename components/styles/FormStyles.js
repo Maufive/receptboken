@@ -113,7 +113,7 @@ export const StyledForm = styled.form`
 	textarea:focus + label {
 		border: none;
 		font-size: 1rem;
-		transform: translateY(-3.5rem);
+		transform: translateY(-4rem);
 		color: ${props => props.theme.mediumgrey};
 	}
 
@@ -127,7 +127,7 @@ export const StyledForm = styled.form`
 
 	textarea:valid + label {
 		font-size: 1rem;
-		transform: translateY(-3.5rem);
+		transform: translateY(-4rem);
 		color: ${props => props.theme.mediumgrey};
 	}
 

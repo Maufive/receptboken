@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
+import InfiniteScroll from "react-infinite-scroller";
 import { UserConsumer } from "../components/providers/UserProvider";
+import Pagination from "../components/Pagination";
 import Jumbotron from "../components/Jumbotron";
 import Searchbar from "../components/Searchbar";
 import ReceptCard from "../components/ReceptCard";
 import { Loading } from "../components/Loading";
-import { Card, CardContainer } from "../components/styles/Card";
+import { CardContainer } from "../components/styles/Card";
 
 class index extends Component {
 	state = {
 		user: null,
-		recept: null
+		recept: null,
+		page: 1,
+		hasMore: true
 	};
 
 	componentDidMount() {
@@ -20,17 +24,35 @@ class index extends Component {
 		this.loadRecipes();
 	}
 
-	// componentDidUpdate(prevState) {
-	// 	if (this.state.user !== prevState.user) {
-	// 		this.props.setUser(this.state.user);
-	// 	}
-	// }
+	handleLoadMore = page => {
+		// ta en kopia av recepten i state och lägg till de nya recepten
+		axios
+			.get(`http://localhost:7777/recipe/${page}`)
+			.then(response => {
+				// Kolla så det kommer tillbaka data från API't, annars bör inte funktionen köras
+				if (response.data.length >= 1) {
+					const oldState = [...this.state.recept];
+					const recept = oldState.concat(response.data);
+					console.log("More incoming!");
+					this.setState(prevState => ({
+						// recept: [...prevState.recept, response.data],
+						recept,
+						page: page + 1
+					}));
+				} else {
+					// Gör så att funktionen som laddar recept via scroll inte körs när det tagit slut på recept
+					this.setState({ hasMore: false });
+				}
+			})
+			.catch(error => console.log(error));
+	};
 
 	loadRecipes = () => {
+		const { page } = this.state;
 		axios
-			.get("http://localhost:7777/recipe")
+			.get(`http://localhost:7777/recipe/${page}`)
 			.then(response => {
-				this.setState({ recept: response.data });
+				this.setState({ recept: response.data, page: page + 1 });
 			})
 			.catch(error => {
 				this.props.setMessage("danger", "Oops! Något blev knas på servern");
@@ -59,6 +81,7 @@ class index extends Component {
 
 	render() {
 		if (!this.state.recept) return <Loading />;
+		const { page, hasMore } = this.state;
 		return (
 			<div>
 				<UserConsumer>
@@ -66,18 +89,25 @@ class index extends Component {
 				</UserConsumer>
 				<br />
 				<Searchbar />
-				<CardContainer>
-					{this.state.recept.map(recept => (
-						<ReceptCard
-							id={recept._id}
-							photo={recept.photo}
-							timeRequired={recept.timeRequired}
-							title={recept.title}
-							reviews={recept.reviews}
-							key={recept._id}
-						/>
-					))}
-				</CardContainer>
+				<InfiniteScroll
+					pageStart={page}
+					loadMore={() => this.handleLoadMore(page)}
+					hasMore={hasMore}
+					// loader={<Loading />}
+				>
+					<CardContainer>
+						{this.state.recept.map(recept => (
+							<ReceptCard
+								id={recept._id}
+								photo={recept.photo}
+								timeRequired={recept.timeRequired}
+								title={recept.title}
+								reviews={recept.reviews}
+								key={recept._id}
+							/>
+						))}
+					</CardContainer>
+				</InfiniteScroll>
 			</div>
 		);
 	}

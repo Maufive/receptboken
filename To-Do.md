@@ -9,13 +9,18 @@ To-Do:
 👍 - Lägg till ett menyval för "Sparade recept" / Lägg till i profilen
 👍 - Se till att alla protected routes skickar JWT token som Auth Bearer i requestsen
 👍 - Lägg till funktion för att visa vilka recept en användare sparat
+👍 - Lägg till funktion för att redigera användarprofilen
+👍 - Fixa en sökfunktion för att söka efter recept
 
-- Lägg till PropTypes i alla komponenter
-- Lägg till funktion för att redigera användarprofilen
-- Lägg till funktion för att redigera ett uppladdat recept (om man själv skapat det)
+Måste fixas innan jag pushar appen online:
+
+- Lägg till pagination (Max 20 recept?)
 - Lägg till funktion för att ta bort ett recept men bara om det är den användaren som skapat det
+- Lägg till PropTypes i alla komponenter
+- Lägg till funktion för att redigera ett uppladdat recept (om man själv skapat det)
+
+Uppgraderingar som bör göras:
+
 - Lägg till funktion för bortglömt lösenord, så man får ett nytt via email
 - Lägg till ett steg i verifkationskedjan genom att skicka en token via email som användaren ska bekräfta
-- Fixa en sökfunktion för att söka efter recept
-- Lägg till pagination (Max 20 recept?)
 - Receptets betyg visas inte när man går in på ett specifikt recept

@@ -16,6 +16,7 @@ import {
 	ImageAndTags,
 	Tag,
 	ListItem,
+	Container,
 	IconContainer
 } from "./styles/ReceptStyles";
 import AddToShoppinglist from "./AddToShoppinglist";
@@ -115,22 +116,42 @@ class SingleRecept extends Component {
 						</IconContainer>
 					</div>
 				</ImageAndTags>
-				<ImageAndTags>
-					<div style={{ flex: "1" }}>
-						<h2>Du Behöver:</h2>
+				<Container>
+					<h2
+						style={{
+							margin: "0 auto"
+						}}
+					>
+						Du Behöver:
+					</h2>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							height: "500px",
+							flexWrap: "wrap",
+							alignItems: "center"
+						}}
+					>
 						{recept.ingredients.map(ingredient => (
 							<ListItem key={ingredient.input}>
 								{ingredient.numberOfUnits} {ingredient.units} {ingredient.input}
 							</ListItem>
 						))}
 					</div>
-					<div style={{ flex: "2" }}>
-						<h2>Gör såhär:</h2>
+					<div>
+						<h2
+							style={{
+								margin: "0 auto"
+							}}
+						>
+							Gör såhär:
+						</h2>
 						{recept.description.map(step => (
 							<ListItem key={step}>{step}</ListItem>
 						))}
 					</div>
-				</ImageAndTags>
+				</Container>
 				<button onClick={this.deleteRecipe}>DELETE</button>
 			</Wrapper>
 		);

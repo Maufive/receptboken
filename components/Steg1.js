@@ -147,7 +147,7 @@ class Steg1Test extends Component {
 		return (
 			<StyledForm>
 				<h3 style={{ display: "flex", justifyContent: "space-between" }}>
-					<span>Ingedienser</span>
+					<span>Ingredienser</span>
 					<span>Steg {step} av 3</span>
 				</h3>
 				<div>
@@ -201,6 +201,8 @@ class Steg1Test extends Component {
 						<option value="msk">Matsked</option>
 						<option value="tsk">Tesked</option>
 						<option value="dl">Deciliter</option>
+						<option value="frp">Förpackning</option>
+						<option value="ml">Milliliter</option>
 					</select>
 				</div>
 				{/* Om användaren redigerar ett item, ändra knappen till Ändra istället för Lägg till */}

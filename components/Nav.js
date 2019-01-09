@@ -5,7 +5,7 @@ const NavigationBar = styled.ul`
 	display: flex;
 	padding: 0;
 	margin: 0;
-	width: 500px;
+	width: 400px;
 	justify-content: space-between;
 	align-items: center;
 `;
