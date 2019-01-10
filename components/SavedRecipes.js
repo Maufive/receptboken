@@ -21,7 +21,7 @@ class SavedRecipes extends Component {
 			"Bearer " + localStorage.getItem("jwtToken");
 		if (localStorage.jwtToken) {
 			axios
-				.get(`http://localhost:7777/user/hearts/${this.props.user._id}`)
+				.get(`${process.env.API}/user/hearts/${this.props.user._id}`)
 				.then(response => this.setState({ recept: response.data }))
 				.catch(error => console.log(error));
 		}

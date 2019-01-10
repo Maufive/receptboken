@@ -42,7 +42,7 @@ class SingleRecept extends Component {
 	getData = async () => {
 		await this.setState({ loading: true });
 		await axios
-			.get(`http://localhost:7777/recipe/one/${this.props.id}`)
+			.get(`${process.env.API}/recipe/one/${this.props.id}`)
 			.then(response => {
 				this.setState({ recept: response.data, loading: false });
 			})
@@ -56,9 +56,7 @@ class SingleRecept extends Component {
 	// och visa en knapp för att ta bort receptet.
 	verifyUser = () => {
 		axios
-			.post(
-				`http://localhost:7777/auth/verify/author/${this.state.recept.author}`
-			)
+			.post(`${process.env.API}/auth/verify/author/${this.state.recept.author}`)
 			.then(response => {
 				console.log(response.data);
 				this.setState({ owner: response.data });
@@ -70,7 +68,7 @@ class SingleRecept extends Component {
 		e.preventDefault();
 		await this.setState({ loading: true });
 		await axios
-			.post(`http://localhost:7777/recipe/delete/${this.props.id}`, {
+			.post(`${process.env.API}/recipe/delete/${this.props.id}`, {
 				user: this.props.user
 			})
 			.then(response => {

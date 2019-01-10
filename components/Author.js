@@ -29,7 +29,7 @@ class Author extends Component {
 		axios.defaults.headers.common["Authorization"] =
 			"Bearer " + localStorage.getItem("jwtToken");
 		axios
-			.get(`http://localhost:7777/user/profile/author/${userid}`)
+			.get(`${process.env.API}/user/profile/author/${userid}`)
 			.then(response => this.setState({ author: response.data }))
 			.catch(error => console.log(error));
 	};

@@ -19,7 +19,7 @@ class ShoppingList extends Component {
 		axios.defaults.headers.common["Authorization"] =
 			"Bearer " + localStorage.getItem("jwtToken");
 		axios
-			.get(`http://localhost:7777/lists/user/${this.props.user._id}`)
+			.get(`${process.env.API}/lists/user/${this.props.user._id}`)
 			.then(response => this.setState({ shoppinglists: response.data }))
 			.catch(error => console.log(error));
 	};

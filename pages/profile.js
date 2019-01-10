@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Router from "next/router";
 import Link from "next/link";
 import { Loading } from "../components/Loading";
 import { Button } from "../components/styles/Button";
@@ -27,7 +26,7 @@ class profile extends Component {
 	getUser = async () => {
 		const id = this.props.query.id;
 		await axios
-			.get(`http://localhost:7777/user/profile/author/${id}`)
+			.get(`${process.env.API}/user/profile/author/${id}`)
 			.then(response => this.setState({ user: response.data }))
 			.catch(error => console.log(error));
 		this.getRecipes();
@@ -36,7 +35,7 @@ class profile extends Component {
 	getRecipes = () => {
 		// Hämta alla recept som användaren har skapat
 		axios
-			.get(`http://localhost:7777/user/created/${this.state.user._id}`)
+			.get(`${process.env.API}/user/created/${this.state.user._id}`)
 			.then(response => {
 				this.setState({ recept: response.data });
 			})

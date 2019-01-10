@@ -28,7 +28,7 @@ class EditProfile extends Component {
 		// Skickar en postrequest till servern som tar id´t i queryn och id´t som finns på jwt-token och jämför dem på servern
 		const user = this.props.user;
 		axios
-			.post(`http://localhost:7777/auth/verify/${this.props.query.id}`, {
+			.post(`${process.env.API}/auth/verify/${this.props.query.id}`, {
 				user
 			})
 			.then(response => {
@@ -71,7 +71,7 @@ class EditProfile extends Component {
 		const data = this.state;
 		const id = this.props.user._id;
 		await axios
-			.post(`http://localhost:7777/user/edit/${id}`, { data })
+			.post(`${process.env.API}/user/edit/${id}`, { data })
 			.then(response => {
 				this.props.setMessage("success", response.data);
 				Router.push(`/profile?id=${id}`);

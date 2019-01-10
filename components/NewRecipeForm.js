@@ -72,7 +72,7 @@ class NewRecipeForm extends Component {
 		// kolla så att användaren är inloggad innan jag skickar iväg requesten
 
 		axios
-			.post("http://localhost:7777/recipe/add", {
+			.post(`${process.env.API}/recipe/add`, {
 				title,
 				description,
 				tags,

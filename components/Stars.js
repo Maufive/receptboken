@@ -38,7 +38,7 @@ class Stars extends Component {
 		}
 
 		await axios
-			.post(`http://localhost:7777/recipe/review/${this.props.id}`, {
+			.post(`${process.env.API}/recipe/review/${this.props.id}`, {
 				rating
 			})
 			.then(response => {

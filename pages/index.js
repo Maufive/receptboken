@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroller";
 import { UserConsumer } from "../components/providers/UserProvider";
-import Pagination from "../components/Pagination";
 import Jumbotron from "../components/Jumbotron";
 import Searchbar from "../components/Searchbar";
 import ReceptCard from "../components/ReceptCard";
@@ -27,7 +26,7 @@ class index extends Component {
 	handleLoadMore = page => {
 		// ta en kopia av recepten i state och lägg till de nya recepten
 		axios
-			.get(`http://localhost:7777/recipe/${page}`)
+			.get(`${process.env.API}/recipe/${page}`)
 			.then(response => {
 				// Kolla så det kommer tillbaka data från API't, annars bör inte funktionen köras
 				if (response.data.length >= 1) {
@@ -50,7 +49,7 @@ class index extends Component {
 	loadRecipes = () => {
 		const { page } = this.state;
 		axios
-			.get(`http://localhost:7777/recipe/${page}`)
+			.get(`${process.env.API}/recipe/${page}`)
 			.then(response => {
 				this.setState({ recept: response.data, page: page + 1 });
 			})
@@ -65,7 +64,7 @@ class index extends Component {
 			"Bearer " + localStorage.getItem("jwtToken");
 		if (localStorage.jwtToken) {
 			axios
-				.get("http://localhost:7777/user/profile")
+				.get(`${process.env.API}/user/profile`)
 				.then(response => {
 					// console.log(response.data.user);
 					this.setState({ user: response.data.user });

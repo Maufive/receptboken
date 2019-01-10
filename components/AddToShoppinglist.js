@@ -39,7 +39,7 @@ class AddToShoppinglist extends Component {
 		e.preventDefault();
 		const { title } = this.state;
 		await axios
-			.post(`http://localhost:7777/lists/add/${this.props.receptid}`, { title })
+			.post(`${process.env.API}/lists/add/${this.props.receptid}`, { title })
 			.then(response => {
 				this.getShoppinglists();
 				this.setState({ title: "", isModalOpen: false });
@@ -50,7 +50,7 @@ class AddToShoppinglist extends Component {
 
 	getShoppinglists = async () => {
 		await axios
-			.get(`http://localhost:7777/lists/user/${this.props.userid}`)
+			.get(`${process.env.API}/lists/user/${this.props.userid}`)
 			.then(response => this.setState({ shoppinglists: response.data }))
 			.catch(error => console.log(error));
 	};
@@ -62,7 +62,7 @@ class AddToShoppinglist extends Component {
 		const oldItems = shoppinglist.list;
 		// Skicka ingredienserna
 		await axios
-			.post(`http://localhost:7777/lists/update/${id}`, { newItems, oldItems })
+			.post(`${process.env.API}/lists/update/${id}`, { newItems, oldItems })
 			.then(response => {
 				this.props.setMessage("success", response.data.message);
 				console.log(response.data);

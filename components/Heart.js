@@ -59,7 +59,7 @@ class Heart extends Component {
 			"Bearer " + localStorage.getItem("jwtToken");
 		if (localStorage.jwtToken) {
 			axios
-				.post(`http://localhost:7777/user/hearts/${this.props.id}`)
+				.post(`${process.env.API}/user/hearts/${this.props.id}`)
 				.then(response => {
 					if (response.data.hearts.includes(this.props.id)) {
 						this.props.setUser(response.data);

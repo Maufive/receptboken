@@ -17,7 +17,7 @@ class Inköpslista extends Component {
 
 	getList = () => {
 		axios
-			.get(`http://localhost:7777/lists/${this.props.query.id}`)
+			.get(`${process.env.API}/lists/${this.props.query.id}`)
 			.then(response => {
 				this.setState({ list: response.data });
 				console.log(response.data);
