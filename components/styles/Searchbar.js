@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const SearchForm = styled.form`
-	width: 500px;
-	margin: 0 auto;
+	width: 50rem;
+	margin: 3rem auto;
+	@media (max-width: 550px) {
+		width: 35rem;
+	}
 	> div {
 		width: 100%;
 		margin: 0 auto;

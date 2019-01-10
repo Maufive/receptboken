@@ -6,7 +6,6 @@ import LoginModal from "./LoginModal";
 import UserDropdown from "./UserDropdown";
 
 const Logo = styled.h2`
-	font-family: "Playfair Display";
 	font-weight: 400;
 	margin: 0;
 	color: ${props => props.theme.offWhite};
@@ -18,7 +17,7 @@ const StyledHeader = styled.header`
 	padding: 1rem 2rem;
 	/* border-bottom: 5px solid ${props => props.theme.yellow}; */
 	height: 60px;
-	background: ${props => props.theme.black};
+	background: ${props => props.theme.green};
 	width: 100%;
 	margin-bottom: 3rem;
 `;
@@ -33,8 +32,8 @@ class Header extends Component {
 						<Logo>Receptboken</Logo>
 					</a>
 				</Link>
-				<Nav />
-				<div style={{ width: "200px" }}>
+				{/* <Nav /> */}
+				<div>
 					{user ? (
 						<UserDropdown user={user} />
 					) : (

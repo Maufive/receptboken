@@ -28,6 +28,9 @@ const HeartStyles = styled.span`
 		/* border: 1px solid
 			${props => (props.hearted ? props.theme.grey : props.theme.red)}; */
 	}
+	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		margin-right: 1rem;
+	};
 `;
 
 /* 

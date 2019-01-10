@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import Router from "next/router";
-import ChefIcon from "../svg/chef.svg";
-import UsersIcon from "../svg/users.svg";
-import HeartIcon from "../svg/like-1.svg";
+import UsersBoldIcon from "../svg/usersBold.svg";
+import HeartBoldIcon from "../svg/likeBold.svg";
+import ListBoldIcon from "../svg/listBold.svg";
 import LogoutIcon from "../svg/logout.svg";
-import NotesIcon from "../svg/notes.svg";
+import MenuIcon from "../svg/menu-4.svg";
+
 import {
 	UserDropdownStyles,
 	DropDownContainer,
@@ -44,7 +45,8 @@ class UserDropdown extends Component {
 		return (
 			<UserDropdownStyles>
 				<UserItem onClick={() => this.openDropdown()}>
-					<ChefIcon />
+					{/* <ChefIcon /> */}
+					<MenuIcon />
 					{user.fname + " " + user.lname}
 				</UserItem>
 				{this.state.open && (
@@ -67,7 +69,7 @@ class UserDropdown extends Component {
 										onClick={() => this.closeDropdown()}
 									>
 										<a>
-											<UsersIcon />
+											<UsersBoldIcon />
 											Min profil
 										</a>
 									</Link>
@@ -77,7 +79,7 @@ class UserDropdown extends Component {
 								<Option>
 									<Link href="/saved">
 										<a>
-											<HeartIcon />
+											<HeartBoldIcon />
 											Sparade Recept
 										</a>
 									</Link>
@@ -94,7 +96,7 @@ class UserDropdown extends Component {
 										}}
 									>
 										<a>
-											<NotesIcon />
+											<ListBoldIcon />
 											Inköpslistor
 										</a>
 									</Link>

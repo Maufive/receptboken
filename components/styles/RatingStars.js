@@ -81,4 +81,11 @@ export const StarsForm = styled.form`
 			color: ${props => props.theme.white};
 		}
 	}
+	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		margin-right: 1rem;
+
+		button {
+			padding: 0.5rem 0.5rem;
+		}
+	}
 `;

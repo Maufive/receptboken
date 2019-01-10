@@ -8,6 +8,7 @@ import { Loading } from "./Loading";
 import Author from "./Author";
 import Heart from "./Heart";
 import ClockIcon from "../svg/clock.svg";
+import TrashIcon from "../svg/trash.svg";
 import CalenderIcon from "../svg/calendar.svg";
 import DishIcon from "../svg/dishes.svg";
 import {
@@ -15,9 +16,11 @@ import {
 	DetailsBar,
 	ImageAndTags,
 	Tag,
-	ListItem,
+	Ingredienser,
+	Beskrivning,
 	Container,
-	IconContainer
+	IconContainer,
+	DeleteContainer
 } from "./styles/ReceptStyles";
 import AddToShoppinglist from "./AddToShoppinglist";
 
@@ -25,17 +28,21 @@ class SingleRecept extends Component {
 	state = {
 		recept: null,
 		loading: false,
-		error: null
+		error: null,
+		owner: false
 	};
 
-	componentDidMount() {
-		this.getData();
+	async componentDidMount() {
+		await this.getData();
+		if (this.props.user) {
+			this.verifyUser();
+		}
 	}
 
 	getData = async () => {
 		await this.setState({ loading: true });
 		await axios
-			.get(`http://localhost:7777/recipe/${this.props.id}`)
+			.get(`http://localhost:7777/recipe/one/${this.props.id}`)
 			.then(response => {
 				this.setState({ recept: response.data, loading: false });
 			})
@@ -45,11 +52,27 @@ class SingleRecept extends Component {
 			});
 	};
 
+	// Om användaren blivit verifierad och idt stämmer överens med idt som skapat receptet, sätt owner till boolean från api't.
+	// och visa en knapp för att ta bort receptet.
+	verifyUser = () => {
+		axios
+			.post(
+				`http://localhost:7777/auth/verify/author/${this.state.recept.author}`
+			)
+			.then(response => {
+				console.log(response.data);
+				this.setState({ owner: response.data });
+			})
+			.catch(error => console.log(error));
+	};
+
 	deleteRecipe = async e => {
 		e.preventDefault();
 		await this.setState({ loading: true });
 		await axios
-			.post(`http://localhost:7777/recipe/delete/${this.props.id}`)
+			.post(`http://localhost:7777/recipe/delete/${this.props.id}`, {
+				user: this.props.user
+			})
 			.then(response => {
 				this.setState({ loading: false });
 				Router.push("/");
@@ -88,7 +111,7 @@ class SingleRecept extends Component {
 					</IconContainer>
 				</DetailsBar>
 				<ImageAndTags>
-					<img src={recept.photo} alt="Foto på maten" height="300" />
+					<img src={recept.photo} alt="Foto på maten" />
 					<div>
 						<div>
 							{recept.tags.map(tag => (
@@ -114,45 +137,33 @@ class SingleRecept extends Component {
 							<CalenderIcon />
 							<Moment format="YYYY/MM/DD">{recept.created}</Moment>
 						</IconContainer>
+						{this.state.owner && (
+							<DeleteContainer onClick={this.deleteRecipe}>
+								<TrashIcon />
+								Ta bort recept
+							</DeleteContainer>
+						)}
 					</div>
 				</ImageAndTags>
 				<Container>
-					<h2
-						style={{
-							margin: "0 auto"
-						}}
-					>
-						Du Behöver:
-					</h2>
-					<div
-						style={{
-							display: "flex",
-							flexDirection: "column",
-							height: "500px",
-							flexWrap: "wrap",
-							alignItems: "center"
-						}}
-					>
+					<h2>Du Behöver:</h2>
+					<Ingredienser>
 						{recept.ingredients.map(ingredient => (
-							<ListItem key={ingredient.input}>
+							<p key={ingredient.input}>
 								{ingredient.numberOfUnits} {ingredient.units} {ingredient.input}
-							</ListItem>
+							</p>
 						))}
-					</div>
-					<div>
-						<h2
-							style={{
-								margin: "0 auto"
-							}}
-						>
-							Gör såhär:
-						</h2>
+					</Ingredienser>
+					<h2>Gör såhär:</h2>
+					<Beskrivning>
 						{recept.description.map(step => (
-							<ListItem key={step}>{step}</ListItem>
+							<div key={step}>
+								<span />
+								<p>{step}</p>
+							</div>
 						))}
-					</div>
+					</Beskrivning>
 				</Container>
-				<button onClick={this.deleteRecipe}>DELETE</button>
 			</Wrapper>
 		);
 	}

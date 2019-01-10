@@ -87,13 +87,12 @@ class index extends Component {
 				<UserConsumer>
 					{({ user, setUser }) => <Jumbotron user={user} setUser={setUser} />}
 				</UserConsumer>
-				<br />
 				<Searchbar />
 				<InfiniteScroll
 					pageStart={page}
 					loadMore={() => this.handleLoadMore(page)}
 					hasMore={hasMore}
-					// loader={<Loading />}
+					loader={<Loading />}
 				>
 					<CardContainer>
 						{this.state.recept.map(recept => (

@@ -17,13 +17,13 @@ export const DropdownBackground = styled.div`
 `;
 
 export const DropDownContainer = styled.div`
-	background: ${props => props.theme.green};
-	color: ${props => props.theme.white};
+	background: ${props => props.theme.grey};
 	padding: 0.5rem 2rem;
 	position: absolute;
 	border-radius: ${props => props.theme.bRadius};
 	font-weight: 700;
 	width: 100%;
+	z-index: 15;
 	> div {
 		display: flex;
 		align-items: center;
@@ -48,12 +48,12 @@ export const UserItem = styled.p`
 		width: 20px;
 		height: 20px;
 		margin-right: 1rem;
-		fill: ${props => props.theme.green};
+		fill: ${props => props.theme.offWhite};
 	}
 `;
 
 export const Square = styled.div`
-	background: ${props => props.theme.green};
+	background: ${props => props.theme.grey};
 	width: 2.5rem;
 	height: 2.5rem;
 	transform: rotate(45deg);
@@ -63,11 +63,16 @@ export const Square = styled.div`
 `;
 
 export const Option = styled.span`
-	color: ${props => props.theme.white};
 	transition: all 200ms ease-in;
+	color: ${props => props.theme.offWhite};
+	a {
+		color: ${props => props.theme.offWhite};
+	}
+	svg {
+		fill: ${props => props.theme.offWhite};
+	}
 	&:hover {
 		transform: translateX(3px);
-		color: ${props => props.theme.offWhite};
 		cursor: pointer;
 	}
 `;

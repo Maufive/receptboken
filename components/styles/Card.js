@@ -79,7 +79,6 @@ export const CardContainer = styled.div`
 	padding: 4rem 0;
 	animation: ${fadeIn} 400ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
 	animation-delay: 300ms;
-	margin-top: 5rem;
 	h2,
 	h3 {
 		margin: 0;

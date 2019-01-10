@@ -11,16 +11,20 @@ To-Do:
 👍 - Lägg till funktion för att visa vilka recept en användare sparat
 👍 - Lägg till funktion för att redigera användarprofilen
 👍 - Fixa en sökfunktion för att söka efter recept
+👍 - Lägg till pagination. Fixade InfiniteScrolling istället för Pagination, men det löser samma problem.
+👍 - Redesigna texten i SingleRecept-componenten.
+👍 - Redesigna profilsidan
+👍 - Lägg till funktion för att ta bort ett recept men bara om det är den användaren som skapat det
 
 Måste fixas innan jag pushar appen online:
 
-- Lägg till pagination (Max 20 recept?)
-- Lägg till funktion för att ta bort ett recept men bara om det är den användaren som skapat det
+- Mobilanpassa hela skiten
 - Lägg till PropTypes i alla komponenter
 - Lägg till funktion för att redigera ett uppladdat recept (om man själv skapat det)
 
 Uppgraderingar som bör göras:
 
+- Lägg till så sökfunktionen även söker på beskrivningar och taggar
 - Lägg till funktion för bortglömt lösenord, så man får ett nytt via email
 - Lägg till ett steg i verifkationskedjan genom att skicka en token via email som användaren ska bekräfta
 - Receptets betyg visas inte när man går in på ett specifikt recept

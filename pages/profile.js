@@ -9,7 +9,8 @@ import { CardContainer } from "../components/styles/Card";
 import {
 	ProfileContainer,
 	ProfileDescription,
-	AvatarContainer
+	AvatarContainer,
+	UppladdadeRecept
 } from "../components/styles/ProfileStyles";
 import ChefIcon from "../svg/chef.svg";
 
@@ -48,9 +49,9 @@ class profile extends Component {
 		const { recept, user } = this.state;
 		if (!user) return <Loading />;
 		return (
-			<ProfileContainer>
-				<ProfileDescription>
-					<div>
+			<div>
+				<ProfileContainer>
+					<ProfileDescription>
 						<AvatarContainer>
 							{user.photo ? (
 								<img src={user.photo} alt="user image" />
@@ -58,60 +59,57 @@ class profile extends Component {
 								<ChefIcon />
 							)}
 						</AvatarContainer>
-					</div>
-					<div>
-						<h1>{user.fname + " " + user.lname}</h1>
-						<h2>Om mig:</h2>
-						{user.description ? (
-							<p>{user.description}</p>
-						) : (
-							<div>
-								{this.props.user ? (
-									this.props.user._id !== user._id ? (
-										<div>
-											<p>
-												{user.fname} har inte lagt till någon beskrivning
-												ännu...
-											</p>
-										</div>
-									) : (
-										<div>
-											<p>Du har inte lagt till någon beskrivning ännu...</p>
-										</div>
-									)
-								) : null}
-							</div>
-						)}
-					</div>
-					<div
-						style={{
-							marginTop: "5rem"
-						}}
-					>
-						{this.props.user && this.props.user._id === user._id ? (
-							<Link
-								href={{
-									pathname: "/edit-profile",
-									query: {
-										id: user._id
-									}
-								}}
-							>
-								<a
-									style={{
-										color: "black",
-										textDecoration: "underline"
+						<div>
+							<h2>{user.fname + " " + user.lname}</h2>
+							<h2>Om mig:</h2>
+							{user.description ? (
+								<p>{user.description}</p>
+							) : (
+								<div>
+									{this.props.user ? (
+										this.props.user._id !== user._id ? (
+											<div>
+												<p>
+													{user.fname} har inte lagt till någon beskrivning
+													ännu...
+												</p>
+											</div>
+										) : (
+											<div>
+												<p>Du har inte lagt till någon beskrivning ännu...</p>
+											</div>
+										)
+									) : null}
+								</div>
+							)}
+						</div>
+						<div>
+							{this.props.user && this.props.user._id === user._id ? (
+								<Link
+									href={{
+										pathname: "/edit-profile",
+										query: {
+											id: user._id
+										}
 									}}
 								>
-									Klicka här för att ändra din profil →
-								</a>
-							</Link>
-						) : null}
-					</div>
-				</ProfileDescription>
-				<div>
-					<h2 style={{ textAlign: "center" }}>Uppladdade recept:</h2>
-					<CardContainer style={{ marginTop: "0", paddingTop: "0" }}>
+									<a
+										style={{
+											color: "black",
+											textDecoration: "underline"
+										}}
+									>
+										Klicka här för att ändra din profil →
+									</a>
+								</Link>
+							) : null}
+						</div>
+					</ProfileDescription>
+				</ProfileContainer>
+
+				<UppladdadeRecept>
+					<h2>Uppladdade recept:</h2>
+					<CardContainer>
 						{recept &&
 							recept.length >= 1 &&
 							recept.map(recept => (
@@ -122,7 +120,6 @@ class profile extends Component {
 									title={recept.title}
 									reviews={recept.reviews}
 									key={recept._id}
-									small
 								/>
 							))}
 						{recept && recept.length < 1 && (
@@ -141,8 +138,8 @@ class profile extends Component {
 							</div>
 						)}
 					</CardContainer>
-				</div>
-			</ProfileContainer>
+				</UppladdadeRecept>
+			</div>
 		);
 	}
 }

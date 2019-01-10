@@ -9,7 +9,7 @@ class Jumbotron extends Component {
 		return (
 			<StyledJumbotron>
 				<h1>Snabba enkla recept för att göra dig vardag smidigare</h1>
-				<div style={{ width: "400px", margin: "0 auto" }}>
+				<div>
 					{this.props.user ? (
 						<Link href="/recipe">
 							<a>
