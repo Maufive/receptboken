@@ -15,10 +15,13 @@ To-Do:
 👍 - Redesigna texten i SingleRecept-componenten.
 👍 - Redesigna profilsidan
 👍 - Lägg till funktion för att ta bort ett recept men bara om det är den användaren som skapat det
+👍 - Mobilanpassa hela skiten
+👍 - Mer margin upp & ner på SingleRecept
+👍 - Byt färg på Success-meddelandet
+👍 - Bredda ut receptcards på mobila enheter
 
 Måste fixas innan jag pushar appen online:
 
-- Mobilanpassa hela skiten
 - Lägg till PropTypes i alla komponenter
 - Lägg till funktion för att redigera ett uppladdat recept (om man själv skapat det)
 

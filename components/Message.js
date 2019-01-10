@@ -5,7 +5,7 @@ import { MessageStyles } from "./styles/Message";
 
 export const Message = props => {
 	let background;
-	if (props.type === "success") background = "#15BD76";
+	if (props.type === "success") background = "#F5F5F5";
 	if (props.type === "danger") background = "#bc1616";
 	if (props.type === "info") background = "#FFCF44";
 	// Om det inte finns något meddelande så dölj komponenten

@@ -60,6 +60,8 @@ export const ImageAndTags = styled.div`
 		> img {
 			margin-right: 0;
 			margin-bottom: 1rem;
+			max-height: 350px;
+			max-width: 350px;
 		}
 	}
 `;

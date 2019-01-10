@@ -9,6 +9,10 @@ export const Card = styled.div`
 	transition: all 150ms ease-in;
 	animation: ${fadeIn} 500ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
 	animation-delay: 400ms;
+	img {
+		width: 250px;
+		height: 250px;
+	}
 	h3 {
 		text-align: center;
 		color: ${props => props.theme.grey};
@@ -33,6 +37,14 @@ export const Card = styled.div`
 		width: 20px;
 		fill: ${props => props.theme.grey};
 		margin-right: 0.5rem;
+	}
+
+	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		width: 325px;
+		img {
+			width: 325px;
+			height: 325px;
+		}
 	}
 `;
 

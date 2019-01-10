@@ -14,10 +14,10 @@ export const MessageStyles = styled.div`
 		border-radius: 10px;
 		left: -50%;
 		background: ${props => props.background};
-		color: ${props => props.theme.offWhite};
+		color: ${props => props.theme.grey};
 		padding: 1rem 3rem;
-		height: 50px;
 		font-weight: 700;
+		border: 2px solid ${props => props.theme.grey};
 		i {
 			margin-right: 1rem;
 		}

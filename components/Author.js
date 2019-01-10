@@ -4,8 +4,9 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const AuthorStyles = styled.div`
+	margin: 1rem 0;
 	a {
-		margin-left: 0.5rem;
+		margin-left: 1rem;
 		color: ${props => props.theme.green};
 		transition: all 200ms ease-out;
 		border: 1px solid transparent;

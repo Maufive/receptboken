@@ -32,7 +32,7 @@ class UserProvider extends Component {
 			"Bearer " + localStorage.getItem("jwtToken");
 		if (localStorage.jwtToken) {
 			axios
-				.get("http://localhost:7777/user/profile")
+				.get(`https://receptboken.herokuapp.com/user/profile`)
 				.then(response => {
 					// console.log(response.data.user);
 					this.setState({ user: response.data.user });

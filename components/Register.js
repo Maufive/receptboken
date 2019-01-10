@@ -71,7 +71,7 @@ class RegisterComponent extends Component {
 		const { email, password, passwordMatch, fname, lname } = this.state;
 		if (passwordMatch === true) {
 			await axios
-				.post("http://localhost:7777/auth/register", {
+				.post("https://receptboken.herokuapp.com/auth/register", {
 					email,
 					password,
 					fname,
