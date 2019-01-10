@@ -42,7 +42,7 @@ class SingleRecept extends Component {
 	getData = async () => {
 		await this.setState({ loading: true });
 		await axios
-			.get(`${process.env.API}/recipe/one/${this.props.id}`)
+			.get(`https://receptboken.herokuapp.com/recipe/one/${this.props.id}`)
 			.then(response => {
 				this.setState({ recept: response.data, loading: false });
 			})
@@ -56,7 +56,11 @@ class SingleRecept extends Component {
 	// och visa en knapp för att ta bort receptet.
 	verifyUser = () => {
 		axios
-			.post(`${process.env.API}/auth/verify/author/${this.state.recept.author}`)
+			.post(
+				`https://receptboken.herokuapp.com/auth/verify/author/${
+					this.state.recept.author
+				}`
+			)
 			.then(response => {
 				console.log(response.data);
 				this.setState({ owner: response.data });
@@ -68,9 +72,12 @@ class SingleRecept extends Component {
 		e.preventDefault();
 		await this.setState({ loading: true });
 		await axios
-			.post(`${process.env.API}/recipe/delete/${this.props.id}`, {
-				user: this.props.user
-			})
+			.post(
+				`https://receptboken.herokuapp.com/recipe/delete/${this.props.id}`,
+				{
+					user: this.props.user
+				}
+			)
 			.then(response => {
 				this.setState({ loading: false });
 				Router.push("/");

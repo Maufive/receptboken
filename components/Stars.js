@@ -38,9 +38,12 @@ class Stars extends Component {
 		}
 
 		await axios
-			.post(`${process.env.API}/recipe/review/${this.props.id}`, {
-				rating
-			})
+			.post(
+				`https://receptboken.herokuapp.com/recipe/review/${this.props.id}`,
+				{
+					rating
+				}
+			)
 			.then(response => {
 				this.setState({
 					loading: response.data.loading,

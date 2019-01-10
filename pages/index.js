@@ -26,7 +26,7 @@ class index extends Component {
 	handleLoadMore = page => {
 		// ta en kopia av recepten i state och lägg till de nya recepten
 		axios
-			.get(`${process.env.API}/recipe/${page}`)
+			.get(`https://receptboken.herokuapp.com/recipe/${page}`)
 			.then(response => {
 				// Kolla så det kommer tillbaka data från API't, annars bör inte funktionen köras
 				if (response.data.length >= 1) {
@@ -49,7 +49,7 @@ class index extends Component {
 	loadRecipes = () => {
 		const { page } = this.state;
 		axios
-			.get(`${process.env.API}/recipe/${page}`)
+			.get(`https://receptboken.herokuapp.com/recipe/${page}`)
 			.then(response => {
 				this.setState({ recept: response.data, page: page + 1 });
 			})
@@ -64,7 +64,7 @@ class index extends Component {
 			"Bearer " + localStorage.getItem("jwtToken");
 		if (localStorage.jwtToken) {
 			axios
-				.get(`${process.env.API}/user/profile`)
+				.get(`https://receptboken.herokuapp.com/user/profile`)
 				.then(response => {
 					// console.log(response.data.user);
 					this.setState({ user: response.data.user });

@@ -28,9 +28,12 @@ class EditProfile extends Component {
 		// Skickar en postrequest till servern som tar id´t i queryn och id´t som finns på jwt-token och jämför dem på servern
 		const user = this.props.user;
 		axios
-			.post(`${process.env.API}/auth/verify/${this.props.query.id}`, {
-				user
-			})
+			.post(
+				`https://receptboken.herokuapp.com/auth/verify/${this.props.query.id}`,
+				{
+					user
+				}
+			)
 			.then(response => {
 				if (response.data === true) {
 					this.setState({ verified: true });

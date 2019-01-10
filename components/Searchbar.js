@@ -54,7 +54,7 @@ class Searchbar extends Component {
 	submitSearch = () => {
 		const { query } = this.state;
 		axios
-			.get(`${process.env.API}/recipe/search/${query}`)
+			.get(`https://receptboken.herokuapp.com/recipe/search/${query}`)
 			.then(response => {
 				console.log(response.data);
 				this.setState({ results: response.data, loading: false });

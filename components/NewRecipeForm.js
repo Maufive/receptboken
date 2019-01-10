@@ -72,7 +72,7 @@ class NewRecipeForm extends Component {
 		// kolla så att användaren är inloggad innan jag skickar iväg requesten
 
 		axios
-			.post(`${process.env.API}/recipe/add`, {
+			.post(`https://receptboken.herokuapp.com/recipe/add`, {
 				title,
 				description,
 				tags,

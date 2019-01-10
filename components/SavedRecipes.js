@@ -21,7 +21,9 @@ class SavedRecipes extends Component {
 			"Bearer " + localStorage.getItem("jwtToken");
 		if (localStorage.jwtToken) {
 			axios
-				.get(`${process.env.API}/user/hearts/${this.props.user._id}`)
+				.get(
+					`https://receptboken.herokuapp.com/user/hearts/${this.props.user._id}`
+				)
 				.then(response => this.setState({ recept: response.data }))
 				.catch(error => console.log(error));
 		}

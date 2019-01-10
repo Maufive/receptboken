@@ -22,7 +22,7 @@ class RegisterComponent extends Component {
 
 	login = (email, password) => {
 		axios
-			.post(`${process.env.API}/auth/login`, { email, password })
+			.post(`https://receptboken.herokuapp.com/auth/login`, { email, password })
 			.then(result => {
 				localStorage.setItem("jwtToken", result.data.token);
 				console.log("JWT Token Set");

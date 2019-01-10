@@ -26,7 +26,7 @@ class profile extends Component {
 	getUser = async () => {
 		const id = this.props.query.id;
 		await axios
-			.get(`${process.env.API}/user/profile/author/${id}`)
+			.get(`https://receptboken.herokuapp.com/user/profile/author/${id}`)
 			.then(response => this.setState({ user: response.data }))
 			.catch(error => console.log(error));
 		this.getRecipes();
@@ -35,7 +35,9 @@ class profile extends Component {
 	getRecipes = () => {
 		// Hämta alla recept som användaren har skapat
 		axios
-			.get(`${process.env.API}/user/created/${this.state.user._id}`)
+			.get(
+				`https://receptboken.herokuapp.com/user/created/${this.state.user._id}`
+			)
 			.then(response => {
 				this.setState({ recept: response.data });
 			})

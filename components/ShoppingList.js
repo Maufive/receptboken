@@ -19,7 +19,9 @@ class ShoppingList extends Component {
 		axios.defaults.headers.common["Authorization"] =
 			"Bearer " + localStorage.getItem("jwtToken");
 		axios
-			.get(`${process.env.API}/lists/user/${this.props.user._id}`)
+			.get(
+				`https://receptboken.herokuapp.com/lists/user/${this.props.user._id}`
+			)
 			.then(response => this.setState({ shoppinglists: response.data }))
 			.catch(error => console.log(error));
 	};
