@@ -71,7 +71,7 @@ export const MinButton = styled.button`
 	border-radius: 5px;
 	padding: 1rem 2rem;
 	background: transparent;
-	border: 1px solid ${props => props.theme.green};
+	border: none;
 	color: ${props => props.theme.offWhite};
 	font-weight: 700;
 	cursor: pointer;
@@ -81,10 +81,5 @@ export const MinButton = styled.button`
 		height: 1.5rem;
 		width: 1.5rem;
 		margin-right: 1rem;
-	}
-
-	&:hover {
-		background: ${props => props.theme.green};
-		color: ${props => props.theme.offWhite};
 	}
 `;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { slideRight } from "./keyframes";
+import { fadeIn, wave } from "./keyframes";
 
 export const customStyles = {
 	content: {
@@ -13,13 +13,27 @@ export const customStyles = {
 };
 
 export const StyledJumbotron = styled.div`
-	padding: 1.5rem;
-	h1 {
+	font-family: "Proza Libre";
+	margin-bottom: 3rem;
+	h1,
+	h2,
+	h3 {
 		text-align: center;
 		margin: 0 auto;
-		animation: ${slideRight} 300ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
+		opacity: 0;
+		animation: ${fadeIn} 800ms ease 200ms 1 normal forwards running;
 		text-shadow: 0px 5px 12px rgba(0, 0, 0, 0.08);
 		width: fit-content;
+	}
+	h1 {
+		letter-spacing: 1.5px;
+		font-size: 5rem;
+		@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+			font-size: 4rem;
+		}
+	}
+	h2 {
+		margin-bottom: 3rem;
 	}
 	div {
 		width: 40rem;
@@ -33,4 +47,13 @@ export const StyledJumbotron = styled.div`
 export const LoginContainer = styled.div`
 	display: flex;
 	justify-content: space-around;
+`;
+
+export const Wave = styled.span`
+	margin-right: 1.5rem;
+	animation: ${wave} 350ms ease alternate;
+	animation-delay: 800ms;
+	animation-iteration-count: 8;
+	transform-origin: 50% 100%;
+	transform: rotate(0deg);
 `;

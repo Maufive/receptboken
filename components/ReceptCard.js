@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Link from "next/link";
-import { Card, SmallCard } from "./styles/Card";
+import { Card } from "./styles/Card";
 import ClockIcon from "../svg/clock.svg";
 import { calcRating } from "../helpers";
 

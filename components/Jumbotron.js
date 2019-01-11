@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Link from "next/link";
-import { StyledJumbotron } from "./styles/Jumbotron";
+import { StyledJumbotron, Wave } from "./styles/Jumbotron";
 import { Button } from "./styles/Button";
 import NotesIcon from "../svg/notes.svg";
 
@@ -8,12 +8,13 @@ class Jumbotron extends Component {
 	render() {
 		return (
 			<StyledJumbotron>
-				<h1>Snabba enkla recept för att göra dig vardag smidigare</h1>
+				<h1>RECEPTBOKEN</h1>
+				<h2>Spara dina recept på ett och samma ställe</h2>
 				<div>
 					{this.props.user ? (
 						<Link href="/recipe">
 							<a>
-								<Button primary fullWidth style={{ animationDelay: "250ms" }}>
+								<Button primary fullWidth style={{ animationDelay: "400ms" }}>
 									<NotesIcon /> Lägg till recept
 								</Button>
 							</a>
@@ -21,8 +22,9 @@ class Jumbotron extends Component {
 					) : (
 						<Link href="/register">
 							<a>
-								<Button primary fullWidth style={{ animationDelay: "250ms" }}>
-									👋 Registrera dig här
+								<Button primary fullWidth style={{ animationDelay: "400ms" }}>
+									<Wave>👋</Wave>
+									Registrera dig här
 								</Button>
 							</a>
 						</Link>

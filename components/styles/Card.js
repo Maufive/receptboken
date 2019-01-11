@@ -7,8 +7,9 @@ export const Card = styled.div`
 	background: ${props => props.theme.white};
 	box-shadow: ${props => props.theme.bsHard};
 	transition: all 150ms ease-in;
-	animation: ${fadeIn} 500ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
-	animation-delay: 400ms;
+	opacity: 0;
+	/* animation: ${fadeIn} 500ms cubic-bezier(0.39, 0.575, 0.565, 1) both; */
+	animation: ${fadeIn} 800ms ease 600ms 1 normal forwards running;
 	img {
 		width: 250px;
 		height: 250px;
@@ -86,11 +87,12 @@ export const CardContainer = styled.div`
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	margin: 0 auto;
-	background: ${props => props.theme.white};
+	/* background: ${props => props.theme.offWhite}; */
+	background: transparent;
 	border-radius: 5px;
 	padding: 4rem 0;
-	animation: ${fadeIn} 400ms cubic-bezier(0.39, 0.575, 0.565, 1) both;
-	animation-delay: 300ms;
+	animation: ${fadeIn} 800ms ease 800ms 1 normal forwards running;
+	opacity: 0;
 	h2,
 	h3 {
 		margin: 0;

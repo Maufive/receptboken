@@ -4,11 +4,11 @@ import { fadeIn, growRight } from "./keyframes";
 export const Wrapper = styled.div`
 	margin: 0 auto;
 	padding: 2rem;
-	background: ${props => props.theme.white};
+	background: ${props => props.theme.offWhite};
 	color: ${props => props.theme.grey};
 	box-shadow: ${props => props.theme.bsHard};
 	max-width: 80rem;
-	animation: ${fadeIn} 500ms ease-out;
+	animation: ${fadeIn} 800ms ease 1 normal forwards running;
 	h1 {
 		color: ${props => props.theme.grey};
 		margin-top: 0;
@@ -100,6 +100,7 @@ export const Ingredienser = styled.div`
 	max-height: 500px;
 	flex-wrap: wrap;
 	align-items: center;
+	margin-bottom: 3rem;
 	p {
 		padding: 1rem 0;
 		color: ${props => props.theme.black};

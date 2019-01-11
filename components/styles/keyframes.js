@@ -106,8 +106,11 @@ export const scaleUp = keyframes`
   }
 `;
 
-export const smoothfade = keyframes`
-
+export const wave = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
 `;
-
-// animation: smoothfade 1.2 ease 2.2s 1 normal forwards running;
