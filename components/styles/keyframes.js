@@ -105,3 +105,9 @@ export const scaleUp = keyframes`
             opacity: 1;
   }
 `;
+
+export const smoothfade = keyframes`
+
+`;
+
+// animation: smoothfade 1.2 ease 2.2s 1 normal forwards running;
