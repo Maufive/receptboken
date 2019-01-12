@@ -9,6 +9,7 @@ import Author from "./Author";
 import Heart from "./Heart";
 import ClockIcon from "../svg/clock.svg";
 import TrashIcon from "../svg/trash.svg";
+import TagIcon from "../svg/price-tag.svg";
 import CalenderIcon from "../svg/calendar.svg";
 import DishIcon from "../svg/dishes.svg";
 import {
@@ -120,7 +121,9 @@ class SingleRecept extends Component {
 					<div>
 						<div>
 							{recept.tags.map(tag => (
-								<Tag key={tag}>{tag}</Tag>
+								<Tag key={tag}>
+									<TagIcon /> {tag}
+								</Tag>
 							))}
 						</div>
 						{this.props.user && (

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Modal from "react-modal";
 import Link from "next/link";
 import axios from "axios";
-import NotesIcon from "../svg/notes.svg";
+import ListBoldIcon from "../svg/listBold.svg";
 import AddIcon from "../svg/add.svg";
 import { Button } from "./styles/Button";
 import { customStyles } from "./styles/Jumbotron";
@@ -81,8 +81,8 @@ class AddToShoppinglist extends Component {
 		const { shoppinglists } = this.state;
 		return (
 			<div>
-				<Button onClick={this.openModal}>
-					<NotesIcon /> Lägg till i inköpslista
+				<Button primary onClick={this.openModal}>
+					<ListBoldIcon /> Lägg till i inköpslista
 				</Button>
 				<Modal
 					isOpen={this.state.isModalOpen}

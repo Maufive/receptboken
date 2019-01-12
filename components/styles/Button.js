@@ -10,7 +10,7 @@ export const Button = styled.button`
 	padding: 1rem 4rem;
 	margin: 1.5rem 0;
 	background: ${props => (props.primary ? props.theme.green : "transparent")};
-	color: ${props => (props.primary ? props.theme.white : props.theme.green)};
+	color: ${props => (props.primary ? props.theme.offWhite : props.theme.green)};
 	border: 1px solid
 		${props => (props.primary ? "transparent" : props.theme.lightgrey)};
 	outline: none;
@@ -19,19 +19,20 @@ export const Button = styled.button`
 	animation: ${slideUp} 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
 	cursor: pointer;
 	a {
-		color: ${props => (props.primary ? props.theme.white : props.theme.green)};
+		color: ${props =>
+			props.primary ? props.theme.offWhite : props.theme.green};
 	}
 	i {
 		margin-right: 1rem;
 	}
 	&:hover {
-		color: ${props => props.theme.white};
+		color: ${props => props.theme.offWhite};
 		box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
 		transform: translateY(-1px);
 		background: #15b26e;
 		border: 1px solid #15b26e;
 		svg {
-			fill: ${props => props.theme.white};
+			fill: ${props => props.theme.offWhite};
 		}
 	}
 
@@ -39,7 +40,7 @@ export const Button = styled.button`
 		margin-right: 1rem;
 		height: 15px;
 		width: 15px;
-		fill: ${props => props.theme.white};
+		fill: ${props => props.theme.offWhite};
 	}
 `;
 

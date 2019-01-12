@@ -117,14 +117,20 @@ export const Ingredienser = styled.div`
 
 export const Tag = styled.span`
 	margin: 0 0.5rem;
-	background: ${props => props.theme.green};
-	color: ${props => props.theme.offWhite};
-	border: 1px solid ${props => props.theme.green};
+	background: ${props => props.theme.offWhite};
+	color: ${props => props.theme.grey};
+	font-weight: 700;
 	padding: 0.5rem 1rem;
 	border-radius: 3px;
 	transition: all 200ms ease-out;
-	i {
-		color: ${props => props.theme.green};
+	display: flex;
+	align-items: center;
+
+	svg {
+		margin-right: 1rem;
+		height: 1.5rem;
+		width: 1.5rem;
+		fill: ${props => props.theme.green};
 	}
 `;
 

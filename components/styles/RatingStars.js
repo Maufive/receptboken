@@ -71,6 +71,7 @@ export const StarsForm = styled.form`
 		font-size: 1rem;
 		cursor: pointer;
 		border: 1px solid ${props => props.theme.green};
+		background: transparent;
 		border-radius: 3px;
 		font-weight: 700;
 		color: ${props => props.theme.green};
@@ -78,7 +79,7 @@ export const StarsForm = styled.form`
 		transition: all 250ms ease-out;
 		&:hover {
 			background: ${props => props.theme.green};
-			color: ${props => props.theme.white};
+			color: ${props => props.theme.offWhite};
 		}
 	}
 	@media (max-width: ${props => props.theme.mobileBreakpoint}) {

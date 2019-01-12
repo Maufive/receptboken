@@ -5,10 +5,11 @@ export const LoginForm = styled.form`
 	width: 400px;
 	animation: ${fadeIn} 500ms ease-out;
 	margin: 0 auto;
-	background: ${props => props.theme.white};
+	background: ${props => props.theme.offWhite};
 	padding: 2rem 4rem;
 	border-radius: 5px;
-
+	position: relative;
+	z-index: 100;
 	h2,
 	h3 {
 		color: ${props => props.theme.grey};

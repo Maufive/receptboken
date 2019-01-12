@@ -47,13 +47,16 @@ export const StyledJumbotron = styled.div`
 export const LoginContainer = styled.div`
 	display: flex;
 	justify-content: space-around;
+	position: relative;
+	z-index: 100;
 `;
 
 export const Wave = styled.span`
-	margin-right: 1.5rem;
+	margin-right: 1rem;
 	animation: ${wave} 350ms ease alternate;
 	animation-delay: 800ms;
 	animation-iteration-count: 8;
 	transform-origin: 50% 100%;
+	font-size: 2rem;
 	transform: rotate(0deg);
 `;

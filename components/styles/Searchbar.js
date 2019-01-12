@@ -7,7 +7,7 @@ export const SearchForm = styled.form`
 	width: 50rem;
 	margin: 3rem auto;
 	position: relative;
-	z-index: 100;
+	z-index: 20;
 	@media (max-width: 550px) {
 		width: 35rem;
 	}
@@ -21,7 +21,7 @@ export const SearchForm = styled.form`
 		align-items: center;
 		justify-content: space-between;
 		position: relative;
-		z-index: 120;
+		z-index: 60;
 
 		input[type="search"] {
 			border-radius: 30px;
@@ -69,7 +69,7 @@ export const SuggestionsDropdown = styled.div`
 	position: absolute;
 	width: 100%;
 	top: 105%;
-	z-index: 990;
+	z-index: 70;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 `;

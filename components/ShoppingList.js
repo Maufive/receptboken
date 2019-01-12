@@ -28,25 +28,31 @@ class ShoppingList extends Component {
 
 	render() {
 		const { shoppinglists } = this.state;
-		if (!shoppinglists || shoppinglists.length < 1) return <Loading />;
+
 		return (
 			<ListContainer>
 				<h1>Sparade inköpslistor:</h1>
 				<List>
-					{shoppinglists.map(list => (
-						<Link
-							href={{
-								pathname: "/inkopslista",
-								query: {
-									id: list._id
-								}
-							}}
-						>
-							<a>
-								<li key={list._id}>{list.title}</li>
-							</a>
-						</Link>
-					))}
+					{shoppinglists ? (
+						shoppinglists.map(list => (
+							<Link
+								href={{
+									pathname: "/inkopslista",
+									query: {
+										id: list._id
+									}
+								}}
+							>
+								<a>
+									<li key={list._id}>{list.title}</li>
+								</a>
+							</Link>
+						))
+					) : (
+						<li>
+							<p>Du har inga inköpslistor...</p>
+						</li>
+					)}
 				</List>
 			</ListContainer>
 		);
