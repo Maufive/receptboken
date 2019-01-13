@@ -1,15 +1,14 @@
 import styled from "styled-components";
-import { fadeIn, slideUp } from "./keyframes";
+import { fadeIn } from "./keyframes";
 
 export const LoginForm = styled.form`
 	width: 400px;
-	animation: ${fadeIn} 500ms ease-out;
+	animation: ${fadeIn} 800ms ease 1 normal forwards running;
+	opacity: 0;
 	margin: 0 auto;
-	background: ${props => props.theme.offWhite};
+	background: "#fff";
 	padding: 2rem 4rem;
 	border-radius: 5px;
-	position: relative;
-	z-index: 100;
 	h2,
 	h3 {
 		color: ${props => props.theme.grey};
@@ -22,6 +21,7 @@ export const LoginForm = styled.form`
 		margin-bottom: 3rem;
 		display: flex;
 		align-items: center;
+		z-index: 100;
 	}
 	input,
 	label {

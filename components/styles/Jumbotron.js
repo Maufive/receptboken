@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { fadeIn, wave } from "./keyframes";
+import { relative } from "path";
 
 export const customStyles = {
 	content: {
@@ -8,7 +9,9 @@ export const customStyles = {
 		right: "auto",
 		bottom: "auto",
 		marginRight: "-50%",
-		transform: "translate(-50%, -50%)"
+		transform: "translate(-50%, -50%)",
+		background: "#fff",
+		zIndex: 10
 	}
 };
 
@@ -47,8 +50,7 @@ export const StyledJumbotron = styled.div`
 export const LoginContainer = styled.div`
 	display: flex;
 	justify-content: space-around;
-	position: relative;
-	z-index: 100;
+	z-index: 999 !important;
 `;
 
 export const Wave = styled.span`

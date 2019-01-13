@@ -45,9 +45,9 @@ class UserDropdown extends Component {
 		return (
 			<UserDropdownStyles>
 				<UserItem onClick={() => this.openDropdown()}>
-					{/* <ChefIcon /> */}
 					<MenuIcon />
-					{user.fname + " " + user.lname}
+					{user.fname}
+					{user.photo && <img src={user.photo} alt="profilbild" />}
 				</UserItem>
 				{this.state.open && (
 					<DropdownBackground

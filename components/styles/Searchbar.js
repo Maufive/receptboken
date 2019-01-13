@@ -7,22 +7,20 @@ export const SearchForm = styled.form`
 	width: 50rem;
 	margin: 3rem auto;
 	position: relative;
-	z-index: 20;
+	z-index: 1;
 	@media (max-width: 550px) {
 		width: 35rem;
 	}
 	> div {
 		width: 100%;
 		margin: 0 auto;
-		background: ${props => props.theme.white};
+		background: ${props => props.theme.offWhite};
 		border-radius: 30px;
 		border: 2px solid ${props => props.theme.lightgrey};
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		position: relative;
-		z-index: 60;
-
+		z-index: 2;
 		input[type="search"] {
 			border-radius: 30px;
 			width: 100%;
@@ -32,11 +30,12 @@ export const SearchForm = styled.form`
 			padding: 1.5rem;
 			font-size: 1.5rem;
 			-webkit-appearance: none;
+			z-index: 2;
 			svg {
 				margin-right: 0.5rem;
 				height: 15px;
 				width: 15px;
-				fill: ${props => props.theme.white};
+				fill: ${props => props.theme.offWhite};
 			}
 		}
 		button {
@@ -66,12 +65,12 @@ export const SearchForm = styled.form`
 export const SuggestionsDropdown = styled.div`
 	display: flex;
 	flex-direction: column;
-	position: absolute;
 	width: 100%;
 	top: 105%;
-	z-index: 70;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
+	position: absolute;
+	z-index: 2;
 `;
 
 export const DropdownItem = styled.li`

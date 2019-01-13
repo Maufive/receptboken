@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import Nav from "./Nav";
 import LoginModal from "./LoginModal";
 import UserDropdown from "./UserDropdown";
 import GroceriesIcon from "../svg/groceries2.svg";

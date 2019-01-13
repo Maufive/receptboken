@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { fadeIn, slideIn, slideUp } from "./keyframes";
+import { slideUp } from "./keyframes";
 
 export const UserDropdownStyles = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
-	width: 200px;
 `;
 
 export const DropdownBackground = styled.div`
@@ -49,6 +48,12 @@ export const UserItem = styled.p`
 		height: 20px;
 		margin-right: 1rem;
 		fill: ${props => props.theme.offWhite};
+	}
+	img {
+		height: 3rem;
+		width: 3rem;
+		border-radius: 50%;
+		margin-left: 1rem;
 	}
 `;
 

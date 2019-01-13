@@ -7,6 +7,7 @@ const Meta = () => (
 		<meta name="theme-color" content="#15BD76" />
 		<link rel="shortcut icon" href="/static/favicon.ico" />
 		{/* <link rel="stylesheet" type="text/css" href="/static/nprogress.css" /> */}
+		<link rel="stylesheet" type="text/css" href="/static/style.css" />
 		<title>Receptboken</title>
 	</Head>
 );

@@ -79,7 +79,7 @@ class Searchbar extends Component {
 						inputValue,
 						highlightedIndex
 					}) => (
-						<div>
+						<div style={{ position: "relative", zIndex: "100" }}>
 							<input
 								{...getInputProps({
 									onChange: e => {
