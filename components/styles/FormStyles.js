@@ -10,7 +10,10 @@ export const StyledForm = styled.form`
 	border: 2px solid ${props => props.theme.lightgrey};
 	background: ${props => props.theme.white};
 	box-shadow: ${props => props.theme.bsHard};
-
+	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		width: 95%;
+		padding: 1rem 2rem;
+	}
 	h2,
 	h3 {
 		color: ${props => props.theme.grey};

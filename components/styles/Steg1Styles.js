@@ -39,6 +39,10 @@ export const RecipeForm = styled.form`
 		margin: 1.5rem auto;
 		width: 600;
 	}
+	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		width: 100%;
+		padding: 1rem;
+	}
 `;
 
 export const IngrediensWrapper = styled.div`

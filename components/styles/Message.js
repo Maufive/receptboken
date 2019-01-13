@@ -1,12 +1,17 @@
 import styled from "styled-components";
-import { slideIn, slideInOut } from "./keyframes";
+import { slideInOut } from "./keyframes";
 
 export const MessageStyles = styled.div`
 	position: absolute;
 	top: 2%;
 	left: 50%;
+	width: 80%;
 	animation: ${slideInOut} 4s ease-in;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	div {
+		width: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -17,12 +22,15 @@ export const MessageStyles = styled.div`
 		color: ${props => props.theme.grey};
 		padding: 1rem 3rem;
 		font-weight: 700;
-		border: 2px solid ${props => props.theme.grey};
-		i {
-			margin-right: 1rem;
-		}
+		border: 1px solid ${props => props.theme.grey};
 		* {
 			box-shadow: ${props => props.theme.bs};
+		}
+		svg {
+			height: 2.5rem;
+			width: 2.5rem;
+			fill: ${props => props.theme.grey};
+			margin-right: 1rem;
 		}
 	}
 `;

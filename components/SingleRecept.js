@@ -127,7 +127,7 @@ class SingleRecept extends Component {
 							))}
 						</div>
 						{this.props.user && (
-							<IconContainer>
+							<div>
 								<MessageConsumer>
 									{({ setMessage }) => (
 										<AddToShoppinglist
@@ -138,7 +138,7 @@ class SingleRecept extends Component {
 										/>
 									)}
 								</MessageConsumer>
-							</IconContainer>
+							</div>
 						)}
 						<Author id={recept.author} />
 						<IconContainer>

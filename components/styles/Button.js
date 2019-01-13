@@ -22,9 +22,7 @@ export const Button = styled.button`
 		color: ${props =>
 			props.primary ? props.theme.offWhite : props.theme.green};
 	}
-	i {
-		margin-right: 1rem;
-	}
+
 	&:hover {
 		color: ${props => props.theme.offWhite};
 		box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);

@@ -94,7 +94,7 @@ const GlobalStyle = createGlobalStyle`
 
 	p::selection, h1::selection, h2::selection, h3::selection {
 		color: ${props => props.theme.green};
-		  background: ${props => props.theme.yellow};
+		background: ${props => props.theme.yellow};
 
 	}
 `;
