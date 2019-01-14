@@ -11,9 +11,6 @@ const AuthorStyles = styled.div`
 		transition: all 200ms ease-out;
 		border: 1px solid transparent;
 		text-decoration: underline;
-		&:hover {
-			border-bottom: 2px solid ${props => props.theme.green};
-		}
 	}
 `;
 

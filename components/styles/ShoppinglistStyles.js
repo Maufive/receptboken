@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeIn } from "./keyframes";
 
 export const List = styled.ul`
 	list-style: none;
@@ -38,4 +39,6 @@ export const ListContainer = styled.div`
 	min-width: fit-content;
 	width: 500px;
 	margin: 0 auto;
+	opacity: 0;
+	animation: ${fadeIn} 800ms ease 1 normal forwards running;
 `;

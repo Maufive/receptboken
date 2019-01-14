@@ -3,6 +3,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import LoginModal from "./LoginModal";
 import UserDropdown from "./UserDropdown";
+import MenuModal from "./MenuModal";
 import GroceriesIcon from "../svg/groceries2.svg";
 
 const Logo = styled.h2`
@@ -20,24 +21,32 @@ const StyledHeader = styled.header`
 	align-items: center;
 	justify-content: space-between;
 	padding: 1rem 2rem;
-	/* border-bottom: 5px solid ${props => props.theme.yellow}; */
-	height: 60px;
-	background: rgb(21,189,118);
-	background: linear-gradient(90deg, rgba(21,189,118,1) 0%, rgba(154, 202, 60, 1) 100%);
+	height: 6rem;
+	background: rgb(21, 189, 118);
+	background: linear-gradient(
+		90deg,
+		rgba(21, 189, 118, 1) 0%,
+		rgba(154, 202, 60, 1) 100%
+	);
 	width: 100%;
 	margin-bottom: 3rem;
-
-	> a {
+	> div > a {
 		display: flex;
 		align-items: center;
 		padding: 0;
 		svg {
-		height: 3rem;
-		width: 3rem;
-		margin-right: 0.5rem;
+			height: 3rem;
+			width: 3rem;
+			margin-right: 0.5rem;
+		}
 	}
-	}
+`;
 
+const ButtonContainer = styled.div`
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 `;
 
 class Header extends Component {
@@ -45,20 +54,27 @@ class Header extends Component {
 		const { user } = this.props;
 		return (
 			<StyledHeader>
-				<Link href="/">
-					<a>
-						<GroceriesIcon />
-						<Logo>Receptboken</Logo>
-					</a>
-				</Link>
+				<div
+					style={{
+						width: "50%"
+					}}
+				>
+					<Link href="/">
+						<a>
+							<GroceriesIcon />
+							<Logo>Receptboken</Logo>
+						</a>
+					</Link>
+				</div>
 				{/* <Nav /> */}
-				<div>
+				<ButtonContainer>
 					{user ? (
-						<UserDropdown user={user} />
+						// <UserDropdown user={user} />
+						<MenuModal user={user} />
 					) : (
 						<LoginModal setUser={this.props.setUser} />
 					)}
-				</div>
+				</ButtonContainer>
 			</StyledHeader>
 		);
 	}

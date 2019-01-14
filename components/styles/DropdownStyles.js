@@ -1,28 +1,31 @@
 import styled from "styled-components";
-import { slideUp } from "./keyframes";
+import { fadeIn } from "./keyframes";
 
 export const UserDropdownStyles = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+`;
+
+export const MenuContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
+	align-items: center;
+	justify-content: space-evenly;
+	padding: 2rem;
+	height: 100%;
 `;
 
 export const DropdownBackground = styled.div`
-	animation: ${slideUp} 200ms ease-in-out;
-	position: relative;
-	display: flex;
-	justify-content: flex-end;
-	width: 200px;
+	width: 100%;
+	top: 100%;
 `;
 
 export const DropDownContainer = styled.div`
 	background: ${props => props.theme.grey};
 	padding: 0.5rem 2rem;
-	position: absolute;
 	border-radius: ${props => props.theme.bRadius};
 	font-weight: 700;
-	width: 100%;
-	z-index: 15;
 	> div {
 		display: flex;
 		align-items: center;
@@ -36,17 +39,34 @@ export const DropDownContainer = styled.div`
 `;
 
 export const UserItem = styled.p`
-	cursor: pointer;
-	margin: 0;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
+	margin: 0;
 	outline: none;
 	color: ${props => props.theme.offWhite};
 	font-weight: 700;
 	svg {
-		width: 20px;
-		height: 20px;
+		width: 2rem;
+		height: 2rem;
 		margin-right: 1rem;
+		fill: ${props => props.theme.offWhite};
+	}
+	img {
+		height: 3rem;
+		width: 3rem;
+		border-radius: 50%;
+		margin-left: 1rem;
+	}
+`;
+
+export const ImgStyles = styled.div`
+	display: flex;
+	align-items: center;
+	svg {
+		width: 3rem;
+		height: 3rem;
+		margin-left: 1rem;
 		fill: ${props => props.theme.offWhite};
 	}
 	img {
@@ -63,21 +83,33 @@ export const Square = styled.div`
 	height: 2.5rem;
 	transform: rotate(45deg);
 	margin: 0 auto;
-	position: absolute;
-	left: 60%;
 `;
 
 export const Option = styled.span`
-	transition: all 200ms ease-in;
 	color: ${props => props.theme.offWhite};
+	font-size: 2rem;
+	font-weight: 700;
 	a {
+		display: flex;
+		align-items: center;
 		color: ${props => props.theme.offWhite};
+		transition: all 400ms ease;
+		padding: 1rem 2rem;
+		border-radius: 5px;
+		&:hover {
+			transform: translateY(-5px);
+			cursor: pointer;
+			background: ${props => props.theme.offWhite};
+			color: ${props => props.theme.green};
+			svg {
+				fill: ${props => props.theme.green};
+			}
+		}
 	}
 	svg {
 		fill: ${props => props.theme.offWhite};
-	}
-	&:hover {
-		transform: translateX(3px);
-		cursor: pointer;
+		height: 3rem;
+		width: 3rem;
+		margin-right: 2rem;
 	}
 `;

@@ -5,11 +5,14 @@ export const MessageStyles = styled.div`
 	position: absolute;
 	top: 2%;
 	left: 50%;
-	width: 80%;
+	width: fit-content;
 	animation: ${slideInOut} 4s ease-in;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		width: 80%;
+	}
 	div {
 		width: 100%;
 		display: flex;

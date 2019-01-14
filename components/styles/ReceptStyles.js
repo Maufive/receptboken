@@ -116,11 +116,11 @@ export const Ingredienser = styled.div`
 `;
 
 export const Tag = styled.span`
-	margin: 0 0.5rem;
+	margin-right: 1rem;
 	background: ${props => props.theme.offWhite};
 	color: ${props => props.theme.grey};
 	font-weight: 700;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem 0;
 	border-radius: 3px;
 	transition: all 200ms ease-out;
 	display: flex;

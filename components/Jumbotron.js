@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Link from "next/link";
 import { StyledJumbotron, Wave } from "./styles/Jumbotron";
 import { Button } from "./styles/Button";
-import NotesIcon from "../svg/notes.svg";
+import ListBoldIcon from "../svg/listBold.svg";
 
 class Jumbotron extends Component {
 	render() {
@@ -15,7 +15,7 @@ class Jumbotron extends Component {
 						<Link href="/recipe">
 							<a>
 								<Button primary fullWidth style={{ animationDelay: "400ms" }}>
-									<NotesIcon /> Lägg till recept
+									<ListBoldIcon /> Lägg till recept
 								</Button>
 							</a>
 						</Link>
