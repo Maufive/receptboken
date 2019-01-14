@@ -64,7 +64,6 @@ class SingleRecept extends Component {
 				}`
 			)
 			.then(response => {
-				console.log(response.data);
 				this.setState({ owner: response.data });
 			})
 			.catch(error => console.log(error));
@@ -83,7 +82,6 @@ class SingleRecept extends Component {
 			.then(response => {
 				this.setState({ loading: false });
 				Router.push("/");
-				console.log(response);
 			})
 			.catch(error => {
 				console.log(error);

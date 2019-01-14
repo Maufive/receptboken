@@ -21,6 +21,9 @@ class index extends Component {
 			this.getUser();
 		}
 		this.loadRecipes();
+		console.log(
+			"Hej! 🙂 Kul att du ville spana in min App! Om du vill ge feedback eller kontakta mig spana in www.niklasalbinsson.se !"
+		);
 	}
 
 	handleLoadMore = page => {
@@ -32,7 +35,6 @@ class index extends Component {
 				if (response.data.length >= 1) {
 					const oldState = [...this.state.recept];
 					const recept = oldState.concat(response.data);
-					console.log("More incoming!");
 					this.setState(prevState => ({
 						// recept: [...prevState.recept, response.data],
 						recept,
@@ -92,6 +94,7 @@ class index extends Component {
 					loadMore={() => this.handleLoadMore(page)}
 					hasMore={hasMore}
 					loader={<Loading />}
+					key={this.state.recept._id}
 				>
 					<CardContainer>
 						{this.state.recept.map(recept => (
