@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import styled from "styled-components";
 
 const FooterStyles = styled.div`
@@ -19,7 +20,11 @@ const Footer = () => (
 	<FooterStyles>
 		<h2>Receptboken</h2>
 		<p>
-			Skapad av: <a href="www.niklasalbinsson.se">Niklas Albinsson</a> / 2019
+			Skapad av:{" "}
+			<Link href="https://niklasalbinsson.se">
+				<a taget="_blank">Niklas Albinsson</a>
+			</Link>{" "}
+			/ 2019
 		</p>
 	</FooterStyles>
 );

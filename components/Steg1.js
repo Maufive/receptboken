@@ -4,7 +4,7 @@ import { Button, DisabledButton } from "./styles/Button";
 import { ListItemDiv, List } from "./styles/Steg1Styles";
 import { StyledForm } from "./styles/FormStyles";
 import EditIcon from "../svg/edit.svg";
-import AddIcon from "../svg/add.svg";
+import AddBoldIcon from "../svg/addBold.svg";
 import IngredientIcon from "../svg/groceries.svg";
 import TrashIcon from "../svg/trash.svg";
 
@@ -217,7 +217,7 @@ class Steg1Test extends Component {
 					</Button>
 				) : (
 					<Button fullWidth onClick={this.addToArray}>
-						<AddIcon />
+						<AddBoldIcon />
 						Lägg till
 					</Button>
 				)}
@@ -241,13 +241,11 @@ class Steg1Test extends Component {
 				{this.state.arr.length <= 1 ||
 					(!title && (
 						<DisabledButton fullWidth disabled>
-							{/* Behöver en hover-effekt för att indikera att man går vidare till nästa steg */}
 							Nästa steg →
 						</DisabledButton>
 					))}
 				{this.state.arr.length >= 2 && title && (
 					<Button fullWidth primary onClick={this.nextStep}>
-						{/* Behöver en hover-effekt för att indikera att man går vidare till nästa steg */}
 						Nästa steg →
 					</Button>
 				)}

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { fadeIn, growRight } from "./keyframes";
+import { fadeIn } from "./keyframes";
 
 export const Wrapper = styled.div`
 	margin: 0 auto;

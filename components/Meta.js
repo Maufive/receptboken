@@ -6,9 +6,9 @@ const Meta = () => (
 		<meta charSet="utf-8" />
 		<meta name="theme-color" content="#15BD76" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="#15BD76" />
-		<link rel="shortcut icon" href="/static/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
 		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+		<link rel="shortcut icon" href="/static/avocado.ico" />
 		<title>Receptboken</title>
 	</Head>
 );

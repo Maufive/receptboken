@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Router from "next/router";
+import Head from "next/head";
+import axios from "axios";
 import Moment from "react-moment";
 import { MessageConsumer } from "./providers/MessageProvider";
 import Stars from "./Stars";
@@ -95,6 +96,9 @@ class SingleRecept extends Component {
 		return (
 			<Wrapper>
 				<h1>{recept.title}</h1>
+				<Head>
+					<title>Receptboken | {recept.title}</title>
+				</Head>
 				<DetailsBar>
 					<Stars id={this.props.id} />
 					<MessageConsumer>
