@@ -6,9 +6,11 @@ export const Wrapper = styled.div`
 	padding: 2rem;
 	background: ${props => props.theme.offWhite};
 	color: ${props => props.theme.grey};
-	box-shadow: ${props => props.theme.bsHard};
+	/* box-shadow: ${props => props.theme.bsHard}; */
 	max-width: 80rem;
 	animation: ${fadeIn} 800ms ease 1 normal forwards running;
+	border: 2px solid ${props => props.theme.lightgrey};
+	border-radius: ${props => props.theme.bRadius};
 	h1 {
 		color: ${props => props.theme.grey};
 		margin-top: 0;

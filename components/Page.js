@@ -9,7 +9,8 @@ import { Message } from "./Message";
 import { fadeIn } from "./styles/keyframes";
 
 const theme = {
-	green: "#15BD76",
+	oldgreen: "#15BD76",
+	green: "#12CB88",
 	red: "#bc1616",
 	yellow: "#FFCF44",
 	black: "#393939",

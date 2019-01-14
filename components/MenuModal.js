@@ -9,6 +9,7 @@ import ListBoldIcon from "../svg/listBold.svg";
 import LogoutIcon from "../svg/logout.svg";
 import MenuIcon from "../svg/menu-4.svg";
 import CloseIcon from "../svg/closeBold.svg";
+import AvatarIcon from "../svg/defaultAvatar.svg";
 import {
 	UserItem,
 	Option,
@@ -16,7 +17,6 @@ import {
 	ImgStyles
 } from "./styles/DropdownStyles";
 import { LoginContainer } from "./styles/Jumbotron";
-import AvatarIcon from "../svg/defaultAvatar.svg";
 
 Modal.setAppElement("#__next");
 
