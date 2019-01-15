@@ -22,7 +22,9 @@ import {
 	Beskrivning,
 	Container,
 	IconContainer,
-	DeleteContainer
+	DeleteContainer,
+	ImgContainer,
+	Dot
 } from "./styles/ReceptStyles";
 import AddToShoppinglist from "./AddToShoppinglist";
 
@@ -119,12 +121,15 @@ class SingleRecept extends Component {
 					</IconContainer>
 				</DetailsBar>
 				<ImageAndTags>
-					<img src={recept.photo} alt="Foto på maten" />
+					<ImgContainer>
+						<img src={recept.photo} alt="Foto på maten" />
+					</ImgContainer>
 					<div>
 						<div>
 							{recept.tags.map(tag => (
 								<Tag key={tag}>
-									<TagIcon /> {tag}
+									<TagIcon />
+									<p>{tag}</p>
 								</Tag>
 							))}
 						</div>
@@ -159,16 +164,20 @@ class SingleRecept extends Component {
 					<h2>Du Behöver:</h2>
 					<Ingredienser>
 						{recept.ingredients.map(ingredient => (
-							<p key={ingredient.input}>
-								{ingredient.numberOfUnits} {ingredient.units} {ingredient.input}
-							</p>
+							<div>
+								<Dot />
+								<p key={ingredient.input}>
+									{ingredient.numberOfUnits} {ingredient.units}{" "}
+									{ingredient.input}
+								</p>
+							</div>
 						))}
 					</Ingredienser>
 					<h2>Gör såhär:</h2>
 					<Beskrivning>
 						{recept.description.map(step => (
 							<div key={step}>
-								<span />
+								<Dot />
 								<p>{step}</p>
 							</div>
 						))}

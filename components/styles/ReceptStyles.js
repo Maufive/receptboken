@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
 		padding: 1rem;
 		justify-content: center;
 		align-items: center;
+		border: none;
 		h1 {
 			text-align: center;
 		}
@@ -39,6 +40,7 @@ export const DetailsBar = styled.div`
 		font-size: 1.5rem;
 		justify-content: center;
 		align-items: center;
+		flex-wrap: wrap;
 	}
 `;
 
@@ -46,25 +48,9 @@ export const ImageAndTags = styled.div`
 	padding: 1.5rem 0;
 	display: flex;
 	font-weight: 700;
-	> img {
-		margin-right: 2rem;
-		max-width: 300px;
-		max-height: 300px;
-	}
-	> div {
-		height: "fit-content";
-	}
-
+	width: 100%;
 	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		> img {
-			margin-right: 0;
-			margin-bottom: 1rem;
-			max-height: 350px;
-			max-width: 350px;
-		}
+		flex-wrap: wrap;
 	}
 `;
 
@@ -86,30 +72,45 @@ export const Beskrivning = styled.div`
 		display: flex;
 		align-items: center;
 		margin-bottom: 4rem;
-		span {
-			height: 1.2rem;
-			min-width: 1.2rem;
-			border-radius: 50%;
-			margin-right: 2rem;
-			background: ${props => props.theme.green};
-		}
 	}
+	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		padding: 0.5rem;
+	}
+`;
+
+export const Dot = styled.span`
+	height: 1.2rem;
+	min-width: 1.2rem;
+	border-radius: 50%;
+	margin-right: 2rem;
+	background: ${props => props.theme.green};
 `;
 
 export const Ingredienser = styled.div`
 	display: flex;
 	flex-direction: column;
-	max-height: 500px;
+	max-height: 600px;
 	flex-wrap: wrap;
-	align-items: center;
 	margin-bottom: 3rem;
-	p {
-		padding: 1rem 0;
-		color: ${props => props.theme.black};
-		font-family: "Proza Libre";
-		font-weight: 400;
-		border-bottom: 1px solid ${props => props.theme.lightgrey};
-		font-size: 2rem;
+	> div {
+		display: flex;
+		align-items: center;
+		p {
+			padding: 1rem 0;
+			width: fit-content;
+			color: ${props => props.theme.black};
+			font-family: "Proza Libre";
+			font-weight: 400;
+			font-size: 2rem;
+			span {
+				height: 1.2rem;
+				min-width: 1.2rem;
+				border-radius: 50%;
+				margin-right: 2rem;
+				background: ${props => props.theme.green};
+				border: 1px solid red;
+			}
+		}
 	}
 	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
 		max-height: 100%;
@@ -118,13 +119,12 @@ export const Ingredienser = styled.div`
 `;
 
 export const Tag = styled.span`
-	margin-right: 1rem;
+	margin-right: 3px;
 	background: ${props => props.theme.offWhite};
 	color: ${props => props.theme.grey};
 	font-weight: 700;
 	padding: 0.5rem 0;
 	border-radius: 3px;
-	transition: all 200ms ease-out;
 	display: flex;
 	align-items: center;
 
@@ -166,5 +166,22 @@ export const DeleteContainer = styled.div`
 	}
 	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
 		margin-right: 10rem;
+	}
+`;
+
+export const ImgContainer = styled.div`
+	width: fit-content;
+	> img {
+		margin-right: 2rem;
+		max-width: 350px;
+	}
+
+	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		flex-wrap: wrap;
+		> img {
+			margin-right: 0;
+			margin-bottom: 1rem;
+			max-width: 100%;
+		}
 	}
 `;

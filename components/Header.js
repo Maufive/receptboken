@@ -30,7 +30,7 @@ class Header extends Component {
 				>
 					<Link href="/">
 						<a>
-							<GroceriesIcon />
+							{/* <GroceriesIcon /> */}
 							<Logo>Receptboken</Logo>
 						</a>
 					</Link>

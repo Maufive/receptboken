@@ -37,6 +37,7 @@ export const StyledJumbotron = styled.div`
 	}
 	h2 {
 		margin-bottom: 3rem;
+		padding: 0 2rem;
 	}
 	div {
 		width: 40rem;
@@ -45,12 +46,15 @@ export const StyledJumbotron = styled.div`
 			width: 35rem;
 		}
 	}
+	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		margin: 3rem 0;
+	}
 `;
 
 export const LoginContainer = styled.div`
 	display: flex;
 	justify-content: space-around;
-	z-index: 999 !important;
+	z-index: 499 !important;
 `;
 
 export const Wave = styled.span`

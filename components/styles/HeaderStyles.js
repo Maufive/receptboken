@@ -9,7 +9,14 @@ export const Logo = styled.h2`
 	font-weight: 700;
 	letter-spacing: 1px;
 	font-size: 2rem;
+
+	svg {
+		height: 3rem;
+		width: 3rem;
+		margin-right: 0.5rem;
+	}
 `;
+
 export const StyledHeader = styled.header`
 	display: flex;
 	align-items: center;
@@ -33,6 +40,10 @@ export const StyledHeader = styled.header`
 			width: 3rem;
 			margin-right: 0.5rem;
 		}
+	}
+
+	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		margin-bottom: 0;
 	}
 `;
 

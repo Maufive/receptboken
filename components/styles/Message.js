@@ -3,6 +3,7 @@ import { slideInOut } from "./keyframes";
 
 export const MessageStyles = styled.div`
 	position: absolute;
+	z-index: 999;
 	top: 2%;
 	left: 50%;
 	width: fit-content;
@@ -34,6 +35,10 @@ export const MessageStyles = styled.div`
 			width: 2.5rem;
 			fill: ${props => props.theme.grey};
 			margin-right: 1rem;
+			@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+				height: 5rem;
+				width: 5rem;
+			}
 		}
 	}
 `;
