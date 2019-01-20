@@ -14,6 +14,10 @@ const Spinner = styled.div`
 	border-top-color: green;
 	animation: ${Animation} 1s ease-in-out infinite;
 	-webkit-animation: ${Animation} 1s ease-in-out infinite;
+	top: 50%;
+	left: 50%;
+	right: auto;
+	bottom: auto;
 `;
 
 const SmallSpinner = styled(Spinner)`

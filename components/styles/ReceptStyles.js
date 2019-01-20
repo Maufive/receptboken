@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
 	padding: 2rem;
 	background: ${props => props.theme.offWhite};
 	color: ${props => props.theme.grey};
-	/* box-shadow: ${props => props.theme.bsHard}; */
 	max-width: 80rem;
 	animation: ${fadeIn} 800ms ease 1 normal forwards running;
 	border: 2px solid ${props => props.theme.lightgrey};
@@ -17,8 +16,8 @@ export const Wrapper = styled.div`
 	}
 
 	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
-		width: 50rem;
-		padding: 1rem;
+		width: 100%;
+		padding: 1.5rem;
 		justify-content: center;
 		align-items: center;
 		border: none;
@@ -27,7 +26,7 @@ export const Wrapper = styled.div`
 		}
 	}
 
-	@media (max-width: 35rem) {
+	@media (max-width: 350px) {
 		width: 100%;
 	}
 `;
@@ -59,19 +58,21 @@ export const Container = styled.div`
 	flex-direction: column;
 	h2 {
 		font-size: 2.5rem;
-		margin: 0 auto;
+		font-weight: 700;
+		font-family: "Josefin Sans";
 	}
 `;
 
 export const Beskrivning = styled.div`
 	font-size: 2rem;
-	font-family: "Proza Libre";
 	padding: 2rem;
 	max-width: 600px;
 	div {
 		display: flex;
 		align-items: center;
-		margin-bottom: 4rem;
+		margin-bottom: 2rem;
+		padding-bottom: 2rem;
+		border-bottom: 1px dashed ${props => props.theme.lightgrey};
 	}
 	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
 		padding: 0.5rem;
@@ -95,12 +96,12 @@ export const Ingredienser = styled.div`
 	> div {
 		display: flex;
 		align-items: center;
+		margin-bottom: 1rem;
+		padding-bottom: 1rem;
 		p {
 			padding: 1rem 0;
 			width: fit-content;
 			color: ${props => props.theme.black};
-			font-family: "Proza Libre";
-			font-weight: 400;
 			font-size: 2rem;
 			span {
 				height: 1.2rem;
