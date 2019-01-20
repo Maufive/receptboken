@@ -7,7 +7,7 @@ export const ProfileContainer = styled.div`
 	color: ${props => props.theme.grey};
 	box-shadow: ${props => props.theme.bsHard};
 	animation: ${fadeIn} 500ms ease-out;
-	width: fit-content;
+	max-width: 500px;
 	margin-bottom: 3rem;
 	h2,
 	h3 {
@@ -25,12 +25,15 @@ export const ProfileDescription = styled.div`
 	padding: 3rem;
 	> div {
 		margin: 1.5rem 0;
+		h1 {
+			text-align: center;
+		}
 	}
 `;
 
 export const AvatarContainer = styled.div`
 	border-radius: 50%;
-	border: 3px solid ${props => props.theme.grey};
+	border: 2px solid ${props => props.theme.lightgrey};
 	height: 100px;
 	width: 100px;
 	display: flex;

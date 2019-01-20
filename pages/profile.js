@@ -11,7 +11,7 @@ import {
 	AvatarContainer,
 	UppladdadeRecept
 } from "../components/styles/ProfileStyles";
-import ChefIcon from "../svg/chef.svg";
+import AvatarIcon from "../svg/defaultAvatar.svg";
 
 class profile extends Component {
 	state = {
@@ -57,12 +57,14 @@ class profile extends Component {
 							{user.photo ? (
 								<img src={user.photo} alt="user image" />
 							) : (
-								<ChefIcon />
+								<AvatarIcon />
 							)}
 						</AvatarContainer>
 						<div>
-							<h2>{user.fname + " " + user.lname}</h2>
-							<h2>Om mig:</h2>
+							<h1>{user.fname + " " + user.lname}</h1>
+							<h3>
+								<strong>Om mig:</strong>
+							</h3>
 							{user.description ? (
 								<p>{user.description}</p>
 							) : (
