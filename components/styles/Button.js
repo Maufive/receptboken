@@ -19,16 +19,16 @@ export const Button = styled.button`
 	animation: ${slideUp} 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
 	cursor: pointer;
 	a {
-		color: ${props =>
-			props.primary ? props.theme.offWhite : props.theme.green};
+		color: ${props => (props.primary ? props.theme.offWhite : props.theme.green)};
 	}
 
 	&:hover {
 		color: ${props => props.theme.offWhite};
 		box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
 		transform: translateY(-1px);
-		background: #15b26e;
-		border: 1px solid #15b26e;
+		background: ${props => props.theme.darkGreen};
+		border: 1px solid ${props => props.theme.darkGreen};
+		/* border: 1px solid ${props => props.theme.green}; */
 		svg {
 			fill: ${props => props.theme.offWhite};
 		}

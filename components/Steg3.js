@@ -15,7 +15,8 @@ const TAGS = [
 	"Billigt",
 	"Bakat & Dessert",
 	"Pasta",
-	"Vegetariskt"
+	"Vegetariskt",
+	"Fisk"
 ];
 
 class Steg3 extends Component {

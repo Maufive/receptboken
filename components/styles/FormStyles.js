@@ -18,6 +18,8 @@ export const StyledForm = styled.form`
 	h3 {
 		color: ${props => props.theme.grey};
 		margin-bottom: 3rem;
+		display: flex;
+		justify-content: space-between;
 	}
 	> div {
 		width: 100%;

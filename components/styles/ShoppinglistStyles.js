@@ -8,12 +8,14 @@ export const List = styled.ul`
 	a {
 		color: ${props => props.theme.grey};
 	}
-	> div {
+	> li {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		width: 100%;
-		margin-bottom: 1rem;
+		margin: 1rem;
+		padding: 1rem;
+		border-bottom: 2px solid ${props => props.theme.lightgrey};
 	}
 	svg {
 		fill: ${props => props.theme.green};
@@ -33,12 +35,26 @@ export const List = styled.ul`
 `;
 
 export const ListContainer = styled.div`
-	background: ${props => props.theme.white};
+	background: ${props => props.theme.offWhite};
 	padding: 2rem 4rem;
 	border-radius: 5px;
-	min-width: fit-content;
-	width: 500px;
+	border-top: 20px solid ${props => props.theme.orange};
+	width: 800px;
 	margin: 0 auto;
 	opacity: 0;
 	animation: ${fadeIn} 800ms ease 1 normal forwards running;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	h1 {
+		color: ${props => props.theme.orange};
+		font-family: "Josefin Sans";
+		font-weight: 700;
+	}
+	h1,
+	h2,
+	h3 {
+		margin-block-end: 0;
+		margin-block-start: 0;
+	}
 `;

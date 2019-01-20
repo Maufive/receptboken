@@ -96,17 +96,18 @@ class AddToShoppinglist extends Component {
 						<div>
 							<input
 								type="text"
-								value={this.state.title}
 								name="title"
+								id="title"
+								value={this.state.title}
 								onChange={this.saveToState}
 								required
 							/>
-							<label htmlFor="title">
+							<label htmlFor="title" for="title">
 								<AddIcon />
 								Ny inköpslista
 							</label>
 						</div>
-						<Button fullWidth type="submit">
+						<Button primary fullWidth type="submit">
 							Skapa ny inköpslista
 						</Button>
 						<List>

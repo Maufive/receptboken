@@ -22,15 +22,12 @@ class Login extends Component {
 
 	onSubmit = e => {
 		e.preventDefault();
-		console.log("Submitted login");
 		const { email, password } = this.state;
 		const { setUser, setMessage } = this.props;
 		axios
 			.post(`https://receptboken.herokuapp.com/auth/login`, { email, password })
 			.then(result => {
 				localStorage.setItem("jwtToken", result.data.token);
-				console.log("JWT Token Set");
-				console.log(result.data);
 				setUser(result.data.user);
 				setMessage("success", `Välkommen ${result.data.user.fname}!`);
 				// Router.push("/");

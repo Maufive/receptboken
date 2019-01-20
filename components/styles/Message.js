@@ -36,8 +36,8 @@ export const MessageStyles = styled.div`
 			fill: ${props => props.theme.grey};
 			margin-right: 1rem;
 			@media (max-width: ${props => props.theme.mobileBreakpoint}) {
-				height: 5rem;
-				width: 5rem;
+				height: 3rem;
+				width: 3rem;
 			}
 		}
 	}

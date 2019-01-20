@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Router from "next/router";
 import { Button, DisabledButton } from "./styles/Button";
-import { ListItemDiv, List } from "./styles/Steg1Styles";
+import { ListItemDiv, List, CloseButton } from "./styles/Steg1Styles";
 import { StyledForm } from "./styles/FormStyles";
 import EditIcon from "../svg/edit.svg";
 import AddBoldIcon from "../svg/addBold.svg";
@@ -141,24 +142,31 @@ class Steg1Test extends Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
+	// closeForm = e => {
+	// 	e.preventDefault();
+	// 	Router.push("/");
+	// };
+
 	render() {
 		const { step } = this.state;
 		const { title, saveToState } = this.props;
 		return (
 			<StyledForm>
-				<h3 style={{ display: "flex", justifyContent: "space-between" }}>
+				{/* <CloseButton onClick={this.closeForm}>✖︎</CloseButton> */}
+				<h3>
 					<span>Ingredienser</span>
 					<span>Steg {step} av 3</span>
 				</h3>
 				<div>
 					<input
 						type="text"
+						name="title"
+						id="title"
 						value={title}
 						onChange={saveToState}
-						name="title"
 						required
 					/>
-					<label htmlFor="title">
+					<label htmlFor="title" for="title">
 						<EditIcon /> Titel
 					</label>
 				</div>
@@ -174,12 +182,13 @@ class Steg1Test extends Component {
 				<div>
 					<input
 						type="text"
+						name="item"
+						id="item"
 						value={this.state.item.input}
 						onChange={this.saveIngredient}
-						name="item"
 						required
 					/>
-					<label htmlFor="item">
+					<label htmlFor="item" for="item">
 						<IngredientIcon style={{ fill: "#15BD76" }} /> Fyll i ingredienser:
 					</label>
 				</div>

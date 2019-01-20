@@ -4,27 +4,33 @@ import styled from "styled-components";
 import HeartIcon from "../svg/like-1.svg";
 
 const HeartStyles = styled.span`
-	color: ${props => (props.hearted ? props.theme.red : props.theme.grey)};
-	transition: 300ms all ease-out;
+	color: ${props => (props.hearted ? props.theme.offWhite : props.theme.red)};
+	background: ${props => (props.hearted ? props.theme.red : "transparent")};
+	transition: 300ms all ease;
 	margin-right: 3rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-weight: 700;
 	cursor: pointer;
-	font-size: 1.5rem;
-	padding: 0.5rem 1rem;
-	border-radius: 3px;
-	/* border: 1px solid
-		${props => (props.hearted ? props.theme.red : props.theme.grey)}; */
+	font-size: 1rem;
+	padding: 0.3rem 1rem;
+	border-radius: ${props => props.theme.bRadius};
+	border: 1px solid
+		${props => (props.hearted ? props.theme.red : props.theme.red)};
 	svg {
 		margin-right: 1rem;
-		height: 15px;
-		width: 15px;
+		height: 1.2rem;
+		width: 1.2rem;
+		fill: ${props => (props.hearted ? props.theme.offWhite : props.theme.red)};
 	}
 	&:hover {
-		fill: ${props => (props.hearted ? props.theme.grey : props.theme.red)};
-		color: ${props => (props.hearted ? props.theme.grey : props.theme.red)};
+		color: ${props => (props.hearted ? props.theme.lightgrey : props.theme.red)};
+		transform: translateY(-2px);
+		svg {
+		fill: ${props => (props.hearted ? props.theme.lightgrey : props.theme.red)};
+			
+		}
 		/* border: 1px solid
 			${props => (props.hearted ? props.theme.grey : props.theme.red)}; */
 	}

@@ -99,6 +99,7 @@ class SingleRecept extends Component {
 				<Head>
 					<title>Receptboken | {recept.title}</title>
 				</Head>
+
 				<DetailsBar>
 					<Stars id={this.props.id} />
 					<MessageConsumer>
@@ -120,6 +121,7 @@ class SingleRecept extends Component {
 						{recept.servings}
 					</IconContainer>
 				</DetailsBar>
+
 				<ImageAndTags>
 					<ImgContainer>
 						<img src={recept.photo} alt="Foto på maten" />
@@ -133,6 +135,7 @@ class SingleRecept extends Component {
 								</Tag>
 							))}
 						</div>
+
 						{this.props.user && (
 							<div>
 								<MessageConsumer>
@@ -147,11 +150,13 @@ class SingleRecept extends Component {
 								</MessageConsumer>
 							</div>
 						)}
+
 						<Author id={recept.author} />
 						<IconContainer>
 							<CalenderIcon />
 							<Moment format="YYYY/MM/DD">{recept.created}</Moment>
 						</IconContainer>
+
 						{this.state.owner && (
 							<DeleteContainer onClick={this.deleteRecipe}>
 								<TrashIcon />
@@ -160,6 +165,7 @@ class SingleRecept extends Component {
 						)}
 					</div>
 				</ImageAndTags>
+
 				<Container>
 					<h2>Du Behöver:</h2>
 					<Ingredienser>
@@ -173,6 +179,7 @@ class SingleRecept extends Component {
 							</div>
 						))}
 					</Ingredienser>
+
 					<h2>Gör såhär:</h2>
 					<Beskrivning>
 						{recept.description.map(step => (

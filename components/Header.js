@@ -4,7 +4,6 @@ import Router from "next/router";
 import NProgress from "nprogress";
 import LoginModal from "./LoginModal";
 import MenuModal from "./MenuModal";
-import GroceriesIcon from "../svg/groceries2.svg";
 import { StyledHeader, ButtonContainer, Logo } from "./styles/HeaderStyles";
 
 Router.onRouteChangeStart = () => {
@@ -30,8 +29,7 @@ class Header extends Component {
 				>
 					<Link href="/">
 						<a>
-							{/* <GroceriesIcon /> */}
-							<Logo>Receptboken</Logo>
+							<Logo>RECEPTBOKEN</Logo>
 						</a>
 					</Link>
 				</div>

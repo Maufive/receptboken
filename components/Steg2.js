@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { StyledForm } from "./styles/FormStyles";
 import EditIcon from "../svg/edit.svg";
-import AddIcon from "../svg/add.svg";
+import AddBoldIcon from "../svg/addBold.svg";
 import TrashIcon from "../svg/trash.svg";
 import { List, ListItemDiv } from "./styles/Steg1Styles";
 import { Button, DisabledButton } from "./styles/Button";
@@ -102,18 +102,21 @@ class Steg2 extends Component {
 		const { steg, previousStep } = this.props;
 		return (
 			<StyledForm>
-				<h3 style={{ display: "flex", justifyContent: "space-between" }}>
-					<span>Gör såhär:</span>
+				<h3>
+					<span>Gör så här:</span>
 					<span>Steg {steg} av 3</span>
 				</h3>
 				<div>
 					<textarea
 						name="string"
+						id="string"
 						required
 						value={this.state.string}
 						onChange={this.saveToState}
 					/>
-					<label htmlFor="string">Fyll i beskrivning</label>
+					<label htmlFor="string" for="string">
+						Fyll i beskrivning
+					</label>
 				</div>
 				<div>
 					{this.state.editing ? (
@@ -126,7 +129,7 @@ class Steg2 extends Component {
 						</Button>
 					) : (
 						<Button fullWidth onClick={this.addToArray}>
-							<AddIcon />
+							<AddBoldIcon />
 							Lägg till
 						</Button>
 					)}

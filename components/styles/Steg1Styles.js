@@ -24,6 +24,7 @@ export const RecipeForm = styled.form`
 		padding: 1.5rem;
 		border: 1px solid ${props => props.theme.offWhite};
 		border-radius: 10px;
+		pointer-events: none;
 	}
 	input[type="text"]:focus {
 		border: 2px solid ${props => props.theme.green};
@@ -206,4 +207,11 @@ export const Header = styled.div`
 		border: none;
 		border-bottom: 1px solid ${props => props.theme.green} !important;
 	}
+`;
+
+export const CloseButton = styled.button`
+	color: ${props => props.theme.black};
+	background: transparent;
+	border: none;
+	cursor: pointer;
 `;

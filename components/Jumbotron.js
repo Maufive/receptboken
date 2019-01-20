@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Link from "next/link";
-import { StyledJumbotron, Wave } from "./styles/Jumbotron";
+import Infotron from "./Infotron";
+import { StyledJumbotron, JumbotronButtons, Wave } from "./styles/Jumbotron";
 import { Button } from "./styles/Button";
 import ListBoldIcon from "../svg/listBold.svg";
 
@@ -10,7 +11,8 @@ class Jumbotron extends Component {
 			<StyledJumbotron>
 				<h1>RECEPTBOKEN</h1>
 				<h2>Spara dina recept på ett och samma ställe</h2>
-				<div>
+				{!this.props.user && <Infotron />}
+				<JumbotronButtons>
 					{this.props.user ? (
 						<Link href="/recipe">
 							<a>
@@ -29,7 +31,7 @@ class Jumbotron extends Component {
 							</a>
 						</Link>
 					)}
-				</div>
+				</JumbotronButtons>
 			</StyledJumbotron>
 		);
 	}

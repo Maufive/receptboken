@@ -8,6 +8,8 @@ const Meta = () => (
 		<meta name="apple-mobile-web-app-status-bar-style" content="#15BD76" />
 		<link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
 		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+		<link rel="stylesheet" type="text/css" href="/static/macbook.css" />
+		<link rel="stylesheet" type="text/css" href="/static/iphone.css" />
 		<link rel="shortcut icon" href="/static/avocado.ico" />
 		<title>Receptboken</title>
 	</Head>

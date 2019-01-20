@@ -39,13 +39,6 @@ export const StyledJumbotron = styled.div`
 		margin-bottom: 3rem;
 		padding: 0 2rem;
 	}
-	div {
-		width: 40rem;
-		margin: 0 auto;
-		@media (max-width: 550px) {
-			width: 35rem;
-		}
-	}
 	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
 		margin: 3rem 0;
 	}
@@ -65,4 +58,12 @@ export const Wave = styled.span`
 	transform-origin: 50% 100%;
 	font-size: 2rem;
 	transform: rotate(0deg);
+`;
+
+export const JumbotronButtons = styled.div`
+	width: 40rem;
+	margin: 0 auto;
+	@media (max-width: 550px) {
+		width: 35rem;
+	}
 `;

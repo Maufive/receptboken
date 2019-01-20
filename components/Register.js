@@ -105,11 +105,12 @@ class RegisterComponent extends Component {
 						<input
 							type="email"
 							name="email"
+							id="email"
 							value={this.state.email}
 							onChange={this.saveToState}
 							required
 						/>
-						<label htmlFor="email">
+						<label htmlFor="email" for="email">
 							<MailIcon /> Email:
 						</label>
 					</div>
@@ -119,9 +120,10 @@ class RegisterComponent extends Component {
 							name="fname"
 							value={this.state.fname}
 							onChange={this.saveToState}
+							id="fname"
 							required
 						/>
-						<label htmlFor="name">
+						<label htmlFor="name" for="fname">
 							<ProfileIcon /> Förnamn:
 						</label>
 					</div>
@@ -129,11 +131,12 @@ class RegisterComponent extends Component {
 						<input
 							type="text"
 							name="lname"
+							id="lname"
 							value={this.state.lname}
 							onChange={this.saveToState}
 							required
 						/>
-						<label htmlFor="name">
+						<label htmlFor="name" for="lname">
 							<ProfileIcon /> Efternamn:
 						</label>
 					</div>
@@ -141,11 +144,12 @@ class RegisterComponent extends Component {
 						<input
 							type="password"
 							name="password"
+							id="password"
 							value={this.state.password}
 							onChange={this.password}
 							required
 						/>
-						<label htmlFor="password">
+						<label htmlFor="password" for="password">
 							{this.state.passwordMatch ? (
 								<LockIcon style={{ fill: "#15BD76" }} />
 							) : (
@@ -158,11 +162,12 @@ class RegisterComponent extends Component {
 						<input
 							type="password"
 							name="password"
+							id="confirmPassword"
 							value={this.state.confirmPassword}
 							onChange={this.confirmPassword}
 							required
 						/>
-						<label htmlFor="password">
+						<label htmlFor="password" for="confirmPassword">
 							{this.state.passwordMatch ? (
 								<LockIcon style={{ fill: "#15BD76" }} />
 							) : (
