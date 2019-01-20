@@ -180,7 +180,7 @@ class SingleRecept extends Component {
 						))}
 					</Ingredienser>
 
-					<h2>Gör såhär:</h2>
+					<h2>Gör så här:</h2>
 					<Beskrivning>
 						{recept.description.map(step => (
 							<div key={step}>
