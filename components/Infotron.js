@@ -28,11 +28,10 @@ const InfotronColumn = styled.div`
 	width: 1000px;
 	border-radius: ${props => props.theme.bRadius};
 	color: ${props => props.theme.black};
-	height: 350px;
 	display: flex;
 	justify-content: space-around;
 	padding: 1.5rem 0;
-	margin-bottom: 3rem;
+	margin-bottom: 1rem;
 	animation: ${fadeIn} 800ms ease 400ms 1 normal forwards running;
 	opacity: 0;
 	> div {
@@ -58,18 +57,18 @@ const InfotronColumn = styled.div`
 		h2 {
 			margin-block-end: 0;
 			margin-block-start: 0;
-			font-size: 24px;
+			font-size: 26px;
 		}
 		p {
-			padding: 0 4rem;
-			font-size: 16px;
+			font-size: 18px;
 		}
 	}
 
 	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		width: 100%;
 		flex-direction: column;
 		align-items: center;
-		margin: 5rem 0;
+		margin: 2rem 0;
 	}
 `;
 
@@ -98,7 +97,8 @@ const IphoneContainer = styled.div`
 	justify-content: space-around !important;
 	width: 50%;
 	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
-		margin-top: 10rem;
+		margin-top: 5rem;
+		width: 100% !important;
 	}
 `;
 
@@ -107,6 +107,7 @@ const MacbookContainer = styled.div`
 	animation: ${fadeIn} 800ms ease 800ms 1 normal forwards running;
 	opacity: 0;
 	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
+		font-size: 0.4em;
 		margin-bottom: 5rem;
 	}
 `;
@@ -132,7 +133,7 @@ const Infotron = () => (
 					<div className="md-base" />
 				</div>
 			</MacbookContainer>
-			<div>
+			<div style={{ width: "100%" }}>
 				<h2>Hitta nya spännande recept</h2>
 				<p>
 					Bläddra bland massor av personliga recept och hitta något som passar
@@ -141,7 +142,7 @@ const Infotron = () => (
 			</div>
 		</InfotronColumn>
 		<InfotronColumn>
-			<div>
+			<div style={{ width: "100%" }}>
 				<h2 style={{ color: "#E4572E" }}>Enkla inköpslistor</h2>
 				<p>
 					Spara receptens ingredienser till en inköpslista som du enkelt kan

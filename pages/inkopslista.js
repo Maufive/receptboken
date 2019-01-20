@@ -19,7 +19,7 @@ class Inköpslista extends Component {
 
 	getList = () => {
 		axios
-			.get(`${process.env.API}/lists/${this.props.query.id}`)
+			.get(`https://receptboken.herokuapp.com/lists/${this.props.query.id}`)
 			.then(response => {
 				this.setState({ list: response.data });
 			})
@@ -31,7 +31,7 @@ class Inköpslista extends Component {
 		const id = this.state.list._id;
 		console.log(id);
 		axios
-			.post(`http://localhost:7777/lists/sendmail`, { id })
+			.post(`https://receptboken.herokuapp.com/lists/sendmail`, { id })
 			.then(response => {
 				console.log(response.data);
 			})
