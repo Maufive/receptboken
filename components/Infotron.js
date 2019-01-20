@@ -31,7 +31,7 @@ const InfotronColumn = styled.div`
 	display: flex;
 	justify-content: space-around;
 	padding: 1.5rem 0;
-	margin-bottom: 1rem;
+	margin-bottom: 3rem;
 	animation: ${fadeIn} 800ms ease 400ms 1 normal forwards running;
 	opacity: 0;
 	> div {
