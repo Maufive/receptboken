@@ -55,4 +55,7 @@ export const ListContainer = styled.div`
 		margin-block-end: 0;
 		margin-block-start: 0;
 	}
+	@media (max-width: ${props => props.theme.mobileBreakpooint}) {
+		width: 100%;
+	}
 `;
