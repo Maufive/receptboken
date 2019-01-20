@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { slideUp, slideIn } from "./keyframes";
+import { slideUp } from "./keyframes";
 
 export const Button = styled.button`
 	display: flex;
@@ -27,7 +27,6 @@ export const Button = styled.button`
 		box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
 		transform: translateY(-1px);
 		background: ${props => props.theme.darkGreen};
-		border: 1px solid ${props => props.theme.darkGreen};
 		/* border: 1px solid ${props => props.theme.green}; */
 		svg {
 			fill: ${props => props.theme.offWhite};

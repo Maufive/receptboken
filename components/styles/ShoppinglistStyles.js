@@ -15,7 +15,7 @@ export const List = styled.ul`
 		width: 100%;
 		margin: 1rem;
 		padding: 1rem;
-		border-bottom: 2px solid ${props => props.theme.lightgrey};
+		border-bottom: 2px dashed ${props => props.theme.lightgrey};
 	}
 	svg {
 		fill: ${props => props.theme.green};
@@ -38,7 +38,6 @@ export const ListContainer = styled.div`
 	background: ${props => props.theme.offWhite};
 	padding: 2rem 4rem;
 	border-radius: 5px;
-	border-top: 20px solid ${props => props.theme.orange};
 	width: 800px;
 	margin: 0 auto;
 	opacity: 0;
@@ -47,7 +46,6 @@ export const ListContainer = styled.div`
 	flex-direction: column;
 	align-items: center;
 	h1 {
-		color: ${props => props.theme.orange};
 		font-family: "Josefin Sans";
 		font-weight: 700;
 	}

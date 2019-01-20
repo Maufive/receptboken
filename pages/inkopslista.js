@@ -50,7 +50,7 @@ class Inköpslista extends Component {
 				<Button
 					onClick={this.sendMail}
 					primary
-					style={{ background: "#e4572e" }}
+					// style={{ background: "#e4572e" }}
 				>
 					<MailIcon />
 					Maila inköpslistan
