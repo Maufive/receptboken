@@ -48,7 +48,7 @@ class profile extends Component {
 
 	render() {
 		const { recept, user } = this.state;
-		if (!user) return <Loading />;
+		if (!user) return null;
 		return (
 			<div>
 				<ProfileContainer>

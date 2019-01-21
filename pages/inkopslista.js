@@ -40,18 +40,14 @@ class Inköpslista extends Component {
 
 	render() {
 		const { list } = this.state;
-		if (!list) return <Loading />;
+		if (!list) return null;
 		return (
 			<ListContainer>
 				<h1>{list.title}</h1>
 				<h3>
 					Skapad: <Moment format="YYYY/MM/DD">{list.created}</Moment>
 				</h3>
-				<Button
-					onClick={this.sendMail}
-					primary
-					// style={{ background: "#e4572e" }}
-				>
+				<Button onClick={this.sendMail} primary>
 					<MailIcon />
 					Maila inköpslistan
 				</Button>

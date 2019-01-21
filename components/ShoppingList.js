@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { List, ListContainer } from "./styles/ShoppinglistStyles";
+import ListIcon from "../svg/listBold.svg";
 
 class ShoppingList extends Component {
 	state = {
@@ -45,7 +46,10 @@ class ShoppingList extends Component {
 									}}
 								>
 									<a>
-										<li key={list._id}>{list.title}</li>
+										<li key={list._id}>
+											<ListIcon />
+											{list.title}
+										</li>
 									</a>
 								</Link>
 							))

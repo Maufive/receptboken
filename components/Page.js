@@ -45,13 +45,12 @@ const Inner = styled.div`
 	max-width: ${props => props.theme.maxWidth};
 	min-height: 100vh;
 	margin: 0 auto;
-	animation: ${fadeIn} 1000ms ease-out;
+	animation: ${fadeIn} 800ms ease;
 `;
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-	@import url('https://fonts.googleapis.com/css?family=Proza+Libre:400,700');
-	@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+	@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700');
 
   html {
     box-sizing: border-box;

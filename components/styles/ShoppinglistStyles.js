@@ -7,6 +7,10 @@ export const List = styled.ul`
 	line-height: 2;
 	a {
 		color: ${props => props.theme.grey};
+		margin: 2rem;
+		display: flex;
+		align-items: center;
+		border-bottom: 1px dashed ${props => props.theme.green};
 	}
 	> li {
 		display: flex;
@@ -18,19 +22,10 @@ export const List = styled.ul`
 		border-bottom: 2px dashed ${props => props.theme.lightgrey};
 	}
 	svg {
+		height: 2rem;
+		width: 2rem;
+		margin-right: 1rem;
 		fill: ${props => props.theme.green};
-		height: 20px;
-		width: 20px;
-		border: 1px solid ${props => props.theme.green};
-		padding: 4px;
-		border-radius: 50%;
-		cursor: pointer;
-		transition: all 200ms ease-out;
-		&:hover {
-			fill: ${props => props.theme.white};
-			background: ${props => props.theme.green};
-			border: 1px solid ${props => props.theme.white};
-		}
 	}
 `;
 
@@ -55,7 +50,7 @@ export const ListContainer = styled.div`
 		margin-block-end: 0;
 		margin-block-start: 0;
 	}
-	@media (max-width: ${props => props.theme.mobileBreakpooint}) {
+	@media (max-width: ${props => props.theme.mobileBreakpoint}) {
 		width: 100%;
 	}
 `;

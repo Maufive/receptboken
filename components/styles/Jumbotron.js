@@ -16,7 +16,6 @@ export const customStyles = {
 };
 
 export const StyledJumbotron = styled.div`
-	font-family: "Proza Libre";
 	margin-bottom: 3rem;
 	h1,
 	h2,

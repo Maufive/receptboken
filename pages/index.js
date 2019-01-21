@@ -81,7 +81,7 @@ class index extends Component {
 	};
 
 	render() {
-		if (!this.state.recept) return <Loading />;
+		if (!this.state.recept) return null;
 		const { page, hasMore } = this.state;
 		return (
 			<div>
