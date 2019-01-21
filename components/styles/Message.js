@@ -23,17 +23,17 @@ export const MessageStyles = styled.div`
 		border-radius: 10px;
 		left: -50%;
 		background: ${props => props.background};
-		color: ${props => props.theme.grey};
+		color: ${props => props.theme.offWhite};
 		padding: 1rem 3rem;
 		font-weight: 700;
-		border: 1px solid ${props => props.theme.grey};
+		border: 1px solid ${props => props.theme.darkGreen};
 		* {
 			box-shadow: ${props => props.theme.bs};
 		}
 		svg {
 			height: 2.5rem;
 			width: 2.5rem;
-			fill: ${props => props.theme.grey};
+			fill: ${props => props.theme.offWhite};
 			margin-right: 1rem;
 			@media (max-width: ${props => props.theme.mobileBreakpoint}) {
 				height: 3rem;

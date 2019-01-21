@@ -34,6 +34,10 @@ class Inköpslista extends Component {
 			.post(`https://receptboken.herokuapp.com/lists/sendmail`, { id })
 			.then(response => {
 				console.log(response.data);
+				this.props.setMessage(
+					"success",
+					`Inköpslistan ${this.state.list.title} skickad!`
+				);
 			})
 			.catch(error => console.log(error));
 	};

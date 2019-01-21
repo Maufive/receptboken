@@ -28,7 +28,7 @@ const ModalStyles = {
 		bottom: "auto",
 		marginRight: "-50%",
 		transform: "translate(-50%, -50%)",
-		background: "rgba(78, 183, 49, 0.75)",
+		background: "rgba(78, 183, 49, 0.9)",
 		width: "100vw",
 		height: "100vh",
 		zIndex: 10
