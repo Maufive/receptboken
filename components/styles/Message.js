@@ -4,7 +4,7 @@ import { slideInOut } from "./keyframes";
 export const MessageStyles = styled.div`
 	position: absolute;
 	z-index: 999;
-	top: 2%;
+	top: 4%;
 	left: 50%;
 	width: fit-content;
 	animation: ${slideInOut} 4s ease-in;

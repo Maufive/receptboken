@@ -19,6 +19,8 @@ To-Do:
 👍 - Mer margin upp & ner på SingleRecept
 👍 - Byt färg på Success-meddelandet
 👍 - Bredda ut receptcards på mobila enheter
+👍 - Profilbilder som laddas upp blir inte alltid runda (Cloudinary)
+👍 - Bilden på SingleRecept rinner över i Safari för iOS
 
 Måste fixas innan jag pushar appen online:
 
@@ -32,8 +34,6 @@ Uppgraderingar som bör göras:
 - Lägg till ett steg i verifkationskedjan genom att skicka en token via email som användaren ska bekräfta
 - Receptets betyg visas inte när man går in på ett specifikt recept
 
-Profilbilder som laddas upp blir inte alltid runda (Cloudinary)
 Knapp för att avbryta om man inte vill fortsätta med ett recept eller uppdatera profilen
 När man sparar sina ändringar på profil så blir det unexpected error
 Ikon när man laddar ner webbsidan som app i telefonen
-Bilden på SingleRecept rinner över i Safari för iOS
