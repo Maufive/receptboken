@@ -170,9 +170,9 @@ class SingleRecept extends Component {
 					<h2>Du Behöver:</h2>
 					<Ingredienser>
 						{recept.ingredients.map(ingredient => (
-							<div>
+							<div key={ingredient.input}>
 								<Dot />
-								<p key={ingredient.input}>
+								<p>
 									{ingredient.numberOfUnits} {ingredient.units}{" "}
 									{ingredient.input}
 								</p>
