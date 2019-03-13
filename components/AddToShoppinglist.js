@@ -9,7 +9,7 @@ import { customStyles } from "./styles/Jumbotron";
 import { LoginForm } from "./styles/ModalStyles";
 import { List } from "./styles/ShoppinglistStyles";
 
-Modal.setAppElement("#__next");
+// Modal.setAppElement("#__next");
 
 class AddToShoppinglist extends Component {
 	state = {
@@ -20,6 +20,9 @@ class AddToShoppinglist extends Component {
 
 	componentDidMount = () => {
 		this.setState({ isModalOpen: this.props.open });
+		if (typeof window !== "undefined") {
+			ReactModal.setAppElement("body");
+		}
 	};
 
 	openModal = () => {

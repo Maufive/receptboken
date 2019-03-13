@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SingleRecept /> Renders out after setting state 1`] = `
+<ReceptStyles__Wrapper>
+  <h1>
+    Mitt jättegoda recept
+  </h1>
+  <SideEffect(Head)>
+    <title>
+      Receptboken | 
+      Mitt jättegoda recept
+    </title>
+  </SideEffect(Head)>
+  <ReceptStyles__DetailsBar>
+    <Stars />
+    <ContextConsumer>
+      <Component />
+    </ContextConsumer>
+    <ReceptStyles__IconContainer>
+      <ClockIcon
+        viewBox="0 0 60 60"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      20 min
+    </ReceptStyles__IconContainer>
+    <ReceptStyles__IconContainer>
+      <DishIcon
+        viewBox="0 0 49.749 49.749"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      2
+    </ReceptStyles__IconContainer>
+  </ReceptStyles__DetailsBar>
+  <ReceptStyles__ImageAndTags>
+    <ReceptStyles__ImgContainer>
+      <img
+        alt="Foto på maten"
+        src="asdf123.jpg"
+      />
+    </ReceptStyles__ImgContainer>
+    <div>
+      <div>
+        <ReceptStyles__Tag
+          key="Mat"
+        >
+          <TagIcon
+            viewBox="0 0 56.414 56.414"
+            xmlns="http://www.w3.org/2000/svg"
+          />
+          <p>
+            Mat
+          </p>
+        </ReceptStyles__Tag>
+        <ReceptStyles__Tag
+          key="Gott"
+        >
+          <TagIcon
+            viewBox="0 0 56.414 56.414"
+            xmlns="http://www.w3.org/2000/svg"
+          />
+          <p>
+            Gott
+          </p>
+        </ReceptStyles__Tag>
+      </div>
+      <Author
+        id="5678436374re67fwuf76"
+      />
+      <ReceptStyles__IconContainer>
+        <CalenderIcon
+          viewBox="0 0 60 60"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+        <t
+          ago={false}
+          calendar={false}
+          decimal={false}
+          element="time"
+          filter={[Function]}
+          format="YYYY/MM/DD"
+          fromNow={false}
+          interval={60000}
+          onChange={[Function]}
+          titleFormat=""
+          toNow={false}
+          unit={null}
+          unix={false}
+          utc={false}
+          withTitle={false}
+        >
+          Idag
+        </t>
+      </ReceptStyles__IconContainer>
+    </div>
+  </ReceptStyles__ImageAndTags>
+  <ReceptStyles__Container>
+    <h2>
+      Du Behöver:
+    </h2>
+    <ReceptStyles__Ingredienser>
+      <div
+        key="Lök"
+      >
+        <ReceptStyles__Dot />
+        <p>
+          2
+           
+          dl
+           
+          Lök
+        </p>
+      </div>
+    </ReceptStyles__Ingredienser>
+    <h2>
+      Gör så här:
+    </h2>
+    <ReceptStyles__Beskrivning>
+      <div
+        key="Steg1"
+      >
+        <ReceptStyles__Dot />
+        <p>
+          Steg1
+        </p>
+      </div>
+      <div
+        key="Steg2"
+      >
+        <ReceptStyles__Dot />
+        <p>
+          Steg2
+        </p>
+      </div>
+      <div
+        key="Steg3"
+      >
+        <ReceptStyles__Dot />
+        <p>
+          Steg3
+        </p>
+      </div>
+    </ReceptStyles__Beskrivning>
+  </ReceptStyles__Container>
+</ReceptStyles__Wrapper>
+`;

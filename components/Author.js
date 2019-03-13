@@ -39,6 +39,7 @@ class Author extends Component {
 			<AuthorStyles>
 				Uppladdat av:
 				<Link
+					data-testid="author-link"
 					href={{
 						pathname: "/profile",
 						query: {

@@ -8,8 +8,9 @@ class ReceptCard extends Component {
 	render() {
 		const { id, photo, title, timeRequired, reviews } = this.props;
 		return (
-			<div>
+			<div data-testid="recept-card">
 				<Link
+					data-testid="recept-card-id"
 					key={id}
 					href={{
 						pathname: "/recept",
@@ -20,8 +21,12 @@ class ReceptCard extends Component {
 				>
 					<a>
 						<Card>
-							<img src={photo} alt="Bild på recept" />
-							<h3>{title}</h3>
+							<img
+								src={photo}
+								alt="Bild på recept"
+								data-testid="recept-card-photo"
+							/>
+							<h3 data-testid="recept-card-title">{title}</h3>
 							<div>
 								<span>
 									<ClockIcon /> {timeRequired}m

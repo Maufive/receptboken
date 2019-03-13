@@ -18,7 +18,7 @@ import {
 } from "./styles/DropdownStyles";
 import { LoginContainer } from "./styles/Jumbotron";
 
-Modal.setAppElement("#__next");
+// Modal.setAppElement("#__next");
 
 const ModalStyles = {
 	content: {
@@ -40,6 +40,12 @@ class UserDropdown extends Component {
 		open: false,
 		isModalOpen: false
 	};
+
+	componentDidMount() {
+		if (typeof window !== "undefined") {
+			ReactModal.setAppElement("body");
+		}
+	}
 
 	openModal = () => {
 		this.setState({ isModalOpen: true });

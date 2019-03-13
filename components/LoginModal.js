@@ -6,7 +6,7 @@ import { MinButton } from "./styles/Button";
 import { LoginContainer, customStyles } from "./styles/Jumbotron";
 import LockIcon from "../svg/las.svg";
 
-Modal.setAppElement("#__next");
+// Modal.setAppElement("#__next");
 
 class LoginModal extends Component {
 	state = {
@@ -15,6 +15,9 @@ class LoginModal extends Component {
 
 	componentDidMount = () => {
 		this.setState({ isModalOpen: this.props.open });
+		if (typeof window !== "undefined") {
+			Modal.setAppElement("body");
+		}
 	};
 
 	openModal = () => {

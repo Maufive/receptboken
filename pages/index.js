@@ -81,10 +81,10 @@ class index extends Component {
 	};
 
 	render() {
-		if (!this.state.recept) return null;
+		if (!this.state.recept) return <h1 data-testid="loading">Loading</h1>;
 		const { page, hasMore } = this.state;
 		return (
-			<div>
+			<div data-testid="index-page">
 				<UserConsumer>
 					{({ user, setUser }) => <Jumbotron user={user} setUser={setUser} />}
 				</UserConsumer>

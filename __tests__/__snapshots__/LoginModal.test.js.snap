@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginModal /> renders with closed state 1`] = `
+<Jumbotron__LoginContainer>
+  <Button__MinButton
+    onClick={[Function]}
+  >
+    <LockIcon
+      viewBox="0 0 54 54"
+      xmlns="http://www.w3.org/2000/svg"
+    />
+    Logga in
+  </Button__MinButton>
+  <Modal
+    ariaHideApp={true}
+    bodyOpenClassName="ReactModal__Body--open"
+    closeTimeoutMS={0}
+    contentLabel="Login Modal"
+    isOpen={false}
+    onRequestClose={[Function]}
+    parentSelector={[Function]}
+    portalClassName="ReactModalPortal"
+    role="dialog"
+    shouldCloseOnEsc={true}
+    shouldCloseOnOverlayClick={true}
+    shouldFocusAfterRender={true}
+    shouldReturnFocusAfterClose={true}
+    style={
+      Object {
+        "content": Object {
+          "background": "#fff",
+          "bottom": "auto",
+          "left": "50%",
+          "marginRight": "-50%",
+          "right": "auto",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+          "zIndex": 10,
+        },
+      }
+    }
+  >
+    <ContextConsumer>
+      <Component />
+    </ContextConsumer>
+  </Modal>
+</Jumbotron__LoginContainer>
+`;

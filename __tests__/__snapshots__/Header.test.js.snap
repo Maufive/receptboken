@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders with a user 1`] = `
+<HeaderStyles__StyledHeader>
+  <div
+    style={
+      Object {
+        "width": "50%",
+      }
+    }
+  >
+    <Link
+      href="/"
+    >
+      <a>
+        <HeaderStyles__Logo>
+          RECEPTBOKEN
+        </HeaderStyles__Logo>
+      </a>
+    </Link>
+  </div>
+  <HeaderStyles__ButtonContainer>
+    <UserDropdown
+      user={
+        Object {
+          "_id": "1234",
+          "description": "Hej jag heter Niklas",
+          "fname": "Niklas",
+          "hearts": Array [],
+          "lname": "Albinsson",
+          "password": "1234",
+          "photo": "http://fakephoto.jpg",
+          "username": "fakeuser@gmail.com",
+        }
+      }
+    />
+  </HeaderStyles__ButtonContainer>
+</HeaderStyles__StyledHeader>
+`;
+
+exports[`<Header /> renders without user 1`] = `
+<HeaderStyles__StyledHeader>
+  <div
+    style={
+      Object {
+        "width": "50%",
+      }
+    }
+  >
+    <Link
+      href="/"
+    >
+      <a>
+        <HeaderStyles__Logo>
+          RECEPTBOKEN
+        </HeaderStyles__Logo>
+      </a>
+    </Link>
+  </div>
+  <HeaderStyles__ButtonContainer>
+    <LoginModal />
+  </HeaderStyles__ButtonContainer>
+</HeaderStyles__StyledHeader>
+`;
