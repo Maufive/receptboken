@@ -21,7 +21,7 @@ class AddToShoppinglist extends Component {
 	componentDidMount = () => {
 		this.setState({ isModalOpen: this.props.open });
 		if (typeof window !== "undefined") {
-			ReactModal.setAppElement("body");
+			Modal.setAppElement("body");
 		}
 	};
 

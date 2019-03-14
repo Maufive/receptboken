@@ -1,0 +1,50 @@
+import React from "react";
+import { shallow } from "enzyme";
+import toJSON from "enzyme-to-json";
+import Login from "../components/Login";
+
+describe("<Login />", () => {
+	let wrapper;
+	beforeEach(() => (wrapper = shallow(<Login />)));
+
+	it("renders to the page", () => {
+		expect(wrapper.find("ModalStyles__LoginForm").exists()).toBe(true);
+		expect(toJSON(wrapper)).toMatchSnapshot();
+	});
+
+	it("renders an email input", () => {
+		expect(wrapper.find("#email").length).toEqual(1);
+	});
+
+	it("render an password input", () => {
+		expect(wrapper.find("#password").length).toEqual(1);
+	});
+
+	it("renders the login-button", () => {
+		expect(wrapper.find("#login-button").length).toEqual(1);
+	});
+
+	it("renders the register-button", () => {
+		expect(wrapper.find("#register-button").length).toEqual(1);
+	});
+
+	describe("Email input", () => {
+		it("should respont to change event and change the state of the Login-component", () => {
+			wrapper.find("#email").simulate("change", {
+				target: { name: "email", value: "test@gmail.com" }
+			});
+
+			expect(wrapper.state("email")).toEqual("test@gmail.com");
+		});
+	});
+
+	describe("Password input", () => {
+		it("should respond to change event and change the state of the Login-component", () => {
+			wrapper.find("#password").simulate("change", {
+				target: { name: "password", value: "password123" }
+			});
+
+			expect(wrapper.state("password")).toEqual("password123");
+		});
+	});
+});

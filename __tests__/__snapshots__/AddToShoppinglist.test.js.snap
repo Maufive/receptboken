@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddToShoppinglist /> renders to the page and matches the snapshot 1`] = `
+<div>
+  <Button
+    onClick={[Function]}
+    primary={true}
+  >
+    <ListBoldIcon
+      viewBox="0 0 60 60"
+      xmlns="http://www.w3.org/2000/svg"
+    />
+     Lägg till i inköpslista
+  </Button>
+  <Modal
+    ariaHideApp={true}
+    bodyOpenClassName="ReactModal__Body--open"
+    closeTimeoutMS={0}
+    contentLabel="Login Modal"
+    isOpen={false}
+    onRequestClose={[Function]}
+    parentSelector={[Function]}
+    portalClassName="ReactModalPortal"
+    role="dialog"
+    shouldCloseOnEsc={true}
+    shouldCloseOnOverlayClick={true}
+    shouldFocusAfterRender={true}
+    shouldReturnFocusAfterClose={true}
+    style={
+      Object {
+        "content": Object {
+          "background": "#fff",
+          "bottom": "auto",
+          "left": "50%",
+          "marginRight": "-50%",
+          "right": "auto",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+          "zIndex": 10,
+        },
+      }
+    }
+  >
+    <ModalStyles__LoginForm
+      onSubmit={[Function]}
+    >
+      <h2>
+        Välj inköpslista
+      </h2>
+      <div>
+        <input
+          id="title"
+          name="title"
+          onChange={[Function]}
+          required={true}
+          type="text"
+          value=""
+        />
+        <label
+          for="title"
+          htmlFor="title"
+        >
+          <AddIcon
+            viewBox="0 0 42 42"
+            xmlns="http://www.w3.org/2000/svg"
+          />
+          Ny inköpslista
+        </label>
+      </div>
+      <Button
+        fullWidth={true}
+        primary={true}
+        type="submit"
+      >
+        Skapa ny inköpslista
+      </Button>
+      <ShoppinglistStyles__List />
+    </ModalStyles__LoginForm>
+  </Modal>
+</div>
+`;

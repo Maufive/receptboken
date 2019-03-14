@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> renders to the page 1`] = `
+<div
+  style={
+    Object {
+      "margin": "0 auto",
+    }
+  }
+>
+  <ModalStyles__LoginForm
+    onSubmit={[Function]}
+  >
+    <h2>
+      Vänligen logga in
+    </h2>
+    <div>
+      <input
+        id="email"
+        name="email"
+        onChange={[Function]}
+        required={true}
+        type="email"
+        value=""
+      />
+      <label
+        htmlFor="email"
+      >
+        <MailIcon
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+         Email
+      </label>
+    </div>
+    <div>
+      <input
+        id="password"
+        name="password"
+        onChange={[Function]}
+        required={true}
+        type="password"
+        value=""
+      />
+      <label
+        htmlFor="password"
+      >
+        <LockIcon
+          viewBox="0 0 58 58"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+         Lösenord
+      </label>
+    </div>
+    <Button
+      fullWidth={true}
+      id="login-button"
+      type="submit"
+    >
+      Logga in →
+    </Button>
+    <h3
+      style={
+        Object {
+          "color": "#5A5555",
+        }
+      }
+    >
+      Inget konto?
+    </h3>
+    <Link
+      href="/register"
+    >
+      <a>
+        <Button
+          fullWidth={true}
+          id="register-button"
+          primary={true}
+        >
+          Registrera →
+        </Button>
+      </a>
+    </Link>
+  </ModalStyles__LoginForm>
+</div>
+`;

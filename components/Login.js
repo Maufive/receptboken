@@ -75,13 +75,18 @@ class Login extends Component {
 							<LockIcon /> Lösenord
 						</label>
 					</div>
-					<Button fullWidth type="submit">
+					<Button fullWidth type="submit" id="login-button">
 						Logga in →
 					</Button>
 					<h3 style={{ color: "#5A5555" }}>Inget konto?</h3>
 					<Link href="/register">
 						<a>
-							<Button fullWidth primary onClick={this.props.closeModal}>
+							<Button
+								fullWidth
+								primary
+								id="register-button"
+								onClick={this.props.closeModal}
+							>
 								Registrera →
 							</Button>
 						</a>
