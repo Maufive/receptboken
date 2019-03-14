@@ -43,7 +43,7 @@ class UserDropdown extends Component {
 
 	componentDidMount() {
 		if (typeof window !== "undefined") {
-			ReactModal.setAppElement("body");
+			Modal.setAppElement("body");
 		}
 	}
 

@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MenuModal /> renders with closed state 1`] = `
+<Jumbotron__LoginContainer>
+  <DropdownStyles__UserItem
+    onClick={[Function]}
+  >
+    <MenuIcon
+      viewBox="0 0 56 56"
+      xmlns="http://www.w3.org/2000/svg"
+    />
+    Niklas
+    <DropdownStyles__ImgStyles>
+      <img
+        alt="profilbild"
+        src="http://fakephoto.jpg"
+      />
+    </DropdownStyles__ImgStyles>
+  </DropdownStyles__UserItem>
+  <Modal
+    ariaHideApp={true}
+    bodyOpenClassName="ReactModal__Body--open"
+    closeTimeoutMS={800}
+    contentLabel="Menu Modal"
+    isOpen={false}
+    onRequestClose={[Function]}
+    parentSelector={[Function]}
+    portalClassName="ReactModalPortal"
+    role="dialog"
+    shouldCloseOnEsc={true}
+    shouldCloseOnOverlayClick={true}
+    shouldFocusAfterRender={true}
+    shouldReturnFocusAfterClose={true}
+    style={
+      Object {
+        "content": Object {
+          "background": "rgba(78, 183, 49, 0.9)",
+          "bottom": "auto",
+          "height": "100vh",
+          "left": "50%",
+          "marginRight": "-50%",
+          "right": "auto",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+          "width": "100vw",
+          "zIndex": 10,
+        },
+      }
+    }
+  >
+    <DropdownStyles__MenuContainer>
+      <div>
+        <DropdownStyles__Option
+          onClick={[Function]}
+        >
+          <a>
+            <CloseIcon
+              viewBox="0 0 32.526 32.526"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+            Stäng
+          </a>
+        </DropdownStyles__Option>
+      </div>
+      <div>
+        <DropdownStyles__Option
+          onClick={[Function]}
+        >
+          <Link
+            href={
+              Object {
+                "pathname": "/profile",
+                "query": Object {
+                  "id": "1234",
+                },
+              }
+            }
+          >
+            <a>
+              <UsersBoldIcon
+                viewBox="0 0 60 60"
+                xmlns="http://www.w3.org/2000/svg"
+              />
+              Min profil
+            </a>
+          </Link>
+        </DropdownStyles__Option>
+      </div>
+      <div>
+        <DropdownStyles__Option
+          onClick={[Function]}
+        >
+          <Link
+            href="/saved"
+          >
+            <a>
+              <HeartBoldIcon
+                viewBox="0 0 51.997 51.997"
+                xmlns="http://www.w3.org/2000/svg"
+              />
+              Sparade Recept
+            </a>
+          </Link>
+        </DropdownStyles__Option>
+      </div>
+      <div>
+        <DropdownStyles__Option
+          onClick={[Function]}
+        >
+          <Link
+            href={
+              Object {
+                "pathname": "/inkopslistor",
+                "query": Object {
+                  "id": "1234",
+                },
+              }
+            }
+          >
+            <a>
+              <ListBoldIcon
+                viewBox="0 0 60 60"
+                xmlns="http://www.w3.org/2000/svg"
+              />
+              Inköpslistor
+            </a>
+          </Link>
+        </DropdownStyles__Option>
+      </div>
+      <div>
+        <DropdownStyles__Option
+          onClick={[Function]}
+        >
+          <a>
+            <LogoutIcon
+              viewBox="0 0 129 129"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+            Logga ut
+          </a>
+        </DropdownStyles__Option>
+      </div>
+    </DropdownStyles__MenuContainer>
+  </Modal>
+</Jumbotron__LoginContainer>
+`;
