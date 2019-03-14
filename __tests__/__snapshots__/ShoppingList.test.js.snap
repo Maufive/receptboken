@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ShoppingList /> renders without errors without state 1`] = `
+<div>
+  <ShoppinglistStyles__ListContainer>
+    <h1>
+      Sparade inköpslistor:
+    </h1>
+    <ShoppinglistStyles__List>
+      <li>
+        <p>
+          Du har inga inköpslistor...
+        </p>
+      </li>
+    </ShoppinglistStyles__List>
+  </ShoppinglistStyles__ListContainer>
+</div>
+`;

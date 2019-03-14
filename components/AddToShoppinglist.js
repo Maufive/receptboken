@@ -105,7 +105,7 @@ class AddToShoppinglist extends Component {
 								onChange={this.saveToState}
 								required
 							/>
-							<label htmlFor="title" for="title">
+							<label htmlFor="title">
 								<AddIcon />
 								Ny inköpslista
 							</label>
@@ -117,7 +117,7 @@ class AddToShoppinglist extends Component {
 							{shoppinglists &&
 								shoppinglists.length >= 1 &&
 								shoppinglists.map(list => (
-									<div key={list._id} className="single-list">
+									<div key={list._id}>
 										<Link href={`/inkopslistor/${list._id}`}>
 											<a>
 												<li>{list.title}</li>

@@ -32,9 +32,10 @@ describe("<AddToShoppinglist />", () => {
 	});
 
 	it("renders a list of shoppinglists if the user has any", async () => {
-		const Component = mount(<AddToShoppinglist />);
-		Component.setState({ shoppinglists: fakeShoppinglist });
+		const Component = shallow(<AddToShoppinglist />);
+		Component.setState({ isModalOpen: true, shoppinglists: fakeShoppinglist });
 		await Component.update();
+		expect(Component.find("#shoppinglists").children().length).toBe(1);
 	});
 
 	// When there are 1 or more lists in state, make sure they are rendered to the page

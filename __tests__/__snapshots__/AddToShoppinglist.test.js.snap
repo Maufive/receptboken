@@ -58,7 +58,6 @@ exports[`<AddToShoppinglist /> renders to the page and matches the snapshot 1`] 
           value=""
         />
         <label
-          for="title"
           htmlFor="title"
         >
           <AddIcon
