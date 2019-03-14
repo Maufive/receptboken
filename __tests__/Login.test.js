@@ -29,7 +29,7 @@ describe("<Login />", () => {
 	});
 
 	describe("Email input", () => {
-		it("should respont to change event and change the state of the Login-component", () => {
+		it("should respond to change event and change the state of the Login-component", () => {
 			wrapper.find("#email").simulate("change", {
 				target: { name: "email", value: "test@gmail.com" }
 			});

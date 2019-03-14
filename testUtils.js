@@ -30,17 +30,23 @@ export const fakeUser = {
 	photo: "http://fakephoto.jpg"
 };
 
-export const fakeList = {
-	list: [
-		{
-			input: "Lök",
-			numberOfUnits: "5",
-			units: "dl"
-		},
-		{
-			input: "Tomater",
-			numberOfUnits: "10",
-			units: "st"
-		}
-	]
-};
+export const fakeShoppinglist = [
+	{
+		_id: "34567876543452176",
+		title: "My Shoppinglist",
+		created: "12/3 2019",
+		author: "61386712376576d7q6ewd65",
+		list: [
+			{
+				input: "Lök",
+				numberOfUnits: "5",
+				units: "dl"
+			},
+			{
+				input: "Tomater",
+				numberOfUnits: "10",
+				units: "st"
+			}
+		]
+	}
+];

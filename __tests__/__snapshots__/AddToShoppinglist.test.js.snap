@@ -3,6 +3,7 @@
 exports[`<AddToShoppinglist /> renders to the page and matches the snapshot 1`] = `
 <div>
   <Button
+    id="open-shoppinglist-modal"
     onClick={[Function]}
     primary={true}
   >
@@ -69,12 +70,15 @@ exports[`<AddToShoppinglist /> renders to the page and matches the snapshot 1`] 
       </div>
       <Button
         fullWidth={true}
+        id="submit-shoppinglist"
         primary={true}
         type="submit"
       >
         Skapa ny inköpslista
       </Button>
-      <ShoppinglistStyles__List />
+      <ShoppinglistStyles__List
+        id="shoppinglists"
+      />
     </ModalStyles__LoginForm>
   </Modal>
 </div>

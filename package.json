@@ -4,7 +4,7 @@
 		"dev": "next",
 		"build": "next build",
 		"start": "next start",
-		"test": "jest --watchAll"
+		"test": "jest --watch"
 	},
 	"proxy": "http://localhost:7777",
 	"dependencies": {
@@ -38,7 +38,6 @@
 		"eslint-config-prettier": "^3.3.0",
 		"eslint-plugin-import": "^2.14.0",
 		"eslint-plugin-jsx-a11y": "^6.1.2",
-		"jest-mock-axios": "^2.1.11",
 		"prettier": "^1.15.2"
 	}
 }

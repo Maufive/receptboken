@@ -84,7 +84,7 @@ class AddToShoppinglist extends Component {
 		const { shoppinglists } = this.state;
 		return (
 			<div>
-				<Button primary onClick={this.openModal}>
+				<Button id="open-shoppinglist-modal" primary onClick={this.openModal}>
 					<ListBoldIcon /> Lägg till i inköpslista
 				</Button>
 				<Modal
@@ -110,14 +110,14 @@ class AddToShoppinglist extends Component {
 								Ny inköpslista
 							</label>
 						</div>
-						<Button primary fullWidth type="submit">
+						<Button primary fullWidth id="submit-shoppinglist" type="submit">
 							Skapa ny inköpslista
 						</Button>
-						<List>
+						<List id="shoppinglists">
 							{shoppinglists &&
 								shoppinglists.length >= 1 &&
 								shoppinglists.map(list => (
-									<div key={list._id}>
+									<div key={list._id} className="single-list">
 										<Link href={`/inkopslistor/${list._id}`}>
 											<a>
 												<li>{list.title}</li>
