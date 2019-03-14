@@ -61,7 +61,7 @@ class EditProfile extends Component {
 				method: "POST",
 				body: data
 			}
-		).catch(error => this.props.setMessage("danger", error));
+		).catch(error => console.log(error));
 		const file = await res.json();
 		this.setState({
 			photo: file.secure_url,
@@ -86,12 +86,13 @@ class EditProfile extends Component {
 	render() {
 		return (
 			<div>
-				<StyledForm onSubmit={this.onSubmit}>
+				<StyledForm onSubmit={this.onSubmit} id="edit-profile-form">
 					<h1>Redigera din profil</h1>
 					<div>
 						<input
 							type="text"
 							name="fname"
+							id="fname"
 							onChange={this.saveToState}
 							value={this.state.fname}
 						/>
@@ -101,6 +102,7 @@ class EditProfile extends Component {
 						<input
 							type="text"
 							name="lname"
+							id="lname"
 							onChange={this.saveToState}
 							value={this.state.lname}
 						/>
@@ -109,6 +111,7 @@ class EditProfile extends Component {
 					<div>
 						<textarea
 							name="description"
+							id="description"
 							onChange={this.saveToState}
 							value={this.state.description}
 						/>
@@ -136,6 +139,7 @@ class EditProfile extends Component {
 						{this.state.photo && (
 							<img
 								width="150"
+								id="photo"
 								src={this.state.photo}
 								alt="Bild förhandsvisning"
 								style={{
@@ -144,7 +148,7 @@ class EditProfile extends Component {
 							/>
 						)}
 					</div>
-					<Button type="submit" fullWidth primary>
+					<Button type="submit" id="submit-button" fullWidth primary>
 						Spara ändringar
 					</Button>
 				</StyledForm>

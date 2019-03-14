@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EditProfile /> renders without errors and matches snapshot 1`] = `
+<div>
+  <FormStyles__StyledForm
+    id="edit-profile-form"
+    onSubmit={[Function]}
+  >
+    <h1>
+      Redigera din profil
+    </h1>
+    <div>
+      <input
+        id="fname"
+        name="fname"
+        onChange={[Function]}
+        type="text"
+        value="Niklas"
+      />
+      <label
+        htmlFor="fname"
+      >
+        Förnamn
+      </label>
+    </div>
+    <div>
+      <input
+        id="lname"
+        name="lname"
+        onChange={[Function]}
+        type="text"
+        value="Albinsson"
+      />
+      <label
+        htmlFor="lname"
+      >
+        Efternamn
+      </label>
+    </div>
+    <div>
+      <textarea
+        id="description"
+        name="description"
+        onChange={[Function]}
+        value="Hej jag heter Niklas"
+      />
+      <label
+        htmlFor="description"
+        style={
+          Object {
+            "transform": "translateY(-4.5rem)",
+          }
+        }
+      >
+        Beskrivning
+      </label>
+    </div>
+    <div
+      style={
+        Object {
+          "flexDirection": "column",
+        }
+      }
+    >
+      <p>
+        Ladda upp en profilbild
+      </p>
+      <input
+        id="file"
+        name="photo"
+        onChange={[Function]}
+        style={
+          Object {
+            "margin": "2rem 0",
+          }
+        }
+        type="file"
+      />
+      <img
+        alt="Bild förhandsvisning"
+        id="photo"
+        src="http://fakephoto.jpg"
+        style={
+          Object {
+            "borderRadius": "50%",
+          }
+        }
+        width="150"
+      />
+    </div>
+    <Button
+      fullWidth={true}
+      id="submit-button"
+      primary={true}
+      type="submit"
+    >
+      Spara ändringar
+    </Button>
+  </FormStyles__StyledForm>
+</div>
+`;

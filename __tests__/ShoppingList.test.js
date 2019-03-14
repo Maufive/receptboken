@@ -16,6 +16,5 @@ describe("<ShoppingList />", () => {
 	it("renders out the shoppinglists when state is set", () => {
 		wrapper.setState({ shoppinglists: fakeShoppinglist });
 		expect(wrapper.find("ShoppinglistStyles__List").children().length).toBe(1);
-		console.log(wrapper.find("ShoppinglistStyles__List").children().length);
 	});
 });

@@ -27,7 +27,8 @@ export const fakeUser = {
 	fname: "Niklas",
 	lname: "Albinsson",
 	description: "Hej jag heter Niklas",
-	photo: "http://fakephoto.jpg"
+	photo: "http://fakephoto.jpg",
+	id: "987654321"
 };
 
 export const fakeShoppinglist = [

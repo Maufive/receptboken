@@ -27,6 +27,7 @@ exports[`<Header /> renders with a user 1`] = `
           "description": "Hej jag heter Niklas",
           "fname": "Niklas",
           "hearts": Array [],
+          "id": "987654321",
           "lname": "Albinsson",
           "password": "1234",
           "photo": "http://fakephoto.jpg",
