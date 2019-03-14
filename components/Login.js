@@ -24,18 +24,25 @@ class Login extends Component {
 		e.preventDefault();
 		const { email, password } = this.state;
 		const { setUser, setMessage } = this.props;
-		axios
-			.post(`https://receptboken.herokuapp.com/auth/login`, { email, password })
-			.then(result => {
-				localStorage.setItem("jwtToken", result.data.token);
-				setUser(result.data.user);
-				setMessage("success", `Välkommen ${result.data.user.fname}!`);
-				// Router.push("/");
-			})
-			.catch(error => {
-				console.log(error.response.data.message);
-				this.setState({ error: error.response.data.message });
-			});
+		if (!email || !password) {
+			throw new Error("Du måste ange ett användarnamn och lösenord!");
+		} else {
+			axios
+				.post(`https://receptboken.herokuapp.com/auth/login`, {
+					email,
+					password
+				})
+				.then(result => {
+					localStorage.setItem("jwtToken", result.data.token);
+					setUser(result.data.user);
+					setMessage("success", `Välkommen ${result.data.user.fname}!`);
+					// Router.push("/");
+				})
+				.catch(error => {
+					console.log(error.response.data.message);
+					this.setState({ error: error.response.data.message });
+				});
+		}
 	};
 
 	render() {

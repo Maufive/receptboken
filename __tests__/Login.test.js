@@ -47,4 +47,29 @@ describe("<Login />", () => {
 			expect(wrapper.state("password")).toEqual("password123");
 		});
 	});
+
+	describe("Submit the loginform", () => {
+		it("throws error without input", () => {
+			const mockFn = {
+				preventDefault: jest.fn()
+			};
+			expect(() =>
+				wrapper.find("ModalStyles__LoginForm").simulate("submit", mockFn)
+			).toThrow();
+			expect(mockFn.preventDefault).toHaveBeenCalledTimes(1);
+		});
+
+		it("does not throw error with input from the user", () => {
+			const mockFn = {
+				preventDefault: jest.fn()
+			};
+			wrapper.setState({
+				email: "niklas@gmail.com",
+				password: "secretpassword123"
+			});
+			wrapper.update();
+			wrapper.find("ModalStyles__LoginForm").simulate("submit", mockFn);
+			expect(mockFn.preventDefault).toHaveBeenCalledTimes(1);
+		});
+	});
 });
