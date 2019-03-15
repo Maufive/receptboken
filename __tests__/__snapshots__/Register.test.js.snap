@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Register /> renders to the page and matches snapshot 1`] = `
+<div
+  style={
+    Object {
+      "width": "0 auto",
+    }
+  }
+>
+  <ModalStyles__LoginForm
+    onSubmit={[Function]}
+  >
+    <h2>
+      Registrera dig här:
+    </h2>
+    <div>
+      <input
+        id="email"
+        name="email"
+        onChange={[Function]}
+        required={true}
+        type="email"
+        value=""
+      />
+      <label
+        for="email"
+        htmlFor="email"
+      >
+        <MailIcon
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+         Email:
+      </label>
+    </div>
+    <div>
+      <input
+        id="fname"
+        name="fname"
+        onChange={[Function]}
+        required={true}
+        type="text"
+        value=""
+      />
+      <label
+        htmlFor="name"
+      >
+        <ProfileIcon
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+         Förnamn:
+      </label>
+    </div>
+    <div>
+      <input
+        id="lname"
+        name="lname"
+        onChange={[Function]}
+        required={true}
+        type="text"
+        value=""
+      />
+      <label
+        htmlFor="lname"
+      >
+        <ProfileIcon
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+         Efternamn:
+      </label>
+    </div>
+    <div>
+      <input
+        id="password"
+        name="password"
+        onChange={[Function]}
+        required={true}
+        type="password"
+        value=""
+      />
+      <label
+        htmlFor="password"
+      >
+        <LockIcon
+          viewBox="0 0 58 58"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+         
+        Lösenord:
+      </label>
+    </div>
+    <div>
+      <input
+        id="confirmPassword"
+        name="password"
+        onChange={[Function]}
+        required={true}
+        type="password"
+        value=""
+      />
+      <label
+        for="confirmPassword"
+        htmlFor="password"
+      >
+        <LockIcon
+          viewBox="0 0 58 58"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+         
+        Bekräfta Lösenord:
+      </label>
+    </div>
+    <Button__DisabledButton
+      disabled={true}
+      fullWidth={true}
+    >
+      Registrera →
+    </Button__DisabledButton>
+  </ModalStyles__LoginForm>
+</div>
+`;

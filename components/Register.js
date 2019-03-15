@@ -65,12 +65,12 @@ class RegisterComponent extends Component {
 		}
 	};
 
-	onSubmit = async e => {
+	onSubmit = e => {
 		e.preventDefault();
 
 		const { email, password, passwordMatch, fname, lname } = this.state;
-		if (passwordMatch === true) {
-			await axios
+		if (passwordMatch) {
+			axios
 				.post("https://receptboken.herokuapp.com/auth/register", {
 					email,
 					password,
@@ -90,9 +90,11 @@ class RegisterComponent extends Component {
 					console.log(error.response);
 					this.props.setMessage("danger", error.response.data);
 				});
-		} else {
-			this.props.setMessage("danger", "Lösenorden matchar inte");
-			return;
+		}
+
+		if (!passwordMatch) {
+			this.props.setMessage("danger", "Lösenorden matchar inte!");
+			throw new Error("urk på burk");
 		}
 	};
 
@@ -123,7 +125,7 @@ class RegisterComponent extends Component {
 							id="fname"
 							required
 						/>
-						<label htmlFor="name" for="fname">
+						<label htmlFor="name">
 							<ProfileIcon /> Förnamn:
 						</label>
 					</div>
@@ -136,7 +138,7 @@ class RegisterComponent extends Component {
 							onChange={this.saveToState}
 							required
 						/>
-						<label htmlFor="name" for="lname">
+						<label htmlFor="lname">
 							<ProfileIcon /> Efternamn:
 						</label>
 					</div>
@@ -149,7 +151,7 @@ class RegisterComponent extends Component {
 							onChange={this.password}
 							required
 						/>
-						<label htmlFor="password" for="password">
+						<label htmlFor="password">
 							{this.state.passwordMatch ? (
 								<LockIcon style={{ fill: "#15BD76" }} />
 							) : (
@@ -177,7 +179,7 @@ class RegisterComponent extends Component {
 						</label>
 					</div>
 					{this.state.passwordMatch ? (
-						<Button fullWidth primary type="submit">
+						<Button fullWidth primary type="submit" id="submit-button">
 							Registrera →
 						</Button>
 					) : (
