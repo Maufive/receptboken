@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Router from "next/router";
 import { Button, DisabledButton } from "./styles/Button";
-import { ListItemDiv, List, CloseButton } from "./styles/Steg1Styles";
+import { ListItemDiv, List } from "./styles/Steg1Styles";
 import { StyledForm } from "./styles/FormStyles";
 import EditIcon from "../svg/edit.svg";
 import AddBoldIcon from "../svg/addBold.svg";
@@ -148,7 +147,7 @@ class Steg1Test extends Component {
 	// };
 
 	render() {
-		const { step } = this.state;
+		const { step, arr } = this.state;
 		const { title, saveToState } = this.props;
 		return (
 			<StyledForm>
@@ -166,13 +165,18 @@ class Steg1Test extends Component {
 						onChange={saveToState}
 						required
 					/>
-					<label htmlFor="title" for="title">
+					<label htmlFor="title">
 						<EditIcon /> Titel
 					</label>
 				</div>
 				<div>
 					<p>Portioner:</p>
-					<select value={this.state.servings} onChange={this.handleServings}>
+					<select
+						id="servings"
+						name="servings"
+						value={this.state.servings}
+						onChange={this.handleServings}
+					>
 						<option value="2">2</option>
 						<option value="4">4</option>
 						<option value="6">6</option>
@@ -188,7 +192,7 @@ class Steg1Test extends Component {
 						onChange={this.saveIngredient}
 						required
 					/>
-					<label htmlFor="item" for="item">
+					<label htmlFor="item">
 						<IngredientIcon style={{ fill: "#15BD76" }} /> Fyll i ingredienser:
 					</label>
 				</div>
@@ -197,6 +201,7 @@ class Steg1Test extends Component {
 					<input
 						type="number"
 						name="numberOfUnits"
+						id="numberOfUnits"
 						min={0}
 						value={this.state.item.numberOfUnits}
 						onChange={this.saveNumberOfUnits}
@@ -204,7 +209,12 @@ class Steg1Test extends Component {
 				</div>
 				<div style={{ marginBottom: "1rem" }}>
 					<p>Enhet: </p>
-					<select value={this.state.item.units} onChange={this.handleUnits}>
+					<select
+						id="units"
+						name="units"
+						value={this.state.item.units}
+						onChange={this.handleUnits}
+					>
 						<option defaultValue="st">Styck</option>
 						<option value="gram">Gram</option>
 						<option value="msk">Matsked</option>
@@ -232,28 +242,29 @@ class Steg1Test extends Component {
 				)}
 
 				<List>
-					{this.state.arr.map(item => (
-						<li key={item.input}>
-							<ListItemDiv>
-								<p>
-									<span>{item.numberOfUnits}</span> <span>{item.units}</span>{" "}
-									{item.input}
-								</p>
-								<div>
-									<TrashIcon onClick={() => this.deleteItem(item)} />
-									<EditIcon onClick={() => this.editItem(item)} />
-								</div>
-							</ListItemDiv>
-						</li>
-					))}
+					{arr &&
+						arr.map(item => (
+							<li key={item.input}>
+								<ListItemDiv>
+									<p>
+										<span>{item.numberOfUnits}</span> <span>{item.units}</span>{" "}
+										{item.input}
+									</p>
+									<div>
+										<TrashIcon onClick={() => this.deleteItem(item)} />
+										<EditIcon onClick={() => this.editItem(item)} />
+									</div>
+								</ListItemDiv>
+							</li>
+						))}
 				</List>
-				{this.state.arr.length <= 1 ||
+				{(arr && arr.length <= 1) ||
 					(!title && (
 						<DisabledButton fullWidth disabled>
 							Nästa steg →
 						</DisabledButton>
 					))}
-				{this.state.arr.length >= 2 && title && (
+				{arr && arr.length >= 2 && title && (
 					<Button fullWidth primary onClick={this.nextStep}>
 						Nästa steg →
 					</Button>

@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Steg 1/> renders the component and matches the snapshot 1`] = `
+<FormStyles__StyledForm>
+  <h3>
+    <span>
+      Ingredienser
+    </span>
+    <span>
+      Steg 
+      1
+       av 3
+    </span>
+  </h3>
+  <div>
+    <input
+      id="title"
+      name="title"
+      required={true}
+      type="text"
+    />
+    <label
+      htmlFor="title"
+    >
+      <EditIcon
+        viewBox="0 0 55.25 55.25"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+       Titel
+    </label>
+  </div>
+  <div>
+    <p>
+      Portioner:
+    </p>
+    <select
+      id="servings"
+      name="servings"
+      onChange={[Function]}
+    >
+      <option
+        value="2"
+      >
+        2
+      </option>
+      <option
+        value="4"
+      >
+        4
+      </option>
+      <option
+        value="6"
+      >
+        6
+      </option>
+      <option
+        value="8"
+      >
+        8
+      </option>
+    </select>
+  </div>
+  <div>
+    <input
+      id="item"
+      name="item"
+      onChange={[Function]}
+      required={true}
+      type="text"
+      value=""
+    />
+    <label
+      htmlFor="item"
+    >
+      <IngredientIcon
+        style={
+          Object {
+            "fill": "#15BD76",
+          }
+        }
+        viewBox="0 0 56.823 56.823"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+       Fyll i ingredienser:
+    </label>
+  </div>
+  <div
+    style={
+      Object {
+        "marginBottom": "1rem",
+      }
+    }
+  >
+    <p>
+      Antal: 
+    </p>
+    <input
+      id="numberOfUnits"
+      min={0}
+      name="numberOfUnits"
+      onChange={[Function]}
+      type="number"
+      value={1}
+    />
+  </div>
+  <div
+    style={
+      Object {
+        "marginBottom": "1rem",
+      }
+    }
+  >
+    <p>
+      Enhet: 
+    </p>
+    <select
+      id="units"
+      name="units"
+      onChange={[Function]}
+      value="st"
+    >
+      <option
+        defaultValue="st"
+      >
+        Styck
+      </option>
+      <option
+        value="gram"
+      >
+        Gram
+      </option>
+      <option
+        value="msk"
+      >
+        Matsked
+      </option>
+      <option
+        value="tsk"
+      >
+        Tesked
+      </option>
+      <option
+        value="dl"
+      >
+        Deciliter
+      </option>
+      <option
+        value="frp"
+      >
+        Förpackning
+      </option>
+      <option
+        value="ml"
+      >
+        Milliliter
+      </option>
+    </select>
+  </div>
+  <Button
+    fullWidth={true}
+    onClick={[Function]}
+  >
+    <AddBoldIcon
+      viewBox="0 0 42 42"
+      xmlns="http://www.w3.org/2000/svg"
+    />
+    Lägg till
+  </Button>
+  <Steg1Styles__List />
+  <Button__DisabledButton
+    disabled={true}
+    fullWidth={true}
+  >
+    Nästa steg →
+  </Button__DisabledButton>
+</FormStyles__StyledForm>
+`;
