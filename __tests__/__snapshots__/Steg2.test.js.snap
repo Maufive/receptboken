@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Steg2 /> renders without error and matches snapshot 1`] = `
+<FormStyles__StyledForm>
+  <h3>
+    <span>
+      Gör så här:
+    </span>
+    <span>
+      Steg 
+       av 3
+    </span>
+  </h3>
+  <div>
+    <textarea
+      id="string"
+      name="string"
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <label
+      htmlFor="string"
+    >
+      Fyll i beskrivning
+    </label>
+  </div>
+  <div>
+    <Button
+      fullWidth={true}
+      onClick={[Function]}
+    >
+      <AddBoldIcon
+        viewBox="0 0 42 42"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      Lägg till
+    </Button>
+  </div>
+  <Steg1Styles__List />
+  <div
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
+  >
+    <Button
+      fullWidth={true}
+      id="button-previous"
+    >
+      ← Föregående
+    </Button>
+  </div>
+</FormStyles__StyledForm>
+`;

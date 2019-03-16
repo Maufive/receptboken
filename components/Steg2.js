@@ -99,6 +99,7 @@ class Steg2 extends Component {
 	// };
 
 	render() {
+		const { arr } = this.state;
 		const { steg, previousStep } = this.props;
 		return (
 			<StyledForm>
@@ -114,9 +115,7 @@ class Steg2 extends Component {
 						value={this.state.string}
 						onChange={this.saveToState}
 					/>
-					<label htmlFor="string" for="string">
-						Fyll i beskrivning
-					</label>
+					<label htmlFor="string">Fyll i beskrivning</label>
 				</div>
 				<div>
 					{this.state.editing ? (
@@ -135,27 +134,28 @@ class Steg2 extends Component {
 					)}
 				</div>
 				<List>
-					{this.state.arr.map(item => (
-						<li key={item}>
-							<ListItemDiv>
-								<p>{item}</p>
-								<div>
-									<TrashIcon onClick={() => this.deleteItem(item)} />
-									<EditIcon onClick={() => this.editItem(item)} />
-								</div>
-							</ListItemDiv>
-						</li>
-					))}
+					{arr &&
+						arr.map(item => (
+							<li key={item}>
+								<ListItemDiv>
+									<p>{item}</p>
+									<div>
+										<TrashIcon onClick={() => this.deleteItem(item)} />
+										<EditIcon onClick={() => this.editItem(item)} />
+									</div>
+								</ListItemDiv>
+							</li>
+						))}
 				</List>
 				<div style={{ display: "flex" }}>
-					<Button fullWidth onClick={previousStep}>
+					<Button fullWidth onClick={previousStep} id="button-previous">
 						← Föregående
 					</Button>
-					{this.state.arr.length <= 1 && (
+					{arr && arr.length <= 1 && (
 						<DisabledButton fullWidth>Nästa steg →</DisabledButton>
 					)}
-					{this.state.arr.length >= 2 && (
-						<Button primary fullWidth onClick={this.nextStep}>
+					{arr && arr.length >= 2 && (
+						<Button primary fullWidth onClick={this.nextStep} id="button-next">
 							Nästa steg →
 						</Button>
 					)}
