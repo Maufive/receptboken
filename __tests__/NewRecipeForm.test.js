@@ -1,12 +1,20 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import toJSON from "enzyme-to-json";
 import NewRecipeForm from "../components/NewRecipeForm";
 import { fakeUser } from "../testUtils";
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
 
 describe("<NewRecipeForm />", () => {
 	let wrapper;
-	beforeEach(() => (wrapper = shallow(<NewRecipeForm user={fakeUser} />)));
+	const setMessage = jest.fn();
+	beforeEach(
+		() =>
+			(wrapper = shallow(
+				<NewRecipeForm user={fakeUser} setMessage={setMessage} />
+			))
+	);
 
 	it("renders to the page and matches snapshot", () => {
 		expect(wrapper.find("Steg1Test").length).toEqual(1);
@@ -30,5 +38,13 @@ describe("<NewRecipeForm />", () => {
 			expect(wrapper.state().step).toEqual(3);
 			expect(wrapper.find("#Steg3").length).toEqual(1);
 		});
+	});
+
+	it("Submit handler working", () => {
+		const spy = jest.spyOn(wrapper.instance(), "submitRecipe");
+
+		wrapper.instance().submitRecipe();
+		wrapper.update();
+		expect(spy).toHaveBeenCalled();
 	});
 });

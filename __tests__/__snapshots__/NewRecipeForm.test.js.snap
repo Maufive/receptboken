@@ -9,6 +9,7 @@ exports[`<NewRecipeForm /> renders to the page and matches snapshot 1`] = `
       saveIngredients={[Function]}
       saveToState={[Function]}
       servings={2}
+      setMessage={[MockFunction]}
       title=""
     />
   </div>
