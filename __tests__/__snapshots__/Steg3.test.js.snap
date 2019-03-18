@@ -1,0 +1,271 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Steg3 /> renders without error and matches snapshot 1`] = `
+<Steg1Styles__RecipeForm>
+  <h3
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <span>
+      Ingedienser
+    </span>
+    <span>
+      Steg 
+       av 3
+    </span>
+  </h3>
+  <Steg1Styles__DetailsContainer>
+    <div>
+      <label
+        htmlFor="timeRequired"
+      >
+        Ungefär hur lång tid tar receptet?
+         
+      </label>
+      <div>
+        <input
+          id="timeRequired"
+          max={180}
+          min={0}
+          name="timeRequired"
+          onChange={[Function]}
+          type="range"
+          value={0}
+        />
+        <p>
+          0
+           minuter
+        </p>
+      </div>
+    </div>
+    <div>
+      <label
+        htmlFor="photo"
+      >
+        Ladda upp en bild:
+      </label>
+       
+      <br />
+      <input
+        id="file"
+        name="photo"
+        onChange={[Function]}
+        placeholder="Ladda upp en bild"
+        type="file"
+      />
+      <br />
+    </div>
+    <div>
+      <label
+        htmlFor="tags"
+      >
+        Kryssa i passande kategorier: 
+      </label>
+       
+      <br />
+      <label
+        htmlFor="recipe-tag-Texmex"
+        key="Texmex"
+      >
+        <input
+          checked={false}
+          id="recipe-tag-Texmex"
+          onChange={[Function]}
+          type="checkbox"
+          value="Texmex"
+        />
+         
+        Texmex
+         
+        <br />
+      </label>
+      <label
+        htmlFor="recipe-tag-Vardagsmiddag"
+        key="Vardagsmiddag"
+      >
+        <input
+          checked={false}
+          id="recipe-tag-Vardagsmiddag"
+          onChange={[Function]}
+          type="checkbox"
+          value="Vardagsmiddag"
+        />
+         
+        Vardagsmiddag
+         
+        <br />
+      </label>
+      <label
+        htmlFor="recipe-tag-Snabbt & Enkelt"
+        key="Snabbt & Enkelt"
+      >
+        <input
+          checked={false}
+          id="recipe-tag-Snabbt & Enkelt"
+          onChange={[Function]}
+          type="checkbox"
+          value="Snabbt & Enkelt"
+        />
+         
+        Snabbt & Enkelt
+         
+        <br />
+      </label>
+      <label
+        htmlFor="recipe-tag-Italienskt"
+        key="Italienskt"
+      >
+        <input
+          checked={false}
+          id="recipe-tag-Italienskt"
+          onChange={[Function]}
+          type="checkbox"
+          value="Italienskt"
+        />
+         
+        Italienskt
+         
+        <br />
+      </label>
+      <label
+        htmlFor="recipe-tag-Asiatiskt"
+        key="Asiatiskt"
+      >
+        <input
+          checked={false}
+          id="recipe-tag-Asiatiskt"
+          onChange={[Function]}
+          type="checkbox"
+          value="Asiatiskt"
+        />
+         
+        Asiatiskt
+         
+        <br />
+      </label>
+      <label
+        htmlFor="recipe-tag-Smalt & Nyttigt"
+        key="Smalt & Nyttigt"
+      >
+        <input
+          checked={false}
+          id="recipe-tag-Smalt & Nyttigt"
+          onChange={[Function]}
+          type="checkbox"
+          value="Smalt & Nyttigt"
+        />
+         
+        Smalt & Nyttigt
+         
+        <br />
+      </label>
+      <label
+        htmlFor="recipe-tag-Billigt"
+        key="Billigt"
+      >
+        <input
+          checked={false}
+          id="recipe-tag-Billigt"
+          onChange={[Function]}
+          type="checkbox"
+          value="Billigt"
+        />
+         
+        Billigt
+         
+        <br />
+      </label>
+      <label
+        htmlFor="recipe-tag-Bakat & Dessert"
+        key="Bakat & Dessert"
+      >
+        <input
+          checked={false}
+          id="recipe-tag-Bakat & Dessert"
+          onChange={[Function]}
+          type="checkbox"
+          value="Bakat & Dessert"
+        />
+         
+        Bakat & Dessert
+         
+        <br />
+      </label>
+      <label
+        htmlFor="recipe-tag-Pasta"
+        key="Pasta"
+      >
+        <input
+          checked={false}
+          id="recipe-tag-Pasta"
+          onChange={[Function]}
+          type="checkbox"
+          value="Pasta"
+        />
+         
+        Pasta
+         
+        <br />
+      </label>
+      <label
+        htmlFor="recipe-tag-Vegetariskt"
+        key="Vegetariskt"
+      >
+        <input
+          checked={false}
+          id="recipe-tag-Vegetariskt"
+          onChange={[Function]}
+          type="checkbox"
+          value="Vegetariskt"
+        />
+         
+        Vegetariskt
+         
+        <br />
+      </label>
+      <label
+        htmlFor="recipe-tag-Fisk"
+        key="Fisk"
+      >
+        <input
+          checked={false}
+          id="recipe-tag-Fisk"
+          onChange={[Function]}
+          type="checkbox"
+          value="Fisk"
+        />
+         
+        Fisk
+         
+        <br />
+      </label>
+    </div>
+  </Steg1Styles__DetailsContainer>
+  <div
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
+  >
+    <Button
+      fullWidth={true}
+    >
+      ← Föregående
+    </Button>
+    <Button__DisabledButton
+      fullWidth={true}
+    >
+      <SuccessIcon
+        viewBox="0 0 52 52"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+       Ladda upp!
+    </Button__DisabledButton>
+  </div>
+</Steg1Styles__RecipeForm>
+`;

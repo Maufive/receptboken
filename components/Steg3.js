@@ -99,6 +99,7 @@ class Steg3 extends Component {
 							<input
 								type="range"
 								name="timeRequired"
+								id="timeRequired"
 								min={0}
 								max={180}
 								value={timeRequired}

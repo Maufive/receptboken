@@ -31,16 +31,24 @@ describe("<Steg2 />", () => {
 	describe("Previous / Next buttons", () => {
 		it("return button decrements the Step-variable", () => {
 			// WORK IN PROGRESS
-			// const Parent = shallow(<NewRecipeForm user={fakeUser} />);
-			// const mockFn = {
-			// 	preventDefault: jest.fn()
-			// };
-			// Parent.setState({
-			// 	step: 2
-			// });
-			// Parent.find("#button-previous").simulate("click", mockFn);
-			// // expect(mockFn.preventDefault).toHaveBeenCalledTimes(1);
-			// console.log(Parent.state());
+			const Parent = shallow(<NewRecipeForm user={fakeUser} />);
+			const e = {
+				preventDefault: jest.fn()
+			};
+
+			const spy = jest.spyOn(e, "preventDefault");
+
+			Parent.setState({
+				step: 2
+			});
+
+			expect(Parent.state().step).toEqual(2);
+
+			Parent.instance().previousStep(e);
+			Parent.update();
+
+			expect(Parent.state().step).toEqual(1);
+			expect(spy).toHaveBeenCalled();
 		});
 	});
 });
