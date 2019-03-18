@@ -31,10 +31,5 @@ describe("<Steg3 />", () => {
 		it("renders the input", () => {
 			expect(wrapper.find("#file").length).toEqual(1);
 		});
-
-		it("handles the onChange event", () => {
-			// const mockFn = jest.fn();
-			// console.log(wrapper.instance().uploadFile(mockFn));
-		});
 	});
 });
