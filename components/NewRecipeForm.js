@@ -103,6 +103,7 @@ class NewRecipeForm extends Component {
 		if (step === 1) {
 			ActiveComponent = (
 				<Steg1
+					id="Steg1"
 					saveToState={this.saveToState}
 					title={this.state.title}
 					saveIngredients={this.saveIngredients}
@@ -114,6 +115,7 @@ class NewRecipeForm extends Component {
 		} else if (step === 2) {
 			ActiveComponent = (
 				<Steg2
+					id="Steg2"
 					steg={step}
 					previousStep={this.previousStep}
 					saveDescription={this.saveDescription}
@@ -124,6 +126,7 @@ class NewRecipeForm extends Component {
 		} else if (step === 3) {
 			ActiveComponent = (
 				<Steg3
+					id="Steg3"
 					steg={step}
 					previousStep={this.previousStep}
 					saveDetails={this.saveDetails}

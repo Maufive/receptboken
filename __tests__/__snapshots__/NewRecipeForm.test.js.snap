@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewRecipeForm /> renders to the page and matches snapshot 1`] = `
+<div>
+  <div>
+    <Steg1Test
+      id="Steg1"
+      ingredients={Array []}
+      saveIngredients={[Function]}
+      saveToState={[Function]}
+      servings={2}
+      title=""
+    />
+  </div>
+</div>
+`;
