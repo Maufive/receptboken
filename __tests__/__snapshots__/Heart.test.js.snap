@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heart /> renders without error and matches snapshot 1`] = `
+<Heart__HeartStyles
+  onClick={[Function]}
+>
+  <HeartIcon
+    viewBox="0 0 51.997 51.997"
+    xmlns="http://www.w3.org/2000/svg"
+  />
+  Spara
+</Heart__HeartStyles>
+`;
