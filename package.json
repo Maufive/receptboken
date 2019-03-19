@@ -4,7 +4,7 @@
 		"dev": "next",
 		"build": "next build",
 		"start": "next start",
-		"test": "jest --watch"
+		"test": "jest --watchAll"
 	},
 	"proxy": "http://localhost:7777",
 	"dependencies": {
@@ -30,6 +30,7 @@
 		"styled-components": "^4.1.1"
 	},
 	"devDependencies": {
+		"axios-mock-adapter": "^1.16.0",
 		"babel-eslint": "^8.2.6",
 		"enzyme": "^3.9.0",
 		"enzyme-adapter-react-16": "^1.11.0",
