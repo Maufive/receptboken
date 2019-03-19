@@ -45,6 +45,6 @@ describe("<NewRecipeForm />", () => {
 
 		wrapper.instance().submitRecipe();
 		wrapper.update();
-		expect(spy).toHaveBeenCalled();
+		expect(spy).toHaveBeenCalledTimes(1);
 	});
 });
