@@ -1,6 +1,16 @@
-# Receptboken
+# Välkommen till Receptboken!
 
-### Receptboken är ett hobbyprojekt byggt på MongoDB, ExpressJS, ReactJS (NextJS) och NodeJS.
+Receptboken är ett hobbyprojekt som jag byggt på MERN-stacken. (MongoDB, Express, React, Node)
+
+### Features
+
+- Authentication med hjälp av PassportJS + JSONWebTokens
+- Registrerade användare kan lägga upp egna recept
+- Registrerade användare kan spara olika recept
+- Betygsätt olika recept
+- Spara ingredienserna i recepten till en inköpslista, som i sin tur går att enkelt maila till den e-postadress som användaren är registrerad med.
+
+### Bakgrund
 
 Problemet jag ville lösa var att jag har olika recept liggandes på olika plattformar, och ville samla dem på ett och samma ställe. Jag ville göra det enkelt att ladda upp nya recept, kunna söka och spara olika recept samt kunna spara ingredienserna i en inköpslista som jag enkelt kan ta med mig på affären för att handla.
 
