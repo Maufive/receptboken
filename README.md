@@ -2,7 +2,7 @@
 
 Receptboken är ett hobbyprojekt som jag byggt på MERN-stacken. (MongoDB, Express, React, Node)
 
-[DEMO HERE](https://receptboken.online)
+[DEMO](https://receptboken.online) (Kan ta upp till 30 sekunder att starta back-endservern)
 
 ### Features
 
