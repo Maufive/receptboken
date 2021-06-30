@@ -8,7 +8,7 @@
 	},
 	"proxy": "http://localhost:7777",
 	"dependencies": {
-		"axios": "^0.18.0",
+		"axios": "^0.21.1",
 		"babel-jest": "^24.5.0",
 		"babel-plugin-inline-react-svg": "^1.0.1",
 		"babel-plugin-styled-components": "^1.8.0",
